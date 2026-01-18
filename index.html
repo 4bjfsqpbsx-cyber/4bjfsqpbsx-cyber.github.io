@@ -24,7 +24,7 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-white text-graphite font-semibold">
+<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
 
 <!-- Header -->
 <header class="sticky top-0 z-50 bg-white shadow">
@@ -40,16 +40,14 @@
 </header>
 
 <!-- Hero -->
-<section class="bg-gray-50">
+<section class="bg-gradient-to-r from-blue-100 to-orange-100">
   <div class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
     <div>
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Мы всё починим рядом с домом</h1>
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
       <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold">Посмотреть услуги</a>
     </div>
-    <div class="h-64 md:h-80 bg-gray-200 rounded-xl flex items-center justify-center text-gray-400">
-      Плейсхолдер изображения
-    </div>
+    <img src="https://images.unsplash.com/photo-1581091870627-3f9c1c1b3b66?auto=format&fit=crop&w=800&q=80" alt="Сервисный центр" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
   </div>
 </section>
 
@@ -60,64 +58,34 @@
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
       <!-- Card -->
-      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white">
-        <i data-lucide="smartphone" class="w-10 h-10 text-accent mb-4"></i>
-        <h3 class="font-semibold mb-2">Ремонт телефонов и электроники</h3>
-        <p class="text-sm text-gray-600">Смартфоны, планшеты, мелкая электроника</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white flex flex-col">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=80" class="rounded-lg mb-4 h-40 w-full object-cover" alt="Ремонт телефонов"><h3 class="font-bold text-lg mb-2">Ремонт телефонов и электроники</h3><p class="text-sm text-gray-600">Смартфоны, планшеты, мелкая электроника</p>
+        
       </div>
 
-      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white">
-        <i data-lucide="watch" class="w-10 h-10 text-accent mb-4"></i>
-        <h3 class="font-semibold mb-2">Замена батареек в часах</h3>
-        <p class="text-sm text-gray-600">Быстро и аккуратно</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white flex flex-col">
+        <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=400&q=80" class="rounded-lg mb-4 h-40 w-full object-cover" alt="Часы"><h3 class="font-bold text-lg mb-2">Замена батареек в часах</h3><p class="text-sm text-gray-600">Аккуратно и быстро</p>
+        
       </div>
 
-      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white">
-        <i data-lucide="boot" class="w-10 h-10 text-accent mb-4"></i>
-        <h3 class="font-semibold mb-2">Ремонт обуви</h3>
-        <p class="text-sm text-gray-600">Профессиональный подход</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white flex flex-col">
+        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=400&q=80" class="rounded-lg mb-4 h-40 w-full object-cover" alt="Ремонт обуви"><h3 class="font-bold text-lg mb-2">Профессиональный ремонт обуви</h3><p class="text-sm text-gray-600">Каблуки, подошвы, реставрация</p>
+        
       </div>
 
-      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white">
-        <i data-lucide="scissors" class="w-10 h-10 text-accent mb-4"></i>
-        <h3 class="font-semibold mb-2">Ателье</h3>
-        <p class="text-sm text-gray-600">Ремонт и подгонка одежды</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white flex flex-col">
+        <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&w=400&q=80" class="rounded-lg mb-4 h-40 w-full object-cover" alt="Ателье"><h3 class="font-bold text-lg mb-2">Ателье и ремонт одежды</h3><p class="text-sm text-gray-600">Подгонка, ушив, ремонт</p>
+        
       </div>
 
-      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white">
-        <i data-lucide="camera" class="w-10 h-10 text-accent mb-4"></i>
-        <h3 class="font-semibold mb-2">Фото и печать</h3>
-        <p class="text-sm text-gray-600">Фото на документы</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white flex flex-col">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" class="rounded-lg mb-4 h-40 w-full object-cover" alt="Фото"><h3 class="font-bold text-lg mb-2">Фото на документы и печать</h3><p class="text-sm text-gray-600">Быстро и официально</p>
+        
       </div>
 
-      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white">
-        <i data-lucide="key" class="w-10 h-10 text-accent mb-4"></i>
-        <h3 class="font-semibold mb-2">Изготовление ключей</h3>
-        <p class="text-sm text-gray-600">Квартирные, офисные</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+      <div class="border-2 border-accent rounded-2xl p-6 hover:shadow-xl transition bg-white flex flex-col">
+        <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=400&q=80" class="rounded-lg mb-4 h-40 w-full object-cover" alt="Ключи"><h3 class="font-bold text-lg mb-2">Изготовление ключей</h3><p class="text-sm text-gray-600">Квартирные и офисные</p>
+        
       </div>
 
     </div>
@@ -132,26 +100,17 @@
       <div class="p-6 bg-white rounded-xl shadow-sm">
         <h3 class="font-semibold mb-2">Быстро</h3>
         <p class="text-sm text-gray-600">Большинство услуг выполняем в день обращения</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+        
       </div>
       <div class="p-6 bg-white rounded-xl shadow-sm">
         <h3 class="font-semibold mb-2">Качественно</h3>
         <p class="text-sm text-gray-600">Опытные мастера и проверенные материалы</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+        
       </div>
       <div class="p-6 bg-white rounded-xl shadow-sm">
         <h3 class="font-semibold mb-2">Рядом с домом</h3>
         <p class="text-sm text-gray-600">Удобное расположение и график работы</p>
-        <div class="mt-4 text-sm">
-          <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-          <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -163,12 +122,10 @@
     <div>
       <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Контакты</h2>
       <p class="text-gray-700 mb-4 text-lg">Приходите в мастерскую или свяжитесь с нами по телефону или почте</p>
-      <div class="space-y-2 text-lg">
-        <p>Георгий: <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a></p>
-        <p>Михаил: <a href="tel:+79672300152" class="text-accent font-bold">+7 (967) 230-01-52</a></p>
-        <p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold">photo_ostov@mail.ru</a></p>
-        <p class="text-gray-700">Адрес: Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
-      </div>
+      <div class="space-y-3 text-lg">
+<p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold">photo_ostov@mail.ru</a></p>
+<p class="text-gray-700">Адрес: Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
+</div>
     </div>
     <div class="h-64 bg-gray-200 rounded-xl flex items-center justify-center text-gray-400">
     </div>
@@ -189,4 +146,3 @@
 
 </body>
 </html>
-
