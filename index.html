@@ -435,7 +435,7 @@
     
     // Создаем iframe с правильными координатами
     const mapIframe = document.createElement('iframe');
-    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]}%2C${exactCoords[0]}&z=17&pt=${exactCoords[1]}%2C${exactCoords[0]}%2Cpm2rdm`;
+    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]},${exactCoords[0]}&z=17&pt=${exactCoords[1]},${exactCoords[0]},pm2rdm`;
     mapIframe.width = '100%';
     mapIframe.height = '100%';
     mapIframe.style.border = 'none';
@@ -476,4 +476,4 @@
   }
 </script>
 </body>
-</html>                                                            
+</html>
