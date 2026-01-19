@@ -41,19 +41,19 @@
 </header>
 
 <!-- Hero -->
-<section class="bg-gradient-to-r from-blue-100 to-orange-100 relative overflow-hidden">
+<section class="bg-white relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center relative z-10">
     <div>
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Мы всё починим рядом с домом</h1>
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
       <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg">Посмотреть услуги</a>
     </div>
-    <img src="https://picsum.photos/800/500?random=1" alt="Дом быта ВСЁ ПОЧИНИМ" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
+    <img src="https://picsum.photos/seed/dombyta/900/600" alt="Дом быта — все услуги" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
   </div>
 </section>
 
 <!-- Services -->
-<section id="services" class="py-20 bg-[url('https://picsum.photos/1200/800?blur=2')] bg-cover bg-fixed">
+<section id="services" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Наши услуги</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -94,9 +94,9 @@
 </section>
 
 <!-- Reviews -->
-<section id="reviews" class="bg-[url('https://picsum.photos/1200/700?random=2')] bg-cover py-20">
+<section id="reviews" class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы клиентов</h2>
+    <h2 id="reviews" class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы клиентов</h2>
 <div class="flex items-center gap-1 mb-12">
   <span class="text-yellow-400 animate-pulse">★★★★★</span>
   <span class="text-sm text-gray-600">5.0 — на основе отзывов клиентов</span>
@@ -122,26 +122,35 @@
 
     <div class="max-w-xl">
       <h3 class="text-2xl font-bold mb-4">Оставить отзыв</h3>
-      <form class="space-y-4">
+      <form class="space-y-4" onsubmit="event.preventDefault(); showReviewSent();">
         <input type="text" placeholder="Ваше имя" class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent" />
         <textarea placeholder="Ваш отзыв" rows="4" class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
         <button type="button" class="bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-lg">Отправить отзыв</button>
         <p class="text-sm text-gray-500">* Отзыв появится после модерации</p>
+<div id="review-success" class="hidden mt-4 flex items-center gap-2 text-green-600 font-bold"><span>✔</span><span>Отзыв отправлен</span></div>
       </form>
     </div>
   </div>
 </section>
 
 <!-- Why us -->
-<section id="why" class="bg-[url('https://picsum.photos/1200/700?random=3')] bg-cover py-20">
+<section id="why" class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Почему выбирают нас</h2>
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="p-6 bg-white rounded-xl shadow-sm transition transform hover:-translate-y-1 hover:shadow-lg">
-        <h3 class="font-semibold mb-2">Быстро</h3>
-        <p class="text-sm text-gray-600">Большинство услуг выполняем в день обращения</p>
-        
-      </div>
+  <div class="bg-white rounded-xl shadow p-6">
+    <p class="text-gray-700 mb-4">Отличный сервис! Быстро починили телефон, всё работает идеально.</p>
+    <div class="text-sm text-gray-500">Анна К., май 2024</div>
+  </div>
+  <div class="bg-white rounded-xl shadow p-6">
+    <p class="text-gray-700 mb-4">Делал фото на документы — удобно, быстро и без очередей.</p>
+    <div class="text-sm text-gray-500">Игорь М., март 2024</div>
+  </div>
+  <div class="bg-white rounded-xl shadow p-6">
+    <p class="text-gray-700 mb-4">Менял батарейку в часах и делал ключ. Всё в одном месте — очень удобно.</p>
+    <div class="text-sm text-gray-500">Светлана Р., февраль 2024</div>
+  </div>
+</div>
       <div class="p-6 bg-white rounded-xl shadow-sm transition transform hover:-translate-y-1 hover:shadow-lg">
         <h3 class="font-semibold mb-2">Качественно</h3>
         <p class="text-sm text-gray-600">Опытные мастера и проверенные материалы</p>
@@ -170,7 +179,7 @@
 </div>
     </div>
     <div class="rounded-xl overflow-hidden shadow-lg">
-  <iframe src="https://yandex.ru/map-widget/v1/?ll=37.9856%2C55.6087&z=17&pt=37.9856,55.6087,pm2rdm" width="100%" height="300" frameborder="0" allowfullscreen="true"></iframe>
+  <iframe src="https://yandex.ru/map-widget/v1/?ll=37.9776%2C55.6089&z=17&mode=search&text=Московская%20область%2C%20рабочий%20посёлок%20Октябрьский%2C%20ул.%20Текстильщиков%207А" width="100%" height="400" frameborder="0" allowfullscreen="true" class="rounded-xl shadow"></iframe>
 </div>
 <div class="mt-4">
   <a href="https://yandex.ru/maps/?rtext=~55.6087,37.9856" target="_blank" class="inline-block bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-xl">Построить маршрут</a>
@@ -189,9 +198,21 @@
   </div>
 </footer>
 
+<!-- Фиксированная кнопка для мобильных -->
+<a href="#contacts" class="fixed bottom-4 right-4 z-50 md:hidden bg-orange-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-orange-600 transition">
+  <span>📍</span>
+  <span>Как добраться</span>
+</a>
+
 <script>
   lucide.createIcons();
 </script>
 
+<script>
+function showReviewSent() {
+  const msg = document.getElementById('review-success');
+  msg.classList.remove('hidden');
+}
+</script>
 </body>
 </html>
