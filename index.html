@@ -123,12 +123,13 @@
     <div class="max-w-xl">
       <h3 class="text-2xl font-bold mb-4">Оставить отзыв</h3>
       <form class="space-y-4" onsubmit="event.preventDefault(); showReviewSent();">
-        <input type="text" placeholder="Ваше имя" class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent" />
-        <textarea placeholder="Ваш отзыв" rows="4" class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
-        <button type="button" class="bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-lg">Отправить отзыв</button>
-        <p class="text-sm text-gray-500">* Отзыв появится после модерации</p>
-<div id="review-success" class="hidden mt-4 flex items-center gap-2 text-green-600 font-bold"><span>✔</span><span>Отзыв отправлен</span></div>
-      </form>
+  <input type="text" placeholder="Ваше имя" class="w-full border rounded-lg p-3" required />
+  <textarea placeholder="Ваш отзыв" class="w-full border rounded-lg p-3" rows="4" required></textarea>
+  <button type="submit" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition">Отправить отзыв</button>
+  <div id="review-success" class="hidden mt-4 flex items-center gap-2 text-green-600 font-bold">
+    <span>✔</span><span>Отзыв отправлен, спасибо вам!</span>
+  </div>
+</form>
     </div>
   </div>
 </section>
@@ -136,30 +137,22 @@
 <!-- Why us -->
 <section id="why" class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Почему выбирают нас</h2>
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Почему выбирают нас</h2>
     <div class="grid md:grid-cols-3 gap-8">
-  <div class="bg-white rounded-xl shadow p-6">
-    <p class="text-gray-700 mb-4">Отличный сервис! Быстро починили телефон, всё работает идеально.</p>
-    <div class="text-sm text-gray-500">Анна К., май 2024</div>
-  </div>
-  <div class="bg-white rounded-xl shadow p-6">
-    <p class="text-gray-700 mb-4">Делал фото на документы — удобно, быстро и без очередей.</p>
-    <div class="text-sm text-gray-500">Игорь М., март 2024</div>
-  </div>
-  <div class="bg-white rounded-xl shadow p-6">
-    <p class="text-gray-700 mb-4">Менял батарейку в часах и делал ключ. Всё в одном месте — очень удобно.</p>
-    <div class="text-sm text-gray-500">Светлана Р., февраль 2024</div>
-  </div>
-</div>
-      <div class="p-6 bg-white rounded-xl shadow-sm transition transform hover:-translate-y-1 hover:shadow-lg">
-        <h3 class="font-semibold mb-2">Качественно</h3>
-        <p class="text-sm text-gray-600">Опытные мастера и проверенные материалы</p>
-        
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <div class="text-4xl mb-4">🛠️</div>
+        <p class="font-bold mb-2">Все услуги в одном месте</p>
+        <p class="text-gray-600 text-sm">Ремонт, фото, ключи, ателье — без беготни по району</p>
       </div>
-      <div class="p-6 bg-white rounded-xl shadow-sm transition transform hover:-translate-y-1 hover:shadow-lg">
-        <h3 class="font-semibold mb-2">Рядом с домом</h3>
-        <p class="text-sm text-gray-600">Удобное расположение и график работы</p>
-        
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <div class="text-4xl mb-4">⏱️</div>
+        <p class="font-bold mb-2">Быстро и по делу</p>
+        <p class="text-gray-600 text-sm">Большинство услуг выполняем в день обращения</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6 text-center">
+        <div class="text-4xl mb-4">📍</div>
+        <p class="font-bold mb-2">Удобное расположение</p>
+        <p class="text-gray-600 text-sm">Рядом с домом, легко найти и добраться</p>
       </div>
     </div>
   </div>
@@ -179,7 +172,9 @@
 </div>
     </div>
     <div class="rounded-xl overflow-hidden shadow-lg">
-  <iframe src="https://yandex.ru/map-widget/v1/?ll=37.9776%2C55.6089&z=17&mode=search&text=Московская%20область%2C%20рабочий%20посёлок%20Октябрьский%2C%20ул.%20Текстильщиков%207А" width="100%" height="400" frameborder="0" allowfullscreen="true" class="rounded-xl shadow"></iframe>
+  <div class="w-full h-[400px] rounded-xl shadow overflow-hidden flex items-center justify-center bg-gray-100">
+  <img src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005b9471f4ab245dba016237e2&ts=491336&p=fs&cid=1&sig=765370cb9fa3375bd8754fc507075b339ff1449561e63fc8063d48738e64891d&v=0" alt="Дом быта ВСЁ ПОЧИНИМ — карта" class="w-full h-full object-cover" />
+</div>
 </div>
 <div class="mt-4">
   <a href="https://yandex.ru/maps/?rtext=~55.6087,37.9856" target="_blank" class="inline-block bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-xl">Построить маршрут</a>
