@@ -61,6 +61,20 @@
     .float-animation {
       animation: float 3s ease-in-out infinite;
     }
+    
+    /* Анимация пульсации для срочных услуг */
+    @keyframes pulse-orange {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+    
+    .pulse-orange {
+      animation: pulse-orange 2s ease-in-out infinite;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
@@ -84,6 +98,7 @@
         <a href="#reviews" class="hover:text-accent transition-colors">Отзывы</a>
         <a href="#why" class="hover:text-accent transition-colors">Почему мы</a>
         <a href="#contacts" class="hover:text-accent transition-colors">Контакты</a>
+        <a href="#emergency" class="hover:text-accent transition-colors">Срочный ремонт</a>
       </nav>
       <div class="h-6 w-px bg-gray-300"></div>
       <div class="flex flex-col items-end">
@@ -108,7 +123,38 @@
     <div>
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Мы всё починим рядом с домом</h1>
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
-      <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg">Посмотреть услуги</a>
+      <div class="flex flex-wrap gap-4">
+        <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg">Посмотреть услуги</a>
+        <a href="#emergency" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg hover:bg-red-600 pulse-orange">Срочный ремонт</a>
+      </div>
+      
+      <!-- Преимущества в hero -->
+      <div class="mt-8 grid grid-cols-2 gap-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+            <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+          </div>
+          <span class="text-sm">Гарантия качества</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+            <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
+          </div>
+          <span class="text-sm">В день обращения</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-4 h-4 text-purple-600"></i>
+          </div>
+          <span class="text-sm">Официальная гарантия</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+            <i data-lucide="dollar-sign" class="w-4 h-4 text-orange-600"></i>
+          </div>
+          <span class="text-sm">Цены без накруток</span>
+        </div>
+      </div>
     </div>
     
     <div class="relative float-animation">
@@ -161,6 +207,35 @@
   </div>
 </section>
 
+<!-- Срочный ремонт -->
+<section id="emergency" class="py-12 bg-gradient-to-r from-red-50 to-orange-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-red-200">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+            <i data-lucide="alert-triangle" class="w-8 h-8 text-red-600"></i>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-800">Срочный ремонт!</h3>
+            <p class="text-gray-600">Поломка не ждёт? Мы поможем быстро и качественно</p>
+          </div>
+        </div>
+        <div class="text-center md:text-right">
+          <div class="flex items-center justify-center md:justify-end gap-2 mb-2">
+            <i data-lucide="phone-call" class="w-5 h-5 text-green-600"></i>
+            <span class="text-sm text-gray-600">Звоните прямо сейчас</span>
+          </div>
+          <a href="tel:+79999295161" class="text-3xl font-bold text-red-600 hover:text-red-700 transition-colors">
+            +7 (999) 929-51-61
+          </a>
+          <p class="text-sm text-gray-500 mt-1">ГЕОРГИЙ • Работаем до 20:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Services -->
 <section id="services" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4">
@@ -170,34 +245,87 @@
         <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4"></i>
         <h3 class="font-bold text-lg mb-2">Ремонт телефонов и электроники</h3>
         <p class="text-sm text-gray-600">Смартфоны, планшеты, мелкая электроника</p>
+        <div class="mt-4 flex items-center gap-2">
+          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 30 мин</span>
+          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">гарантия</span>
+        </div>
       </div>
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
         <i data-lucide="watch" class="w-12 h-12 text-accent mb-4"></i>
         <h3 class="font-bold text-lg mb-2">Замена батареек в часах</h3>
         <p class="text-sm text-gray-600">Быстро и аккуратно</p>
+        <div class="mt-4 flex items-center gap-2">
+          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 10 мин</span>
+          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">недорого</span>
+        </div>
       </div>
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <!-- Иконка для ремонта обуви -->
+        <!-- ПРАВИЛЬНАЯ иконка для ремонта обуви -->
         <svg class="w-12 h-12 text-accent mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12m-4-4h8"></path>
         </svg>
         <h3 class="font-bold text-lg mb-2">Ремонт обуви</h3>
-        <p class="text-sm text-gray-600">Каблуки, подошвы, реставрация</p>
+        <p class="text-sm text-gray-600">Каблуки, подошвы, реставрация, набойки</p>
+        <div class="mt-4 flex items-center gap-2">
+          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">в день обращения</span>
+          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качественно</span>
+        </div>
       </div>
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
         <i data-lucide="scissors" class="w-12 h-12 text-accent mb-4"></i>
         <h3 class="font-bold text-lg mb-2">Ателье (ремонт одежды)</h3>
-        <p class="text-sm text-gray-600">Подгонка и ремонт</p>
+        <p class="text-sm text-gray-600">Подгонка и ремонт, ушивание, подгибка</p>
+        <div class="mt-4 flex items-center gap-2">
+          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">индивидуально</span>
+          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">аккуратно</span>
+        </div>
       </div>
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
         <i data-lucide="camera" class="w-12 h-12 text-accent mb-4"></i>
         <h3 class="font-bold text-lg mb-2">Фото на документы и печать</h3>
-        <p class="text-sm text-gray-600">Быстро и официально</p>
+        <p class="text-sm text-gray-600">Быстро и официально, все размеры</p>
+        <div class="mt-4 flex items-center gap-2">
+          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">за 15 мин</span>
+          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">официально</span>
+        </div>
       </div>
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
         <i data-lucide="key" class="w-12 h-12 text-accent mb-4"></i>
         <h3 class="font-bold text-lg mb-2">Изготовление ключей</h3>
-        <p class="text-sm text-gray-600">Квартирные и офисные</p>
+        <p class="text-sm text-gray-600">Квартирные и офисные, автомобильные</p>
+        <div class="mt-4 flex items-center gap-2">
+          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span>
+          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">точно</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Как мы работаем -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Как мы работаем</h2>
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">1</div>
+        <h3 class="font-bold mb-2">Вы звоните</h3>
+        <p class="text-sm text-gray-600">Описываете проблему или приходите к нам</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">2</div>
+        <h3 class="font-bold mb-2">Диагностика</h3>
+        <p class="text-sm text-gray-600">Бесплатно оцениваем проблему</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">3</div>
+        <h3 class="font-bold mb-2">Согласование</h3>
+        <p class="text-sm text-gray-600">Озвучиваем сроки и стоимость</p>
+      </div>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">4</div>
+        <h3 class="font-bold mb-2">Ремонт</h3>
+        <p class="text-sm text-gray-600">Выполняем работу и выдаем гарантию</p>
       </div>
     </div>
   </div>
@@ -271,6 +399,36 @@
   </div>
 </section>
 
+<!-- FAQ (Часто задаваемые вопросы) -->
+<section class="py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Частые вопросы</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+          <i data-lucide="help-circle" class="w-5 h-5 text-accent"></i>
+          Как быстро вы делаете ремонт?
+        </h3>
+        <p class="text-gray-600">Большинство ремонтов мы выполняем в день обращения. Замена батареек в часах и изготовление ключей — 5-10 минут.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+          <i data-lucide="help-circle" class="w-5 h-5 text-accent"></i>
+          Даете ли вы гарантию на ремонт?
+        </h3>
+        <p class="text-gray-600">Да, на все виды ремонта мы предоставляем гарантию от 1 до 6 месяцев в зависимости от услуги.</p>
+      </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+          <i data-lucide="help-circle" class="w-5 h-5 text-accent"></i>
+          Можно ли срочно сделать фото на документы?
+        </h3>
+        <p class="text-gray-600">Да, фото на документы мы делаем за 15 минут. Имеются все необходимые размеры для любых документов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Contacts -->
 <section id="contacts" class="py-20">
   <div class="max-w-7xl mx-auto px-4">
@@ -316,14 +474,22 @@
 
 <!-- Footer -->
 <footer class="bg-graphite text-white py-6">
-  <div class="max-w-7xl mx-auto px-4 text-sm flex flex-col md:flex-row justify-between items-center">
-    <div class="flex items-center gap-3 mb-4 md:mb-0">
-      <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-extrabold">ВП</div>
-      <span>© Дом быта "ВСЁ ПОЧИНИМ", 2026</span>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+      <div class="flex items-center gap-3 mb-4 md:mb-0">
+        <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-extrabold">ВП</div>
+        <span>© Дом быта "ВСЁ ПОЧИНИМ", 2026</span>
+      </div>
+      <div class="text-center md:text-right">
+        <p>Сервисный центр бытовых услуг</p>
+        <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61 (ГЕОРГИЙ)</p>
+      </div>
     </div>
-    <div class="text-center md:text-right">
-      <p>Сервисный центр бытовых услуг</p>
-      <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61 (ГЕОРГИЙ)</p>
+    
+    <!-- Дополнительная информация в футере -->
+    <div class="border-t border-gray-700 pt-4 text-center text-xs text-gray-400">
+      <p>Ремонт бытовой техники и электроники • Ателье • Фотоуслуги • Изготовление ключей • Ремонт обуви</p>
+      <p class="mt-1">Официальный сервисный центр • Гарантия на все виды работ • Принимаем наличные и безналичный расчет</p>
     </div>
   </div>
 </footer>
@@ -332,6 +498,12 @@
 <a href="#contacts" class="fixed bottom-4 right-4 z-50 md:hidden bg-accent2 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-orange-600 transition">
   <i data-lucide="map-pin" class="w-5 h-5"></i>
   <span>Как добраться</span>
+</a>
+
+<!-- Кнопка "Позвонить" для мобильных -->
+<a href="tel:+79999295161" class="fixed bottom-4 left-4 z-50 md:hidden bg-green-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-green-600 transition">
+  <i data-lucide="phone" class="w-5 h-5"></i>
+  <span>Позвонить</span>
 </a>
 
 <script>
@@ -400,50 +572,3 @@
 
   // Инициализация Яндекс.Карты с ТОЧНЫМИ координатами
   function initMap() {
-    // ТОЧНЫЕ координаты для ул. Текстильщиков, 7А, Октябрьский, Московская область
-    // Координаты найдены через Яндекс.Карты: ул. Текстильщиков, 7А, Октябрьский
-    const exactCoords = [55.608578, 37.982520]; // ТОЧНЫЕ координаты
-    
-    // Используем iframe для показа Яндекс.Карты с точной точкой
-    const mapContainer = document.getElementById('map');
-    
-    // Создаем iframe с Яндекс.Картами с ТОЧНЫМИ координатами
-    const mapIframe = document.createElement('iframe');
-    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]}%2C${exactCoords[0]}&z=17&pt=${exactCoords[1]}%2C${exactCoords[0]}%2Cpm2rdm~55.608578%2C37.982520&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9`;
-    mapIframe.width = '100%';
-    mapIframe.height = '100%';
-    mapIframe.style.border = 'none';
-    mapIframe.allowFullscreen = true;
-    mapIframe.loading = 'lazy';
-    mapIframe.title = 'Карта с точным расположением дома быта "ВСЁ ПОЧИНИМ" по адресу ул. Текстильщиков, 7А, Октябрьский';
-    
-    // Очищаем контейнер и добавляем iframe
-    mapContainer.innerHTML = '';
-    mapContainer.appendChild(mapIframe);
-    
-    // Fallback на случай если iframe не работает
-    setTimeout(() => {
-      if (!mapContainer.querySelector('iframe') || mapContainer.offsetHeight === 0) {
-        mapContainer.innerHTML = `
-          <div class="w-full h-full bg-gradient-to-br from-accent/10 to-accent2/10 flex flex-col items-center justify-center p-8 rounded-xl">
-            <div class="text-center">
-              <div class="text-5xl mb-4">📍</div>
-              <p class="font-bold text-xl mb-2">Дом быта "ВСЁ ПОЧИНИМ"</p>
-              <p class="text-gray-700 mb-2">Точный адрес:</p>
-              <p class="text-gray-700 font-bold mb-4">ул. Текстильщиков, 7А, пос. Октябрьский</p>
-              <a href="https://yandex.ru/maps/-/CDVvVKrS" 
-                 target="_blank" 
-                 class="inline-flex items-center gap-2 mt-6 bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
-                <i data-lucide="external-link" class="w-4 h-4"></i>
-                <span>Открыть точное местоположение в Яндекс.Картах</span>
-              </a>
-            </div>
-          </div>
-        `;
-        lucide.createIcons();
-      }
-    }, 1000);
-  }
-</script>
-</body>
-</html>
