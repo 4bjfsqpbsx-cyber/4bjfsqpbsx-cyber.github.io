@@ -75,6 +75,12 @@
     .pulse-orange {
       animation: pulse-orange 2s ease-in-out infinite;
     }
+    
+    /* Стиль для Дикси */
+    .dixi-badge {
+      background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+      color: white;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
@@ -123,6 +129,18 @@
     <div>
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Мы всё починим рядом с домом</h1>
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
+      
+      <!-- Бейдж Дикси -->
+      <div class="mb-8 flex items-center gap-3 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl border border-red-100">
+        <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+          <span class="text-white font-bold">Д</span>
+        </div>
+        <div>
+          <p class="font-bold text-gray-800">Находимся в магазине <span class="text-red-600">ДИКСИ</span></p>
+          <p class="text-sm text-gray-600">Удобно — можно совместить с покупками</p>
+        </div>
+      </div>
+      
       <div class="flex flex-wrap gap-4">
         <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg">Посмотреть услуги</a>
         <a href="#emergency" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg hover:bg-red-600 pulse-orange">Срочный ремонт</a>
@@ -218,7 +236,7 @@
           </div>
           <div>
             <h3 class="text-2xl font-bold text-gray-800">Срочный ремонт!</h3>
-            <p class="text-gray-600">Поломка не ждёт? Мы поможем быстро</p>
+            <p class="text-gray-600">В магазине Дикси • Удобно и быстро</p>
           </div>
         </div>
         <div class="text-center md:text-right">
@@ -229,7 +247,7 @@
           <a href="tel:+79999295161" class="text-3xl font-bold text-red-600 hover:text-red-700 transition-colors">
             +7 (999) 929-51-61
           </a>
-          <p class="text-sm text-gray-500 mt-1">ГЕОРГИЙ • До 20:00</p>
+          <p class="text-sm text-gray-500 mt-1">ГЕОРГИЙ • До 20:00 • В магазине Дикси</p>
         </div>
       </div>
     </div>
@@ -240,6 +258,17 @@
 <section id="services" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Наши услуги</h2>
+    
+    <!-- Бейдж Дикси в услугах -->
+    <div class="mb-8 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl border border-red-100">
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+          <span class="text-white font-bold text-sm">Д</span>
+        </div>
+        <p class="font-semibold text-gray-800">Все услуги доступны в <span class="text-red-600 font-bold">магазине Дикси</span></p>
+      </div>
+    </div>
+    
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
         <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4"></i>
@@ -339,6 +368,7 @@
             <i data-lucide="award" class="w-10 h-10 text-white"></i>
           </div>
           <h3 class="text-2xl font-bold">25 лет стабильной работы</h3>
+          <p class="text-gray-600 mt-2">В магазине Дикси на ул. Текстильщиков</p>
         </div>
         <div class="md:w-2/3">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -356,8 +386,8 @@
                 <i data-lucide="check" class="w-4 h-4 text-green-600"></i>
               </div>
               <div>
-                <p class="font-semibold">Проверенные методики</p>
-                <p class="text-sm text-gray-600">Технологии, проверенные временем</p>
+                <p class="font-semibold">Удобное расположение</p>
+                <p class="text-sm text-gray-600">В магазине Дикси, легко найти</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -411,6 +441,19 @@
         <p class="text-sm text-gray-600">Работа и гарантия</p>
       </div>
     </div>
+    
+    <!-- Примечание про Дикси -->
+    <div class="mt-12 text-center">
+      <div class="inline-flex items-center gap-3 bg-white p-4 rounded-xl shadow">
+        <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+          <span class="text-white font-bold">Д</span>
+        </div>
+        <div class="text-left">
+          <p class="font-semibold">Наш сервис находится <span class="text-red-600">в магазине Дикси</span></p>
+          <p class="text-sm text-gray-600">Удобное расположение • Парковка • Можно совместить с покупками</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -427,17 +470,17 @@
       <div class="p-6 rounded-2xl bg-gray-50 shadow transition transform hover:-translate-y-1 hover:shadow-lg">
         <p class="text-gray-700 mb-4">Очень удобно, что всё в одном месте. Менял батарейку в часах и сделал ключ — заняло 10 минут.</p>
         <p class="font-bold">Алексей К.</p>
-        <p class="text-sm text-gray-500">Октябрьский</p>
+        <p class="text-sm text-gray-500">Октябрьский • В магазине Дикси</p>
       </div>
       <div class="p-6 rounded-2xl bg-gray-50 shadow transition transform hover:-translate-y-1 hover:shadow-lg">
         <p class="text-gray-700 mb-4">Чинили телефон после падения — всё сделали быстро и аккуратно. Теперь работает как новый.</p>
         <p class="font-bold">Марина С.</p>
-        <p class="text-sm text-gray-500">Московская область</p>
+        <p class="text-sm text-gray-500">Московская область • Удобно в Дикси</p>
       </div>
       <div class="p-6 rounded-2xl bg-gray-50 shadow transition transform hover:-translate-y-1 hover:shadow-lg">
         <p class="text-gray-700 mb-4">Делал фото на документы, очень понравилось отношение и качество. Рекомендую.</p>
         <p class="font-bold">Игорь В.</p>
-        <p class="text-sm text-gray-500">Октябрьский</p>
+        <p class="text-sm text-gray-500">Октябрьский • В магазине Дикси</p>
       </div>
     </div>
 
@@ -467,16 +510,19 @@
         <div class="text-4xl mb-4">🛠️</div>
         <p class="font-bold mb-2">Все услуги в одном месте</p>
         <p class="text-gray-600 text-sm">Ремонт, фото, ключи, ателье</p>
+        <p class="text-sm text-red-600 font-semibold mt-2">В магазине Дикси</p>
       </div>
       <div class="bg-white rounded-xl shadow p-6 text-center">
         <div class="text-4xl mb-4">⏱️</div>
         <p class="font-bold mb-2">Быстро и по делу</p>
         <p class="text-gray-600 text-sm">В день обращения</p>
+        <p class="text-sm text-red-600 font-semibold mt-2">Удобное расположение</p>
       </div>
       <div class="bg-white rounded-xl shadow p-6 text-center">
         <div class="text-4xl mb-4">📍</div>
         <p class="font-bold mb-2">Удобное расположение</p>
         <p class="text-gray-600 text-sm">Рядом с домом</p>
+        <p class="text-sm text-red-600 font-semibold mt-2">В магазине Дикси</p>
       </div>
     </div>
   </div>
@@ -487,6 +533,13 @@
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Частые вопросы</h2>
     <div class="max-w-3xl mx-auto space-y-4">
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
+          <i data-lucide="help-circle" class="w-5 h-5 text-accent"></i>
+          Где именно вы находитесь?
+        </h3>
+        <p class="text-gray-600">Мы находимся <span class="font-semibold text-red-600">в магазине Дикси</span> по адресу ул. Текстильщиков, 7А. Вход с основной стороны магазина.</p>
+      </div>
       <div class="bg-white rounded-xl shadow p-6">
         <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
           <i data-lucide="help-circle" class="w-5 h-5 text-accent"></i>
@@ -501,13 +554,6 @@
         </h3>
         <p class="text-gray-600">Да, на все виды ремонта предоставляем гарантию.</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-6">
-        <h3 class="font-bold text-lg mb-2 flex items-center gap-2">
-          <i data-lucide="help-circle" class="w-5 h-5 text-accent"></i>
-          Можно ли срочно сделать фото на документы?
-        </h3>
-        <p class="text-gray-600">Да, фото на документы делаем за 15 минут.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -518,7 +564,7 @@
     <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
       <div>
         <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Контакты</h2>
-        <p class="text-gray-700 mb-4 text-lg">Приходите в мастерскую или свяжитесь с нами</p>
+        <p class="text-gray-700 mb-4 text-lg">Приходите в наш сервис в магазине Дикси</p>
         <div class="space-y-3 text-lg">
           <p class="font-bold">Телефон:</p>
           <div class="flex flex-col">
@@ -527,12 +573,29 @@
             </a>
             <span class="text-base text-gray-600 mt-1">ГЕОРГИЙ</span>
           </div>
+          
+          <!-- Блок про Дикси -->
+          <div class="mt-6 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl border border-red-100">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold">Д</span>
+              </div>
+              <div>
+                <p class="font-bold text-gray-800">Наш сервис находится в <span class="text-red-600">магазине Дикси</span></p>
+              </div>
+            </div>
+            <p class="text-gray-700">• Удобное расположение</p>
+            <p class="text-gray-700">• Можно совместить с покупками</p>
+            <p class="text-gray-700">• Парковка рядом</p>
+          </div>
+          
           <p class="font-bold mt-4">График работы:</p>
           <p>Пн–Пт: 10:00 – 20:00</p>
           <p>Сб, Вс: выходной</p>
           <p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold">photo_ostov@mail.ru</a></p>
           <p class="text-gray-700 font-bold">Адрес:</p>
           <p>Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
+          <p class="text-red-600 font-semibold">(в магазине Дикси)</p>
         </div>
       </div>
       <div>
@@ -540,7 +603,7 @@
         <div id="map" class="rounded-xl overflow-hidden shadow-lg"></div>
         <div class="mt-4 text-sm text-gray-600 flex items-center gap-2">
           <i data-lucide="info" class="w-4 h-4"></i>
-          <span>Используйте колесико мыши для приближения</span>
+          <span>На карте отмечен магазин Дикси, где мы находимся</span>
         </div>
       </div>
     </div>
@@ -549,7 +612,7 @@
          target="_blank" 
          class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-xl">
         <i data-lucide="map-pin" class="w-5 h-5"></i>
-        <span>Построить маршрут</span>
+        <span>Построить маршрут до Дикси</span>
       </a>
     </div>
   </div>
@@ -566,13 +629,14 @@
       <div class="text-center md:text-right">
         <p>Сервисный центр бытовых услуг</p>
         <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61 (ГЕОРГИЙ)</p>
+        <p class="text-red-300 text-xs mt-1">Находимся в магазине Дикси</p>
       </div>
     </div>
     
     <!-- Дополнительная информация в футере -->
     <div class="border-t border-gray-700 pt-4 text-center text-xs text-gray-400">
       <p>Ремонт техники • Ателье • Фотоуслуги • Ключи • Ремонт обуви</p>
-      <p class="mt-1">25 лет опыта • Гарантия • Качество</p>
+      <p class="mt-1">25 лет опыта • Гарантия • Качество • В магазине Дикси</p>
     </div>
   </div>
 </footer>
@@ -590,7 +654,7 @@
 </a>
 
 <!-- WhatsApp Button -->
-<a href="https://wa.me/79999295161?text=Здравствуйте!%20Нужен%20ремонт%20в%20доме%20быта%20ВСЁ%20ПОЧИНИМ" 
+<a href="https://wa.me/79999295161?text=Здравствуйте!%20Нужен%20ремонт%20в%20доме%20быта%20ВСЁ%20ПОЧИНИМ%20в%20магазине%20Дикси" 
    target="_blank"
    class="fixed bottom-24 right-4 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition md:hidden">
   <i data-lucide="message-circle" class="w-6 h-6"></i>
@@ -636,7 +700,7 @@
     newReview.innerHTML = `
       <p class="text-gray-700 mb-4">${text}</p>
       <p class="font-bold">${name}</p>
-      <p class="text-sm text-gray-500">Только что</p>
+      <p class="text-sm text-gray-500">Только что • В магазине Дикси</p>
     `;
     
     // Добавляем в начало списка
@@ -663,20 +727,20 @@
   // Инициализация Яндекс.Карты с ТОЧНЫМИ координатами
   function initMap() {
     // ТОЧНЫЕ координаты для ул. Текстильщиков, 7А, Октябрьский, Московская область
-    const exactCoords = [55.608578, 37.982520]; // ТОЧНЫЕ координаты
+    const exactCoords = [55.608578, 37.982520]; // ТОЧНЫЕ координаты магазина Дикси
     
     // Используем iframe для показа Яндекс.Карты с точной точкой
     const mapContainer = document.getElementById('map');
     
     // Создаем iframe с Яндекс.Картами с ТОЧНЫМИ координатами
     const mapIframe = document.createElement('iframe');
-    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]}%2C${exactCoords[0]}&z=17&pt=${exactCoords[1]}%2C${exactCoords[0]}%2Cpm2rdm~55.608578%2C37.982520&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9`;
+    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]}%2C${exactCoords[0]}&z=17&pt=${exactCoords[1]}%2C${exactCoords[0]}%2Cpm2rdm~55.608578%2C37.982520&mode=search&text=%D0%94%D0%B8%D0%BA%D1%81%D0%B8%2C%20%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9`;
     mapIframe.width = '100%';
     mapIframe.height = '100%';
     mapIframe.style.border = 'none';
     mapIframe.allowFullscreen = true;
     mapIframe.loading = 'lazy';
-    mapIframe.title = 'Карта с точным расположением дома быта "ВСЁ ПОЧИНИМ" по адресу ул. Текстильщиков, 7А, Октябрьский';
+    mapIframe.title = 'Магазин Дикси, где находится дом быта "ВСЁ ПОЧИНИМ" по адресу ул. Текстильщиков, 7А, Октябрьский';
     
     // Очищаем контейнер и добавляем iframe
     mapContainer.innerHTML = '';
@@ -690,13 +754,20 @@
             <div class="text-center">
               <div class="text-5xl mb-4">📍</div>
               <p class="font-bold text-xl mb-2">Дом быта "ВСЁ ПОЧИНИМ"</p>
+              <div class="flex items-center justify-center gap-2 mb-3">
+                <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold text-sm">Д</span>
+                </div>
+                <p class="text-gray-700 font-bold">Находимся в магазине <span class="text-red-600">Дикси</span></p>
+              </div>
               <p class="text-gray-700 mb-2">Точный адрес:</p>
               <p class="text-gray-700 font-bold mb-4">ул. Текстильщиков, 7А, пос. Октябрьский</p>
+              <p class="text-red-600 font-semibold mb-4">(в магазине Дикси)</p>
               <a href="https://yandex.ru/maps/-/CDVvVKrS" 
                  target="_blank" 
                  class="inline-flex items-center gap-2 mt-6 bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
-                <span>Открыть точное местоположение в Яндекс.Картах</span>
+                <span>Открыть маршрут до Дикси</span>
               </a>
             </div>
           </div>
