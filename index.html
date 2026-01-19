@@ -25,6 +25,9 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   
+  <!-- Yandex Maps API -->
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU" type="text/javascript"></script>
+  
   <style>
     /* Smooth scroll */
     html {
@@ -39,6 +42,13 @@
     
     .splash-hidden {
       animation: fadeOut 0.5s ease-in-out forwards;
+    }
+    
+    /* Карта */
+    #map {
+      width: 100%;
+      height: 400px;
+      border-radius: 0.75rem;
     }
   </style>
 </head>
@@ -83,7 +93,28 @@
     <div>
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Мы всё починим рядом с домом</h1>
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
-      <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg">Посмотреть услуги</a>
+      <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg mb-4">Посмотреть услуги</a>
+      <!-- Кастомная картинка -->
+      <div class="mt-8 p-6 bg-gradient-to-r from-accent/10 to-accent2/10 rounded-2xl border border-accent/20">
+        <div class="text-center">
+          <div class="text-3xl font-extrabold text-accent mb-2">ВСЕ ПОЧИНИМ</div>
+          <div class="text-xl font-bold text-gray-800 mb-4">ДОМ БЫТА</div>
+          <div class="space-y-2 text-gray-700 font-medium">
+            <div class="flex items-center justify-center gap-2">
+              <i data-lucide="smartphone" class="w-4 h-4 text-accent"></i>
+              <span>Ремонт телефонов</span>
+            </div>
+            <div class="flex items-center justify-center gap-2">
+              <i data-lucide="key" class="w-4 h-4 text-accent"></i>
+              <span>Изготовление ключей</span>
+            </div>
+            <div class="flex items-center justify-center gap-2">
+              <i data-lucide="camera" class="w-4 h-4 text-accent"></i>
+              <span>Фото на документы</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="relative">
       <img src="https://picsum.photos/seed/dombyta/900/600" alt="Дом быта — все услуги" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
@@ -218,18 +249,22 @@
           <p>Понедельник – Пятница: 10:00 – 20:00</p>
           <p>Суббота, Воскресенье: выходной</p>
           <p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold">photo_ostov@mail.ru</a></p>
-          <p class="text-gray-700">Адрес: Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
+          <p class="text-gray-700 font-bold">Адрес:</p>
+          <p>Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
         </div>
       </div>
-      <div class="rounded-xl overflow-hidden shadow-lg">
-        <div class="w-full h-[400px] rounded-xl shadow overflow-hidden flex items-center justify-center bg-gray-100">
-          <img src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005b9471f4ab245dba016237e2&ts=491336&p=fs&cid=1&sig=765370cb9fa3375bd8754fc507075b339ff1449561e63fc8063d48738e64891d&v=0" alt="Дом быта ВСЁ ПОЧИНИМ — карта" class="w-full h-full object-cover" />
+      <div>
+        <!-- Яндекс Карта -->
+        <div id="map" class="rounded-xl overflow-hidden shadow-lg"></div>
+        <div class="mt-4 text-sm text-gray-600">
+          <p>Используйте колесико мыши для приближения/отдаления</p>
+          <p>Перетаскивайте карту для просмотра окрестностей</p>
         </div>
       </div>
     </div>
     <div class="mt-8">
       <a href="https://yandex.ru/maps/?rtext=~55.6087,37.9856" target="_blank" class="inline-block bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-xl">
-        Построить маршрут в Яндекс.Картах
+        Открыть в Яндекс.Картах
       </a>
     </div>
   </div>
@@ -270,6 +305,9 @@
         splash.style.display = 'none';
       }, 500);
     }, 1000);
+    
+    // Инициализируем карту
+    initMap();
   });
 
   // Reviews functionality
@@ -311,8 +349,67 @@
     // Скрываем сообщение через 5 секунд
     setTimeout(() => {
       successMsg.classList.add('hidden');
+      // Показываем форму обратно
+      this.style.display = 'block';
     }, 5000);
   });
+
+  // Инициализация Яндекс.Карты
+  function initMap() {
+    if (!window.ymaps) {
+      console.log('Yandex Maps API не загрузилась');
+      // Показываем статичную картинку в случае ошибки
+      document.getElementById('map').innerHTML = `
+        <div class="w-full h-full bg-gray-100 flex items-center justify-center rounded-xl">
+          <div class="text-center p-4">
+            <div class="text-4xl mb-2">📍</div>
+            <p class="font-bold">Дом быта "ВСЁ ПОЧИНИМ"</p>
+            <p class="text-sm text-gray-600 mt-2">ул. Текстильщиков, 7А, Октябрьский</p>
+            <a href="https://yandex.ru/maps/?rtext=~55.6087,37.9856" target="_blank" 
+               class="inline-block mt-4 bg-accent text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition">
+              Открыть в Яндекс.Картах
+            </a>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    ymaps.ready(function () {
+      // Координаты для Октябрьского (примерные)
+      var myMap = new ymaps.Map("map", {
+        center: [55.6087, 37.9856], // Примерные координаты Октябрьского
+        zoom: 16,
+        controls: ['zoomControl', 'fullscreenControl']
+      });
+
+      // Создаем метку
+      var myPlacemark = new ymaps.Placemark([55.6087, 37.9856], {
+        balloonContentHeader: 'Дом быта "ВСЁ ПОЧИНИМ"',
+        balloonContentBody: 'ул. Текстильщиков, 7А<br>Ремонт техники, ключи, фото',
+        balloonContentFooter: 'Телефон: +7 (999) 929-51-61',
+        hintContent: 'ВСЁ ПОЧИНИМ'
+      }, {
+        iconLayout: 'default#image',
+        iconImageHref: 'https://img.icons8.com/color/48/000000/repair-tools.png',
+        iconImageSize: [40, 40],
+        iconImageOffset: [-20, -40]
+      });
+
+      // Добавляем метку на карту
+      myMap.geoObjects.add(myPlacemark);
+
+      // Открываем балун при клике
+      myPlacemark.balloon.open();
+
+      // Добавляем возможность поиска
+      myMap.controls.add('searchControl', {
+        options: {
+          noPlacemark: true
+        }
+      });
+    });
+  }
 </script>
 </body>
 </html>
