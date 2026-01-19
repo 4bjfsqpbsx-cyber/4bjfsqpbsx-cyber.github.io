@@ -16,6 +16,9 @@
             graphite: '#1f2933',
             accent: '#2563eb',
             accent2: '#f97316'
+          },
+          backgroundImage: {
+            'hero-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50MCkiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQwIiB4MT0iMTAwIiB5MT0iMCIgeDI9IjEwMCIgeTI9IjIwMCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMjU2M2ViIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFkNGRkOCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=')",
           }
         }
       }
@@ -48,17 +51,26 @@
       border-radius: 0.75rem;
     }
     
-    /* Стиль для брендовой картинки */
-    .brand-image {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      border: 3px solid #2563eb;
-      color: white;
+    /* Анимация для герой-изображения */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
     
-    /* Стиль для текста на картинке */
-    .brand-text {
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      letter-spacing: 0.05em;
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Градиентный текст */
+    .gradient-text {
+      background: linear-gradient(135deg, #2563eb 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   </style>
 </head>
@@ -103,43 +115,56 @@
     <div>
       <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Мы всё починим рядом с домом</h1>
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
-      <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg mb-4">Посмотреть услуги</a>
-      
-      <!-- Брендовая картинка из файла -->
-      <div class="mt-8 brand-image rounded-2xl p-8 shadow-2xl">
-        <div class="text-center">
-          <div class="text-4xl font-black brand-text mb-2 tracking-tight">ВСЕ ПОЧИНИМ</div>
-          <div class="text-2xl font-bold mb-6 tracking-wide">ДОМ БЫТА</div>
-          <div class="space-y-4 text-lg font-semibold">
-            <div class="flex items-center justify-center gap-3">
-              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <i data-lucide="smartphone" class="w-5 h-5 text-white"></i>
+      <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg">Посмотреть услуги</a>
+    </div>
+    
+    <div class="relative">
+      <!-- Кастомная картинка для сайта -->
+      <div class="relative rounded-2xl overflow-hidden shadow-2xl float-animation">
+        <!-- Фон картинки -->
+        <div class="bg-gradient-to-br from-accent to-blue-700 h-64 md:h-80 relative">
+          <!-- SVG иконки на картинке -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="grid grid-cols-3 gap-8 p-8">
+              <!-- Иконка телефона -->
+              <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center">
+                  <i data-lucide="smartphone" class="w-8 h-8 text-accent"></i>
+                </div>
+                <p class="text-white text-center text-sm font-bold">Ремонт<br>телефонов</p>
               </div>
-              <span class="text-white">Ремонт телефонов</span>
+              
+              <!-- Иконка ключа -->
+              <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center">
+                  <i data-lucide="key" class="w-8 h-8 text-accent"></i>
+                </div>
+                <p class="text-white text-center text-sm font-bold">Изготовление<br>ключей</p>
+              </div>
+              
+              <!-- Иконка фотоаппарата -->
+              <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
+                <div class="w-16 h-16 mx-auto mb-3 bg-white rounded-full flex items-center justify-center">
+                  <i data-lucide="camera" class="w-8 h-8 text-accent"></i>
+                </div>
+                <p class="text-white text-center text-sm font-bold">Фото на<br>документы</p>
+              </div>
             </div>
-            <div class="flex items-center justify-center gap-3">
-              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <i data-lucide="key" class="w-5 h-5 text-white"></i>
-              </div>
-              <span class="text-white">Изготовление ключей</span>
-            </div>
-            <div class="flex items-center justify-center gap-3">
-              <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                <i data-lucide="camera" class="w-5 h-5 text-white"></i>
-              </div>
-              <span class="text-white">Фото на документы</span>
+          </div>
+          
+          <!-- Текст поверх картинки -->
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+            <div class="text-center">
+              <div class="text-2xl font-black text-white mb-1">ВСЁ ПОЧИНИМ</div>
+              <div class="text-lg font-bold text-white/90">ДОМ БЫТА</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="relative">
-      <img src="https://picsum.photos/seed/dombyta/900/600" alt="Дом быта — все услуги" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
-      <!-- Брендовая картинка -->
-      <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-accent rounded-xl flex items-center justify-center text-white font-extrabold text-5xl shadow-2xl">
-        ВП
-      </div>
+      
+      <!-- Декоративные элементы -->
+      <div class="absolute -top-3 -left-3 w-24 h-24 bg-accent2/20 rounded-full"></div>
+      <div class="absolute -bottom-3 -right-3 w-16 h-16 bg-accent/20 rounded-full"></div>
     </div>
   </div>
 </section>
@@ -378,8 +403,7 @@
   // Инициализация Яндекс.Карты с реальными координатами Октябрьского
   function initMap() {
     // Точные координаты для ул. Текстильщиков, 7А, Октябрьский, Московская область
-    // Это примерные координаты - для точных нужно уточнить в Яндекс.Картах
-    const exactCoords = [55.608700, 37.985600]; // Координаты Октябрьского
+    const exactCoords = [55.608700, 37.985600];
     
     // Используем iframe для показа Яндекс.Карты без API ключа
     const mapContainer = document.getElementById('map');
@@ -392,6 +416,7 @@
     mapIframe.style.border = 'none';
     mapIframe.allowFullscreen = true;
     mapIframe.loading = 'lazy';
+    mapIframe.title = 'Карта с расположением дома быта "ВСЁ ПОЧИНИМ"';
     
     // Очищаем контейнер и добавляем iframe
     mapContainer.innerHTML = '';
@@ -406,20 +431,6 @@
               <div class="text-5xl mb-4">📍</div>
               <p class="font-bold text-xl mb-2">Дом быта "ВСЁ ПОЧИНИМ"</p>
               <p class="text-gray-700 mb-4">ул. Текстильщиков, 7А, пос. Октябрьский</p>
-              <div class="space-y-2">
-                <div class="flex items-center justify-center gap-2">
-                  <i data-lucide="smartphone" class="w-4 h-4 text-accent"></i>
-                  <span>Ремонт телефонов</span>
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                  <i data-lucide="key" class="w-4 h-4 text-accent"></i>
-                  <span>Изготовление ключей</span>
-                </div>
-                <div class="flex items-center justify-center gap-2">
-                  <i data-lucide="camera" class="w-4 h-4 text-accent"></i>
-                  <span>Фото на документы</span>
-                </div>
-              </div>
               <a href="https://yandex.ru/maps/213/moscow/?ll=37.985600%2C55.608700&mode=routes&rtext=~55.608700%2C37.985600&rtt=auto&ruri=~&z=17" 
                  target="_blank" 
                  class="inline-flex items-center gap-2 mt-6 bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
