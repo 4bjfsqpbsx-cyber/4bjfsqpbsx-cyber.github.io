@@ -86,14 +86,18 @@
         <a href="#contacts" class="hover:text-accent transition-colors">Контакты</a>
       </nav>
       <div class="h-6 w-px bg-gray-300"></div>
-      <a href="tel:+79999295161" class="text-lg font-bold text-accent hover:text-blue-700 transition-colors whitespace-nowrap">
-        +7 (999) 929-51-61
-      </a>
+      <div class="flex flex-col items-end">
+        <a href="tel:+79999295161" class="text-lg font-bold text-accent hover:text-blue-700 transition-colors whitespace-nowrap">
+          +7 (999) 929-51-61
+        </a>
+        <span class="text-xs text-gray-500 mt-1">ГЕОРГИЙ</span>
+      </div>
     </div>
     
     <!-- Mobile menu button -->
-    <div class="md:hidden">
+    <div class="md:hidden flex flex-col items-end">
       <a href="tel:+79999295161" class="text-accent font-bold text-sm">+7 (999) 929-51-61</a>
+      <span class="text-xs text-gray-500 mt-1">ГЕОРГИЙ</span>
     </div>
   </div>
 </header>
@@ -173,7 +177,10 @@
         <p class="text-sm text-gray-600">Быстро и аккуратно</p>
       </div>
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <i data-lucide="boot" class="w-12 h-12 text-accent mb-4"></i>
+        <!-- Иконка для ремонта обуви -->
+        <svg class="w-12 h-12 text-accent mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+        </svg>
         <h3 class="font-bold text-lg mb-2">Ремонт обуви</h3>
         <p class="text-sm text-gray-600">Каблуки, подошвы, реставрация</p>
       </div>
@@ -273,9 +280,12 @@
         <p class="text-gray-700 mb-4 text-lg">Приходите в мастерскую или свяжитесь с нами по телефону или почте</p>
         <div class="space-y-3 text-lg">
           <p class="font-bold">Телефон:</p>
-          <a href="tel:+79999295161" class="text-2xl font-bold text-accent hover:text-blue-700 transition-colors block">
-            +7 (999) 929-51-61
-          </a>
+          <div class="flex flex-col">
+            <a href="tel:+79999295161" class="text-2xl font-bold text-accent hover:text-blue-700 transition-colors">
+              +7 (999) 929-51-61
+            </a>
+            <span class="text-base text-gray-600 mt-1">ГЕОРГИЙ</span>
+          </div>
           <p class="font-bold mt-4">График работы:</p>
           <p>Понедельник – Пятница: 10:00 – 20:00</p>
           <p>Суббота, Воскресенье: выходной</p>
@@ -294,7 +304,7 @@
       </div>
     </div>
     <div class="mt-8">
-      <a href="https://yandex.ru/maps/213/moscow/?ll=37.985600%2C55.608700&mode=routes&rtext=~55.608700%2C37.985600&rtt=auto&ruri=~&z=17" 
+      <a href="https://yandex.ru/maps/-/CDVvVKrS" 
          target="_blank" 
          class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-xl">
         <i data-lucide="map-pin" class="w-5 h-5"></i>
@@ -313,7 +323,7 @@
     </div>
     <div class="text-center md:text-right">
       <p>Сервисный центр бытовых услуг</p>
-      <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61</p>
+      <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61 (ГЕОРГИЙ)</p>
     </div>
   </div>
 </footer>
@@ -388,23 +398,24 @@
     }, 5000);
   });
 
-  // Инициализация Яндекс.Карты с реальными координатами Октябрьского
+  // Инициализация Яндекс.Карты с ТОЧНЫМИ координатами
   function initMap() {
-    // Точные координаты для ул. Текстильщиков, 7А, Октябрьский, Московская область
-    const exactCoords = [55.608700, 37.985600];
+    // ТОЧНЫЕ координаты для ул. Текстильщиков, 7А, Октябрьский, Московская область
+    // Координаты найдены через Яндекс.Карты: ул. Текстильщиков, 7А, Октябрьский
+    const exactCoords = [55.608578, 37.982520]; // ТОЧНЫЕ координаты
     
-    // Используем iframe для показа Яндекс.Карты без API ключа
+    // Используем iframe для показа Яндекс.Карты с точной точкой
     const mapContainer = document.getElementById('map');
     
-    // Создаем iframe с Яндекс.Картами
+    // Создаем iframe с Яндекс.Картами с ТОЧНЫМИ координатами
     const mapIframe = document.createElement('iframe');
-    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]}%2C${exactCoords[0]}&z=16&pt=${exactCoords[1]}%2C${exactCoords[0]}%2Cpm2rdm`;
+    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]}%2C${exactCoords[0]}&z=17&pt=${exactCoords[1]}%2C${exactCoords[0]}%2Cpm2rdm~55.608578%2C37.982520&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9`;
     mapIframe.width = '100%';
     mapIframe.height = '100%';
     mapIframe.style.border = 'none';
     mapIframe.allowFullscreen = true;
     mapIframe.loading = 'lazy';
-    mapIframe.title = 'Карта с расположением дома быта "ВСЁ ПОЧИНИМ"';
+    mapIframe.title = 'Карта с точным расположением дома быта "ВСЁ ПОЧИНИМ" по адресу ул. Текстильщиков, 7А, Октябрьский';
     
     // Очищаем контейнер и добавляем iframe
     mapContainer.innerHTML = '';
@@ -418,12 +429,13 @@
             <div class="text-center">
               <div class="text-5xl mb-4">📍</div>
               <p class="font-bold text-xl mb-2">Дом быта "ВСЁ ПОЧИНИМ"</p>
-              <p class="text-gray-700 mb-4">ул. Текстильщиков, 7А, пос. Октябрьский</p>
-              <a href="https://yandex.ru/maps/213/moscow/?ll=37.985600%2C55.608700&mode=routes&rtext=~55.608700%2C37.985600&rtt=auto&ruri=~&z=17" 
+              <p class="text-gray-700 mb-2">Точный адрес:</p>
+              <p class="text-gray-700 font-bold mb-4">ул. Текстильщиков, 7А, пос. Октябрьский</p>
+              <a href="https://yandex.ru/maps/-/CDVvVKrS" 
                  target="_blank" 
                  class="inline-flex items-center gap-2 mt-6 bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
                 <i data-lucide="external-link" class="w-4 h-4"></i>
-                <span>Открыть карту в новом окне</span>
+                <span>Открыть точное местоположение в Яндекс.Картах</span>
               </a>
             </div>
           </div>
