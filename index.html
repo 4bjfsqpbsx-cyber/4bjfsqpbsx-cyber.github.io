@@ -24,19 +24,56 @@
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Hide splash after animation */
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+    
+    .splash-hidden {
+      animation: fadeOut 0.5s ease-in-out forwards;
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
+
+<!-- Splash Screen -->
+<div id="splash" class="fixed inset-0 bg-accent z-[9999] flex items-center justify-center transition-opacity duration-500">
+  <div class="text-white text-6xl md:text-7xl font-extrabold tracking-wider animate-pulse">ВП</div>
+</div>
 
 <!-- Header -->
 <header class="sticky top-0 z-50 bg-white shadow transition-all duration-300 hover:shadow-lg">
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-    <div class="flex items-center gap-3"><div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white font-extrabold">ВП</div><div class="text-2xl md:text-3xl font-extrabold tracking-wide">ВСЁ ПОЧИНИМ</div></div>
-    <nav class="hidden md:flex space-x-6 text-sm font-medium">
-      <a href="#services" class="hover:text-accent">Услуги</a>
-      <a href="#why" class="hover:text-accent">Почему мы</a>
-      <a href="#contacts" class="hover:text-accent">Контакты</a>
-    </nav>
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white font-extrabold">ВП</div>
+      <div class="text-2xl md:text-3xl font-extrabold tracking-wide">ВСЁ ПОЧИНИМ</div>
+    </div>
     
+    <div class="hidden md:flex items-center space-x-6">
+      <nav class="flex space-x-6 text-sm font-medium">
+        <a href="#services" class="hover:text-accent transition-colors">Услуги</a>
+        <a href="#reviews" class="hover:text-accent transition-colors">Отзывы</a>
+        <a href="#why" class="hover:text-accent transition-colors">Почему мы</a>
+        <a href="#contacts" class="hover:text-accent transition-colors">Контакты</a>
+      </nav>
+      <div class="h-6 w-px bg-gray-300"></div>
+      <a href="tel:+79999295161" class="text-lg font-bold text-accent hover:text-blue-700 transition-colors whitespace-nowrap">
+        +7 (999) 929-51-61
+      </a>
+    </div>
+    
+    <!-- Mobile menu button -->
+    <div class="md:hidden">
+      <a href="tel:+79999295161" class="text-accent font-bold text-sm">+7 (999) 929-51-61</a>
+    </div>
   </div>
 </header>
 
@@ -48,7 +85,13 @@
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
       <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold transition transform hover:scale-105 hover:shadow-lg">Посмотреть услуги</a>
     </div>
-    <img src="https://picsum.photos/seed/dombyta/900/600" alt="Дом быта — все услуги" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
+    <div class="relative">
+      <img src="https://picsum.photos/seed/dombyta/900/600" alt="Дом быта — все услуги" class="rounded-xl shadow-lg w-full h-64 md:h-80 object-cover">
+      <!-- Брендовая картинка -->
+      <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-accent rounded-xl flex items-center justify-center text-white font-extrabold text-5xl shadow-2xl">
+        ВП
+      </div>
+    </div>
   </div>
 </section>
 
@@ -57,38 +100,36 @@
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Наши услуги</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Card -->
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4"></i><h3 class="font-bold text-lg mb-2">Ремонт телефонов и электроники</h3><p class="text-sm text-gray-600">Смартфоны, планшеты, мелкая электроника</p>
-        
+        <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Ремонт телефонов и электроники</h3>
+        <p class="text-sm text-gray-600">Смартфоны, планшеты, мелкая электроника</p>
       </div>
-
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <i data-lucide="watch" class="w-12 h-12 text-accent mb-4"></i><h3 class="font-bold text-lg mb-2">Замена батареек в часах</h3><p class="text-sm text-gray-600">Быстро и аккуратно</p>
-        
+        <i data-lucide="watch" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Замена батареек в часах</h3>
+        <p class="text-sm text-gray-600">Быстро и аккуратно</p>
       </div>
-
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <i data-lucide="boot" class="w-12 h-12 text-accent mb-4"></i><h3 class="font-bold text-lg mb-2">Ремонт обуви</h3><p class="text-sm text-gray-600">Каблуки, подошвы, реставрация</p>
-        
+        <i data-lucide="boot" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Ремонт обуви</h3>
+        <p class="text-sm text-gray-600">Каблуки, подошвы, реставрация</p>
       </div>
-
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <i data-lucide="scissors" class="w-12 h-12 text-accent mb-4"></i><h3 class="font-bold text-lg mb-2">Ателье (ремонт одежды)</h3><p class="text-sm text-gray-600">Подгонка и ремонт</p>
-        
+        <i data-lucide="scissors" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Ателье (ремонт одежды)</h3>
+        <p class="text-sm text-gray-600">Подгонка и ремонт</p>
       </div>
-
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <i data-lucide="camera" class="w-12 h-12 text-accent mb-4"></i><h3 class="font-bold text-lg mb-2">Фото на документы и печать</h3><p class="text-sm text-gray-600">Быстро и официально</p>
-        
+        <i data-lucide="camera" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Фото на документы и печать</h3>
+        <p class="text-sm text-gray-600">Быстро и официально</p>
       </div>
-
       <div class="border-2 border-accent rounded-2xl p-6 bg-white flex flex-col transition transform hover:-translate-y-1 hover:shadow-2xl">
-        <i data-lucide="key" class="w-12 h-12 text-accent mb-4"></i><h3 class="font-bold text-lg mb-2">Изготовление ключей</h3><p class="text-sm text-gray-600">Квартирные и офисные</p>
-        
+        <i data-lucide="key" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg mb-2">Изготовление ключей</h3>
+        <p class="text-sm text-gray-600">Квартирные и офисные</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -96,13 +137,13 @@
 <!-- Reviews -->
 <section id="reviews" class="bg-white py-20">
   <div class="max-w-7xl mx-auto px-4">
-    <h2 id="reviews" class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы клиентов</h2>
-<div class="flex items-center gap-1 mb-12">
-  <span class="text-yellow-400 animate-pulse">★★★★★</span>
-  <span class="text-sm text-gray-600">5.0 — на основе отзывов клиентов</span>
-</div>
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы клиентов</h2>
+    <div class="flex items-center gap-1 mb-12">
+      <span class="text-yellow-400 animate-pulse">★★★★★</span>
+      <span class="text-sm text-gray-600">5.0 — на основе отзывов клиентов</span>
+    </div>
 
-    <div class="grid md:grid-cols-3 gap-8 mb-16">
+    <div class="grid md:grid-cols-3 gap-8 mb-16" id="reviews-list">
       <div class="p-6 rounded-2xl bg-gray-50 shadow transition transform hover:-translate-y-1 hover:shadow-lg">
         <p class="text-gray-700 mb-4">Очень удобно, что всё в одном месте. Менял батарейку в часах и сделал ключ — заняло 10 минут.</p>
         <p class="font-bold">Алексей К.</p>
@@ -122,14 +163,17 @@
 
     <div class="max-w-xl">
       <h3 class="text-2xl font-bold mb-4">Оставить отзыв</h3>
-      <form class="space-y-4" onsubmit="event.preventDefault(); showReviewSent();">
-  <input type="text" placeholder="Ваше имя" class="w-full border rounded-lg p-3" required />
-  <textarea placeholder="Ваш отзыв" class="w-full border rounded-lg p-3" rows="4" required></textarea>
-  <button type="submit" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition">Отправить отзыв</button>
-  <div id="review-success" class="hidden mt-4 flex items-center gap-2 text-green-600 font-bold">
-    <span>✔</span><span>Отзыв отправлен, спасибо вам!</span>
-  </div>
-</form>
+      <form id="review-form" class="space-y-4">
+        <input type="text" id="review-name" placeholder="Ваше имя" class="w-full border rounded-lg p-3" required />
+        <textarea id="review-text" placeholder="Ваш отзыв" class="w-full border rounded-lg p-3" rows="4" required></textarea>
+        <button type="submit" class="bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition">Отправить отзыв</button>
+      </form>
+      <div id="review-success" class="hidden mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
+        <div class="flex items-center gap-2 text-green-600 font-bold">
+          <i data-lucide="check-circle" class="w-5 h-5"></i>
+          <span>Отзыв отправлен, спасибо вам!</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -160,54 +204,115 @@
 
 <!-- Contacts -->
 <section id="contacts" class="py-20">
-  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Контакты</h2>
-      <p class="text-gray-700 mb-4 text-lg">Приходите в мастерскую или свяжитесь с нами по телефону или почте</p>
-      <div class="space-y-3 text-lg"><p class="font-bold">График работы:</p>
-<p>Понедельник – Пятница: 10:00 – 20:00</p>
-<p>Суббота, Воскресенье: выходной</p>
-<p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold">photo_ostov@mail.ru</a></p>
-<p class="text-gray-700">Адрес: Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
-</div>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Контакты</h2>
+        <p class="text-gray-700 mb-4 text-lg">Приходите в мастерскую или свяжитесь с нами по телефону или почте</p>
+        <div class="space-y-3 text-lg">
+          <p class="font-bold">Телефон:</p>
+          <a href="tel:+79999295161" class="text-2xl font-bold text-accent hover:text-blue-700 transition-colors block">
+            +7 (999) 929-51-61
+          </a>
+          <p class="font-bold mt-4">График работы:</p>
+          <p>Понедельник – Пятница: 10:00 – 20:00</p>
+          <p>Суббота, Воскресенье: выходной</p>
+          <p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold">photo_ostov@mail.ru</a></p>
+          <p class="text-gray-700">Адрес: Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
+        </div>
+      </div>
+      <div class="rounded-xl overflow-hidden shadow-lg">
+        <div class="w-full h-[400px] rounded-xl shadow overflow-hidden flex items-center justify-center bg-gray-100">
+          <img src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005b9471f4ab245dba016237e2&ts=491336&p=fs&cid=1&sig=765370cb9fa3375bd8754fc507075b339ff1449561e63fc8063d48738e64891d&v=0" alt="Дом быта ВСЁ ПОЧИНИМ — карта" class="w-full h-full object-cover" />
+        </div>
+      </div>
     </div>
-    <div class="rounded-xl overflow-hidden shadow-lg">
-  <div class="w-full h-[400px] rounded-xl shadow overflow-hidden flex items-center justify-center bg-gray-100">
-  <img src="https://chatgpt.com/backend-api/estuary/content?id=file_000000005b9471f4ab245dba016237e2&ts=491336&p=fs&cid=1&sig=765370cb9fa3375bd8754fc507075b339ff1449561e63fc8063d48738e64891d&v=0" alt="Дом быта ВСЁ ПОЧИНИМ — карта" class="w-full h-full object-cover" />
-</div>
-</div>
-<div class="mt-4">
-  <a href="https://yandex.ru/maps/?rtext=~55.6087,37.9856" target="_blank" class="inline-block bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-xl">Построить маршрут</a>
-</div>
-  <p class="font-bold text-lg">ВСЁ ПОЧИНИМ</p>
-  <p class="text-sm text-gray-600">Здесь будет карта</p>
-</div>
+    <div class="mt-8">
+      <a href="https://yandex.ru/maps/?rtext=~55.6087,37.9856" target="_blank" class="inline-block bg-accent text-white px-6 py-3 rounded-xl font-bold transition transform hover:scale-105 hover:bg-blue-700 hover:shadow-xl">
+        Построить маршрут в Яндекс.Картах
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer class="bg-graphite text-white py-6">
-  <div class="max-w-7xl mx-auto px-4 text-sm flex flex-col md:flex-row justify-between">
-    <span>© Дом быта, 2026</span>
-    <span>Сервисный центр</span>
+  <div class="max-w-7xl mx-auto px-4 text-sm flex flex-col md:flex-row justify-between items-center">
+    <div class="flex items-center gap-3 mb-4 md:mb-0">
+      <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-extrabold">ВП</div>
+      <span>© Дом быта "ВСЁ ПОЧИНИМ", 2026</span>
+    </div>
+    <div class="text-center md:text-right">
+      <p>Сервисный центр бытовых услуг</p>
+      <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61</p>
+    </div>
   </div>
 </footer>
 
 <!-- Фиксированная кнопка для мобильных -->
-<a href="#contacts" class="fixed bottom-4 right-4 z-50 md:hidden bg-orange-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-orange-600 transition">
-  <span>📍</span>
+<a href="#contacts" class="fixed bottom-4 right-4 z-50 md:hidden bg-accent2 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-orange-600 transition">
+  <i data-lucide="map-pin" class="w-5 h-5"></i>
   <span>Как добраться</span>
 </a>
 
 <script>
+  // Инициализация иконок
   lucide.createIcons();
-</script>
 
-<script>
-function showReviewSent() {
-  const msg = document.getElementById('review-success');
-  msg.classList.remove('hidden');
-}
+  // Splash screen
+  document.addEventListener('DOMContentLoaded', () => {
+    const splash = document.getElementById('splash');
+    
+    // Скрываем splash через 1 секунду
+    setTimeout(() => {
+      splash.classList.add('splash-hidden');
+      setTimeout(() => {
+        splash.style.display = 'none';
+      }, 500);
+    }, 1000);
+  });
+
+  // Reviews functionality
+  document.getElementById('review-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nameInput = document.getElementById('review-name');
+    const textInput = document.getElementById('review-text');
+    const successMsg = document.getElementById('review-success');
+    const reviewsList = document.getElementById('reviews-list');
+    
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+    
+    if (!name || !text) return;
+    
+    // Создаем новый отзыв
+    const newReview = document.createElement('div');
+    newReview.className = 'p-6 rounded-2xl bg-gray-50 shadow transition transform hover:-translate-y-1 hover:shadow-lg';
+    newReview.innerHTML = `
+      <p class="text-gray-700 mb-4">${text}</p>
+      <p class="font-bold">${name}</p>
+      <p class="text-sm text-gray-500">Только что</p>
+    `;
+    
+    // Добавляем в начало списка
+    reviewsList.insertBefore(newReview, reviewsList.firstChild);
+    
+    // Показываем сообщение об успехе
+    successMsg.classList.remove('hidden');
+    
+    // Скрываем форму
+    this.style.display = 'none';
+    
+    // Очищаем поля
+    nameInput.value = '';
+    textInput.value = '';
+    
+    // Скрываем сообщение через 5 секунд
+    setTimeout(() => {
+      successMsg.classList.add('hidden');
+    }, 5000);
+  });
 </script>
 </body>
 </html>
