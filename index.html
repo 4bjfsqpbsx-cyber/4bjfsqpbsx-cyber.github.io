@@ -1,66 +1,62 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ВСЁ ПОЧИНИМ — Дом быта</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ВСЁ ПОЧИНИМ — Дом быта</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        accent: '#2563eb',
-        accent2: '#f97316',
-        whatsapp: '#25D366'
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            graphite: '#1f2933',
+            accent: '#2563eb',
+            accent2: '#f97316'
+          }
+        }
       }
     }
-  }
-}
-</script>
+  </script>
 
-<script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-<style>
-html { scroll-behavior: smooth; }
+  <style>
+    html { scroll-behavior: smooth; }
 
-/* Появление */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.7s ease;
-}
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* ===== АНИМАЦИИ ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-/* Отзывы */
-.review-track {
-  display: flex;
-  transition: transform 0.6s ease;
-}
-.review {
-  min-width: 100%;
-}
+    .service-card {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+    }
 
-/* WhatsApp кнопка */
-.whatsapp-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 50;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-</style>
+    .btn-animate {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .btn-animate:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    #map { width: 100%; height: 400px; border-radius: 16px; }
+  </style>
 </head>
 
-<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-gray-800 font-semibold">
+<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
 
 <!-- HEADER -->
 <header class="sticky top-0 bg-white shadow z-40">
@@ -69,131 +65,133 @@ html { scroll-behavior: smooth; }
       <div class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center font-extrabold">ВП</div>
       <span class="text-2xl font-extrabold">ВСЁ ПОЧИНИМ</span>
     </div>
-    <a href="tel:+79999295161" class="text-accent font-bold text-lg">
-      +7 (999) 929-51-61
-    </a>
+    <a href="tel:+79999295161" class="text-accent font-bold text-lg">+7 (999) 929-51-61</a>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="bg-white reveal">
-  <div class="max-w-7xl mx-auto px-4 py-20">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
-      Мы всё починим рядом с домом
-    </h1>
-    <p class="text-lg mb-8">
-      Телефоны, обувь, одежда, ключи и фото — всё в одном месте
-    </p>
-    <div class="flex gap-4">
-      <a href="#reviews" class="bg-accent2 text-white px-6 py-3 rounded-lg font-bold">Отзывы</a>
-      <a href="tel:+79999295161" class="bg-red-500 text-white px-6 py-3 rounded-lg font-bold">Позвонить</a>
+  <div class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
+        Мы всё починим рядом с домом
+      </h1>
+      <p class="text-gray-700 text-lg mb-8">
+        Телефоны, обувь, одежда, ключи и фото на документы — всё в одном месте
+      </p>
+      <div class="flex gap-4">
+        <a href="#services" class="btn-animate bg-accent2 text-white px-6 py-3 rounded-lg font-bold">
+          Услуги
+        </a>
+        <a href="#contacts" class="btn-animate bg-red-500 text-white px-6 py-3 rounded-lg font-bold">
+          Контакты
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews" class="py-20 bg-white reveal">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-4xl font-extrabold mb-10 text-center">Отзывы клиентов</h2>
+<!-- SERVICES -->
+<section id="services" class="py-20 bg-white reveal">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-extrabold mb-12">Наши услуги</h2>
 
-    <div class="relative overflow-hidden bg-gray-50 rounded-2xl shadow-lg">
-      <div id="reviewTrack" class="review-track">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <div class="review p-8 text-center">
-          <p class="text-lg mb-4">
-            Очень удобно, что всё в одном месте. Сделали ключ и поменяли батарейку за 10 минут.
-          </p>
-          <p class="font-bold">Алексей К.</p>
-          <p class="text-sm text-gray-500">Октябрьский</p>
+      <div class="service-card reveal border-2 border-accent rounded-2xl p-6">
+        <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg">Ремонт телефонов</h3>
+        <p class="text-sm text-gray-600">Смартфоны и планшеты</p>
+        <div class="mt-4 flex gap-2">
+          <span class="text-xs bg-blue-100 px-2 py-1 rounded">от 30 мин</span>
+          <span class="text-xs bg-green-100 px-2 py-1 rounded">качество</span>
         </div>
-
-        <div class="review p-8 text-center">
-          <p class="text-lg mb-4">
-            Ремонтировали телефон после падения — теперь как новый. Спасибо!
-          </p>
-          <p class="font-bold">Марина С.</p>
-          <p class="text-sm text-gray-500">Московская область</p>
-        </div>
-
-        <div class="review p-8 text-center">
-          <p class="text-lg mb-4">
-            Делал фото на документы, всё быстро и качественно. Рекомендую.
-          </p>
-          <p class="font-bold">Игорь В.</p>
-          <p class="text-sm text-gray-500">Октябрьский</p>
-        </div>
-
       </div>
 
-      <!-- Кнопки -->
-      <button id="prevReview"
-        class="absolute left-3 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2">
-        ←
-      </button>
+      <div class="service-card reveal border-2 border-accent rounded-2xl p-6">
+        <i data-lucide="watch" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg">Батарейки в часах</h3>
+        <p class="text-sm text-gray-600">Любые модели</p>
+        <div class="mt-4 flex gap-2">
+          <span class="text-xs bg-blue-100 px-2 py-1 rounded">от 5 мин</span>
+          <span class="text-xs bg-green-100 px-2 py-1 rounded">аккуратно</span>
+        </div>
+      </div>
 
-      <button id="nextReview"
-        class="absolute right-3 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2">
-        →
-      </button>
+      <div class="service-card reveal border-2 border-accent rounded-2xl p-6">
+        <i data-lucide="boot" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg">Ремонт обуви</h3>
+        <p class="text-sm text-gray-600">Каблуки, подошвы</p>
+        <div class="mt-4 flex gap-2">
+          <span class="text-xs bg-blue-100 px-2 py-1 rounded">в день</span>
+          <span class="text-xs bg-green-100 px-2 py-1 rounded">надёжно</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal border-2 border-accent rounded-2xl p-6">
+        <i data-lucide="scissors" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg">Ателье</h3>
+        <p class="text-sm text-gray-600">Подгонка одежды</p>
+        <div class="mt-4 flex gap-2">
+          <span class="text-xs bg-blue-100 px-2 py-1 rounded">быстро</span>
+          <span class="text-xs bg-green-100 px-2 py-1 rounded">аккуратно</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal border-2 border-accent rounded-2xl p-6">
+        <i data-lucide="camera" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg">Фото на документы</h3>
+        <p class="text-sm text-gray-600">Все форматы</p>
+        <div class="mt-4 flex gap-2">
+          <span class="text-xs bg-blue-100 px-2 py-1 rounded">15 мин</span>
+          <span class="text-xs bg-green-100 px-2 py-1 rounded">чётко</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal border-2 border-accent rounded-2xl p-6">
+        <i data-lucide="key" class="w-12 h-12 text-accent mb-4"></i>
+        <h3 class="font-bold text-lg">Изготовление ключей</h3>
+        <p class="text-sm text-gray-600">Квартирные и офисные</p>
+        <div class="mt-4 flex gap-2">
+          <span class="text-xs bg-blue-100 px-2 py-1 rounded">от 5 мин</span>
+          <span class="text-xs bg-green-100 px-2 py-1 rounded">точно</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- CONTACTS -->
-<section class="py-20 reveal">
-  <div class="max-w-7xl mx-auto px-4 text-center">
-    <h2 class="text-4xl font-extrabold mb-6">Контакты</h2>
-    <p class="mb-4">Магазин Дикси, ул. Текстильщиков, 7А</p>
-    <a href="tel:+79999295161" class="bg-accent text-white px-6 py-3 rounded-lg font-bold">
-      Позвонить
-    </a>
+<section id="contacts" class="py-20 reveal">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12">
+    <div>
+      <h2 class="text-4xl font-extrabold mb-6">Контакты</h2>
+      <p class="text-lg mb-4">Магазин Дикси, ул. Текстильщиков, 7А</p>
+      <a href="tel:+79999295161" class="btn-animate inline-block bg-accent text-white px-6 py-3 rounded-lg font-bold">
+        Позвонить
+      </a>
+    </div>
+    <div id="map"></div>
   </div>
 </section>
 
-<!-- WhatsApp -->
-<a href="https://wa.me/79999295161"
-   target="_blank"
-   class="whatsapp-btn bg-whatsapp text-white px-5 py-4 rounded-full flex items-center gap-2 shadow-lg font-bold">
-  <i data-lucide="message-circle" class="w-6 h-6"></i>
-  WhatsApp
-</a>
-
 <script>
-lucide.createIcons();
+  lucide.createIcons();
 
-/* Reveal */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('show');
-  });
-}, { threshold: 0.2 });
+  /* Анимация появления */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* Reviews slider */
-const track = document.getElementById('reviewTrack');
-const reviews = document.querySelectorAll('.review');
-let index = 0;
-
-function updateReviews() {
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
-
-document.getElementById('nextReview').onclick = () => {
-  index = (index + 1) % reviews.length;
-  updateReviews();
-};
-
-document.getElementById('prevReview').onclick = () => {
-  index = (index - 1 + reviews.length) % reviews.length;
-  updateReviews();
-};
-
-/* Автопрокрутка */
-setInterval(() => {
-  index = (index + 1) % reviews.length;
-  updateReviews();
-}, 5000);
+  /* Карта */
+  document.getElementById('map').innerHTML =
+    `<iframe src="https://yandex.ru/map-widget/v1/?z=18&mode=search&text=магазин Дикси ул. Текстильщиков 7А Октябрьский"
+      width="100%" height="100%" frameborder="0"></iframe>`;
 </script>
 
 </body>
