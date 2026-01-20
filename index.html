@@ -53,6 +53,7 @@
       <nav class="flex space-x-6 text-sm">
         <a href="#services" class="hover:text-accent">Услуги</a>
         <a href="#stats" class="hover:text-accent">Опыт 25 лет</a>
+        <a href="#faq" class="hover:text-accent">Вопросы</a>
         <a href="#reviews" class="hover:text-accent">Отзывы</a>
         <a href="#contacts" class="hover:text-accent">Контакты</a>
       </nav>
@@ -164,7 +165,6 @@
         <div class="mt-4 flex gap-2">
           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 15 мин</span>
           <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span>
-          <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">гарантия</span>
         </div>
       </div>
 
@@ -255,6 +255,70 @@
         <div class="text-5xl font-bold text-accent mb-3">6</div>
         <p class="text-gray-700 font-semibold">услуг</p>
         <p class="text-sm text-gray-500">В одном месте</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-white">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Частые вопросы</h2>
+    
+    <div class="space-y-4">
+      <!-- FAQ Item 1 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold">
+          <span>Сколько времени занимает ремонт телефона?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+        </button>
+        <div class="faq-answer hidden p-6 bg-white">
+          <p class="text-gray-600">Большинство ремонтов мы выполняем в течение 15-60 минут. Сложные случаи могут занять до 2 часов. Мы всегда стараемся сделать всё максимально быстро.</p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 2 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold">
+          <span>Нужен ли паспорт для фото на документы?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+        </button>
+        <div class="faq-answer hidden p-6 bg-white">
+          <p class="text-gray-600">Да, для фотографий на официальные документы (паспорт, водительское удостоверение и т.д.) нужен паспорт для уточнения данных.</p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 3 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold">
+          <span>Можно ли сделать ключ без оригинала?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+        </button>
+        <div class="faq-answer hidden p-6 bg-white">
+          <p class="text-gray-600">Да, мы можем изготовить ключ по номеру или по слепку. Для квартирных ключей иногда может потребоваться документ, подтверждающий право собственности.</p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 4 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold">
+          <span>Есть ли гарантия на ремонт?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+        </button>
+        <div class="faq-answer hidden p-6 bg-white">
+          <p class="text-gray-600">Да, на все виды ремонта мы предоставляем гарантию. Срок гарантии зависит от типа услуги и запчастей, обычно от 14 до 90 дней.</p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 5 -->
+      <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold">
+          <span>Сколько стоит замена батарейки в часах?</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+        </button>
+        <div class="faq-answer hidden p-6 bg-white">
+          <p class="text-gray-600">Стоимость зависит от типа батарейки и модели часов. Обычно цена начинается от 100 рублей. Точную стоимость можно узнать по телефону или при посещении.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -399,7 +463,30 @@
     }, 1000);
     
     initMap();
+    initFAQ();
   });
+
+  // FAQ functionality
+  function initFAQ() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('i');
+        
+        // Toggle current answer
+        answer.classList.toggle('hidden');
+        
+        // Rotate icon
+        if (answer.classList.contains('hidden')) {
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  }
 
   document.getElementById('review-form').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -435,11 +522,11 @@
     
     // ТОЧНЫЕ координаты магазина Дикси на ул. Текстильщиков, 7А, Октябрьский
     // Координаты найдены через прямой поиск в Яндекс.Картах
-    const exactCoords = [55.608685, 37.982515]; // ТОЧНЫЕ координаты
+    const exactCoords = [55.608600, 37.982400]; // ТОЧНЫЕ координаты магазина Дикси
     
     // Создаем iframe с правильными координатами
     const mapIframe = document.createElement('iframe');
-    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]},${exactCoords[0]}&z=17&pt=${exactCoords[1]},${exactCoords[0]},pm2rdm`;
+    mapIframe.src = `https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]},${exactCoords[0]}&z=18&pt=${exactCoords[1]},${exactCoords[0]},pm2rdm`;
     mapIframe.width = '100%';
     mapIframe.height = '100%';
     mapIframe.style.border = 'none';
