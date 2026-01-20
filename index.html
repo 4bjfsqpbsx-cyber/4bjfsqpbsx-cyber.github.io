@@ -25,7 +25,7 @@ tailwind.config = {
 <style>
 html { scroll-behavior: smooth; }
 
-/* Reveal */
+/* Появление */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -36,13 +36,16 @@ html { scroll-behavior: smooth; }
   transform: translateY(0);
 }
 
-/* Before / After */
-.ba-track {
+/* Отзывы */
+.review-track {
   display: flex;
   transition: transform 0.6s ease;
 }
+.review {
+  min-width: 100%;
+}
 
-/* WhatsApp button */
+/* WhatsApp кнопка */
 .whatsapp-btn {
   position: fixed;
   bottom: 20px;
@@ -57,7 +60,7 @@ html { scroll-behavior: smooth; }
 </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800 font-semibold">
+<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-gray-800 font-semibold">
 
 <!-- HEADER -->
 <header class="sticky top-0 bg-white shadow z-40">
@@ -72,86 +75,76 @@ html { scroll-behavior: smooth; }
   </div>
 </header>
 
-<!-- SERVICES -->
-<section class="py-20 bg-white reveal">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-4xl font-extrabold mb-10">Наши услуги</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="border p-6 rounded-xl">Ремонт телефонов</div>
-      <div class="border p-6 rounded-xl">Изготовление ключей</div>
-      <div class="border p-6 rounded-xl">Фото на документы</div>
+<!-- HERO -->
+<section class="bg-white reveal">
+  <div class="max-w-7xl mx-auto px-4 py-20">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-6">
+      Мы всё починим рядом с домом
+    </h1>
+    <p class="text-lg mb-8">
+      Телефоны, обувь, одежда, ключи и фото — всё в одном месте
+    </p>
+    <div class="flex gap-4">
+      <a href="#reviews" class="bg-accent2 text-white px-6 py-3 rounded-lg font-bold">Отзывы</a>
+      <a href="tel:+79999295161" class="bg-red-500 text-white px-6 py-3 rounded-lg font-bold">Позвонить</a>
     </div>
   </div>
 </section>
 
-<!-- 6️⃣ BEFORE / AFTER (ПОСЛЕ УСЛУГ) -->
-<section class="py-20 bg-gray-100 reveal">
-  <div class="max-w-5xl mx-auto px-4">
-    <h2 class="text-4xl font-extrabold mb-10 text-center">
-      До и после ремонта
-    </h2>
-
-    <div class="relative overflow-hidden rounded-2xl shadow bg-white">
-      <div id="baTrack" class="ba-track">
-
-        <div class="min-w-full grid grid-cols-2">
-          <img src="https://via.placeholder.com/600x400?text=До" class="w-full h-full object-cover">
-          <img src="https://via.placeholder.com/600x400?text=После" class="w-full h-full object-cover">
-        </div>
-
-        <div class="min-w-full grid grid-cols-2">
-          <img src="https://via.placeholder.com/600x400?text=До+ремонта" class="w-full h-full object-cover">
-          <img src="https://via.placeholder.com/600x400?text=После+ремонта" class="w-full h-full object-cover">
-        </div>
-
-      </div>
-
-      <button onclick="prevBA()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow">←</button>
-      <button onclick="nextBA()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow">→</button>
-    </div>
-  </div>
-</section>
-
-<!-- 5️⃣ QUICK QUESTION (ПЕРЕД КОНТАКТАМИ) -->
-<section class="py-20 bg-white reveal">
-  <div class="max-w-3xl mx-auto px-4 text-center">
-    <h2 class="text-4xl font-extrabold mb-6">Быстрый вопрос</h2>
-    <p class="text-gray-600 mb-8">Ответим в WhatsApp за несколько минут</p>
-
-    <form id="quickForm" class="space-y-4">
-      <input id="qName" class="w-full border rounded-xl p-4" placeholder="Ваше имя" required>
-      <textarea id="qText" class="w-full border rounded-xl p-4" rows="4" placeholder="Ваш вопрос" required></textarea>
-      <button class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold">
-        Написать в WhatsApp
-      </button>
-    </form>
-  </div>
-</section>
-
-<!-- 8️⃣ FAQ (ПЕРЕД КОНТАКТАМИ) -->
-<section class="py-20 bg-gray-50 reveal">
+<!-- REVIEWS -->
+<section id="reviews" class="py-20 bg-white reveal">
   <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-4xl font-extrabold mb-10 text-center">Частые вопросы</h2>
+    <h2 class="text-4xl font-extrabold mb-10 text-center">Отзывы клиентов</h2>
 
-    <div class="space-y-4">
-      <div class="faq border p-5 rounded-xl cursor-pointer">
-        <h3 class="font-bold">Сколько длится ремонт?</h3>
-        <p class="hidden mt-3 text-gray-600">Чаще всего от 30 минут.</p>
+    <div class="relative overflow-hidden bg-gray-50 rounded-2xl shadow-lg">
+      <div id="reviewTrack" class="review-track">
+
+        <div class="review p-8 text-center">
+          <p class="text-lg mb-4">
+            Очень удобно, что всё в одном месте. Сделали ключ и поменяли батарейку за 10 минут.
+          </p>
+          <p class="font-bold">Алексей К.</p>
+          <p class="text-sm text-gray-500">Октябрьский</p>
+        </div>
+
+        <div class="review p-8 text-center">
+          <p class="text-lg mb-4">
+            Ремонтировали телефон после падения — теперь как новый. Спасибо!
+          </p>
+          <p class="font-bold">Марина С.</p>
+          <p class="text-sm text-gray-500">Московская область</p>
+        </div>
+
+        <div class="review p-8 text-center">
+          <p class="text-lg mb-4">
+            Делал фото на документы, всё быстро и качественно. Рекомендую.
+          </p>
+          <p class="font-bold">Игорь В.</p>
+          <p class="text-sm text-gray-500">Октябрьский</p>
+        </div>
+
       </div>
-      <div class="faq border p-5 rounded-xl cursor-pointer">
-        <h3 class="font-bold">Есть ли гарантия?</h3>
-        <p class="hidden mt-3 text-gray-600">Да, на все работы.</p>
-      </div>
+
+      <!-- Кнопки -->
+      <button id="prevReview"
+        class="absolute left-3 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2">
+        ←
+      </button>
+
+      <button id="nextReview"
+        class="absolute right-3 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2">
+        →
+      </button>
     </div>
   </div>
 </section>
 
 <!-- CONTACTS -->
-<section class="py-20 bg-white reveal">
+<section class="py-20 reveal">
   <div class="max-w-7xl mx-auto px-4 text-center">
     <h2 class="text-4xl font-extrabold mb-6">Контакты</h2>
-    <p>ул. Текстильщиков, 7А (магазин Дикси)</p>
-    <a href="tel:+79999295161" class="inline-block mt-4 bg-accent text-white px-6 py-3 rounded-xl font-bold">
+    <p class="mb-4">Магазин Дикси, ул. Текстильщиков, 7А</p>
+    <a href="tel:+79999295161" class="bg-accent text-white px-6 py-3 rounded-lg font-bold">
       Позвонить
     </a>
   </div>
@@ -161,7 +154,8 @@ html { scroll-behavior: smooth; }
 <a href="https://wa.me/79999295161"
    target="_blank"
    class="whatsapp-btn bg-whatsapp text-white px-5 py-4 rounded-full flex items-center gap-2 shadow-lg font-bold">
-  <i data-lucide="message-circle"></i> WhatsApp
+  <i data-lucide="message-circle" class="w-6 h-6"></i>
+  WhatsApp
 </a>
 
 <script>
@@ -169,39 +163,37 @@ lucide.createIcons();
 
 /* Reveal */
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('show');
+  });
 }, { threshold: 0.2 });
+
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-/* Before / After */
-let baIndex = 0;
-const baTrack = document.getElementById('baTrack');
-const baSlides = baTrack.children.length;
-function updateBA() {
-  baTrack.style.transform = `translateX(-${baIndex * 100}%)`;
-}
-function nextBA() {
-  baIndex = (baIndex + 1) % baSlides;
-  updateBA();
-}
-function prevBA() {
-  baIndex = (baIndex - 1 + baSlides) % baSlides;
-  updateBA();
+/* Reviews slider */
+const track = document.getElementById('reviewTrack');
+const reviews = document.querySelectorAll('.review');
+let index = 0;
+
+function updateReviews() {
+  track.style.transform = `translateX(-${index * 100}%)`;
 }
 
-/* Quick form */
-document.getElementById('quickForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const name = qName.value;
-  const text = qText.value;
-  const msg = `Здравствуйте! Меня зовут ${name}. ${text}`;
-  window.open(`https://wa.me/79999295161?text=${encodeURIComponent(msg)}`);
-});
+document.getElementById('nextReview').onclick = () => {
+  index = (index + 1) % reviews.length;
+  updateReviews();
+};
 
-/* FAQ */
-document.querySelectorAll('.faq').forEach(f => {
-  f.onclick = () => f.querySelector('p').classList.toggle('hidden');
-});
+document.getElementById('prevReview').onclick = () => {
+  index = (index - 1 + reviews.length) % reviews.length;
+  updateReviews();
+};
+
+/* Автопрокрутка */
+setInterval(() => {
+  index = (index + 1) % reviews.length;
+  updateReviews();
+}, 5000);
 </script>
 
 </body>
