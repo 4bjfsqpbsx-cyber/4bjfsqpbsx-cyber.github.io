@@ -1,479 +1,208 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ВСЁ ПОЧИНИМ — Дом быта и бытовые услуги</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%232563eb'/%3E%3Ctext x='50' y='65' font-size='48' text-anchor='middle' fill='white' font-family='Arial' font-weight='700'%3EВП%3C/text%3E%3C/svg%3E">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ВСЁ ПОЧИНИМ — Дом быта</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            graphite: '#1f2933',
-            accent: '#2563eb',
-            accent2: '#f97316'
-          }
-        }
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        accent: '#2563eb',
+        accent2: '#f97316',
+        whatsapp: '#25D366'
       }
     }
-  </script>
+  }
+}
+</script>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <style>
-    html { scroll-behavior: smooth; }
-    .splash-hidden { opacity: 0; transition: opacity 0.5s; }
-    #map { width: 100%; height: 400px; border-radius: 0.75rem; }
-    .float-animation { animation: float 3s ease-in-out infinite; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-  </style>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+html { scroll-behavior: smooth; }
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Before / After */
+.ba-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+/* WhatsApp button */
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+</style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
 
-<!-- Splash Screen -->
-<div id="splash" class="fixed inset-0 bg-accent z-50 flex items-center justify-center">
-  <div class="text-white text-6xl md:text-7xl font-extrabold animate-pulse">ВП</div>
-</div>
+<body class="bg-gray-50 text-gray-800 font-semibold">
 
-<!-- Header -->
-<header class="sticky top-0 z-40 bg-white shadow">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+<!-- HEADER -->
+<header class="sticky top-0 bg-white shadow z-40">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white font-extrabold">ВП</div>
-      <div class="text-2xl md:text-3xl font-extrabold hidden sm:block">ВСЁ ПОЧИНИМ</div>
+      <div class="w-10 h-10 bg-accent text-white rounded-xl flex items-center justify-center font-extrabold">ВП</div>
+      <span class="text-2xl font-extrabold">ВСЁ ПОЧИНИМ</span>
     </div>
-    
-    <div class="hidden md:flex items-center space-x-6">
-      <nav class="flex space-x-6 text-sm">
-        <a href="#services" class="hover:text-accent">Услуги</a>
-        <a href="#stats" class="hover:text-accent">Опыт 25 лет</a>
-        <a href="#reviews" class="hover:text-accent">Отзывы</a>
-        <a href="#contacts" class="hover:text-accent">Контакты</a>
-      </nav>
-      <div class="h-6 w-px bg-gray-300"></div>
-      <div class="flex flex-col items-end">
-        <a href="tel:+79999295161" class="text-lg font-bold text-accent hover:text-blue-700">
-          +7 (999) 929-51-61
-        </a>
-        <span class="text-xs text-gray-500">ГЕОРГИЙ</span>
-      </div>
-    </div>
-    
-    <div class="md:hidden flex items-center gap-2">
-      <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a>
-      <span class="text-xs text-gray-500">ГЕОРГИЙ</span>
-    </div>
+    <a href="tel:+79999295161" class="text-accent font-bold text-lg">
+      +7 (999) 929-51-61
+    </a>
   </div>
 </header>
 
-<!-- Hero -->
-<section class="bg-white">
-  <div class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
-    <div>
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Мы всё починим рядом с домом</h1>
-      <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
-      <div class="flex flex-wrap gap-4">
-        <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg">Посмотреть услуги</a>
-        <a href="#contacts" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg">Срочный ремонт</a>
-      </div>
-      
-      <div class="mt-8 grid grid-cols-2 gap-4">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-            <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
-          </div>
-          <span class="text-sm">Гарантия</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-            <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
-          </div>
-          <span class="text-sm">В день</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-            <i data-lucide="shield" class="w-4 h-4 text-blue-600"></i>
-          </div>
-          <span class="text-sm">Качество</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-            <i data-lucide="dollar-sign" class="w-4 h-4 text-orange-600"></i>
-          </div>
-          <span class="text-sm">Честные цены</span>
-        </div>
-      </div>
+<!-- SERVICES -->
+<section class="py-20 bg-white reveal">
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-extrabold mb-10">Наши услуги</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border p-6 rounded-xl">Ремонт телефонов</div>
+      <div class="border p-6 rounded-xl">Изготовление ключей</div>
+      <div class="border p-6 rounded-xl">Фото на документы</div>
     </div>
-    
-    <div class="relative float-animation">
-      <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-        <div class="bg-gradient-to-br from-accent via-blue-600 to-blue-800 h-64 md:h-80 relative">
-          <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
-            <div class="text-center mb-6">
-              <div class="text-3xl md:text-4xl font-black text-white mb-2">ВСЁ ПОЧИНИМ</div>
-              <div class="text-xl md:text-2xl font-bold text-white/90">ДОМ БЫТА</div>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
-              <div class="flex flex-col items-center">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg">
-                  <i data-lucide="smartphone" class="w-7 h-7 md:w-8 md:h-8 text-accent"></i>
-                </div>
-                <span class="text-white text-sm md:text-base font-semibold text-center">Ремонт<br>телефонов</span>
-              </div>
-              
-              <div class="flex flex-col items-center">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg">
-                  <i data-lucide="key" class="w-7 h-7 md:w-8 md:h-8 text-accent"></i>
-                </div>
-                <span class="text-white text-sm md:text-base font-semibold text-center">Изготовление<br>ключей</span>
-              </div>
-              
-              <div class="flex flex-col items-center">
-                <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg">
-                  <i data-lucide="camera" class="w-7 h-7 md:w-8 md:h-8 text-accent"></i>
-                </div>
-                <span class="text-white text-sm md:text-base font-semibold text-center">Фото на<br>документы</span>
-              </div>
-            </div>
-          </div>
+  </div>
+</section>
+
+<!-- 6️⃣ BEFORE / AFTER (ПОСЛЕ УСЛУГ) -->
+<section class="py-20 bg-gray-100 reveal">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-4xl font-extrabold mb-10 text-center">
+      До и после ремонта
+    </h2>
+
+    <div class="relative overflow-hidden rounded-2xl shadow bg-white">
+      <div id="baTrack" class="ba-track">
+
+        <div class="min-w-full grid grid-cols-2">
+          <img src="https://via.placeholder.com/600x400?text=До" class="w-full h-full object-cover">
+          <img src="https://via.placeholder.com/600x400?text=После" class="w-full h-full object-cover">
         </div>
+
+        <div class="min-w-full grid grid-cols-2">
+          <img src="https://via.placeholder.com/600x400?text=До+ремонта" class="w-full h-full object-cover">
+          <img src="https://via.placeholder.com/600x400?text=После+ремонта" class="w-full h-full object-cover">
+        </div>
+
+      </div>
+
+      <button onclick="prevBA()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow">←</button>
+      <button onclick="nextBA()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- 5️⃣ QUICK QUESTION (ПЕРЕД КОНТАКТАМИ) -->
+<section class="py-20 bg-white reveal">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-extrabold mb-6">Быстрый вопрос</h2>
+    <p class="text-gray-600 mb-8">Ответим в WhatsApp за несколько минут</p>
+
+    <form id="quickForm" class="space-y-4">
+      <input id="qName" class="w-full border rounded-xl p-4" placeholder="Ваше имя" required>
+      <textarea id="qText" class="w-full border rounded-xl p-4" rows="4" placeholder="Ваш вопрос" required></textarea>
+      <button class="bg-green-500 text-white px-8 py-4 rounded-xl font-bold">
+        Написать в WhatsApp
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- 8️⃣ FAQ (ПЕРЕД КОНТАКТАМИ) -->
+<section class="py-20 bg-gray-50 reveal">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-4xl font-extrabold mb-10 text-center">Частые вопросы</h2>
+
+    <div class="space-y-4">
+      <div class="faq border p-5 rounded-xl cursor-pointer">
+        <h3 class="font-bold">Сколько длится ремонт?</h3>
+        <p class="hidden mt-3 text-gray-600">Чаще всего от 30 минут.</p>
+      </div>
+      <div class="faq border p-5 rounded-xl cursor-pointer">
+        <h3 class="font-bold">Есть ли гарантия?</h3>
+        <p class="hidden mt-3 text-gray-600">Да, на все работы.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Services -->
-<section id="services" class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Наши услуги</h2>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Ремонт телефонов -->
-      <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition">
-        <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Ремонт телефонов</h3>
-        <p class="text-sm text-gray-600">Смартфоны, планшеты, электроника</p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 30 мин</span>
-          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span>
-        </div>
-      </div>
-
-      <!-- Батарейки в часах -->
-      <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition">
-        <i data-lucide="watch" class="w-12 h-12 text-accent mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Батарейки в часах</h3>
-        <p class="text-sm text-gray-600">Замена любых типов</p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span>
-          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">аккуратно</span>
-        </div>
-      </div>
-
-      <!-- Ремонт обуви -->
-      <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition">
-        <i data-lucide="boot" class="w-12 h-12 text-accent mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Ремонт обуви</h3>
-        <p class="text-sm text-gray-600">Каблуки, подошвы, прошивка</p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">в день</span>
-          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">надёжно</span>
-        </div>
-      </div>
-
-      <!-- Ателье -->
-      <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition">
-        <i data-lucide="scissors" class="w-12 h-12 text-accent mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Ателье</h3>
-        <p class="text-sm text-gray-600">Ремонт и подгонка одежды</p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">быстро</span>
-          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">аккуратно</span>
-        </div>
-      </div>
-
-      <!-- Фото на документы -->
-      <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition">
-        <i data-lucide="camera" class="w-12 h-12 text-accent mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Фото на документы</h3>
-        <p class="text-sm text-gray-600">Все форматы, официально</p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">15 мин</span>
-          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">чётко</span>
-        </div>
-      </div>
-
-      <!-- Изготовление ключей -->
-      <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition">
-        <i data-lucide="key" class="w-12 h-12 text-accent mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">Изготовление ключей</h3>
-        <p class="text-sm text-gray-600">Квартирные, офисные</p>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span>
-          <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">точно</span>
-        </div>
-      </div>
-
-    </div>
+<!-- CONTACTS -->
+<section class="py-20 bg-white reveal">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-extrabold mb-6">Контакты</h2>
+    <p>ул. Текстильщиков, 7А (магазин Дикси)</p>
+    <a href="tel:+79999295161" class="inline-block mt-4 bg-accent text-white px-6 py-3 rounded-xl font-bold">
+      Позвонить
+    </a>
   </div>
 </section>
 
-
-<!-- Statistics -->
-<section id="stats" class="py-20 bg-gradient-to-r from-accent/10 to-accent2/10">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Наша статистика</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
-        <div class="text-5xl font-bold text-accent mb-3">25+</div>
-        <p class="text-gray-700 font-semibold">лет опыта</p>
-        <p class="text-sm text-gray-500">С 1999 года</p>
-      </div>
-      <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
-        <div class="text-5xl font-bold text-accent mb-3">15К+</div>
-        <p class="text-gray-700 font-semibold">клиентов</p>
-        <p class="text-sm text-gray-500">Довольных работой</p>
-      </div>
-      <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
-        <div class="text-5xl font-bold text-accent mb-3">98%</div>
-        <p class="text-gray-700 font-semibold">в день</p>
-        <p class="text-sm text-gray-500">Быстрый ремонт</p>
-      </div>
-      <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
-        <div class="text-5xl font-bold text-accent mb-3">6</div>
-        <p class="text-gray-700 font-semibold">услуг</p>
-        <p class="text-sm text-gray-500">В одном месте</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Reviews -->
-<section id="reviews" class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы</h2>
-    <div class="flex items-center gap-1 mb-12">
-      <span class="text-yellow-400">★★★★★</span>
-      <span class="text-sm text-gray-600">5.0 — на основе отзывов</span>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8 mb-16" id="reviews-list">
-      <div class="p-6 rounded-2xl bg-gray-50 shadow">
-        <p class="text-gray-700 mb-4">Очень удобно, что всё в одном месте. Менял батарейку в часах и сделал ключ — заняло 10 минут.</p>
-        <p class="font-bold">Алексей К.</p>
-        <p class="text-sm text-gray-500">Октябрьский</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-gray-50 shadow">
-        <p class="text-gray-700 mb-4">Чинили телефон после падения — всё сделали быстро и аккуратно. Теперь работает как новый.</p>
-        <p class="font-bold">Марина С.</p>
-        <p class="text-sm text-gray-500">Московская область</p>
-      </div>
-      <div class="p-6 rounded-2xl bg-gray-50 shadow">
-        <p class="text-gray-700 mb-4">Делал фото на документы, очень понравилось отношение и качество. Рекомендую.</p>
-        <p class="font-bold">Игорь В.</p>
-        <p class="text-sm text-gray-500">Октябрьский</p>
-      </div>
-    </div>
-
-    <div class="max-w-xl">
-      <h3 class="text-2xl font-bold mb-4">Оставить отзыв</h3>
-      <form id="review-form" class="space-y-4">
-        <input type="text" id="review-name" placeholder="Ваше имя" class="w-full border rounded-lg p-3" required />
-        <textarea id="review-text" placeholder="Ваш отзыв" class="w-full border rounded-lg p-3" rows="4" required></textarea>
-        <button type="submit" class="bg-accent2 text-white px-6 py-3 rounded-lg font-bold">Отправить</button>
-      </form>
-      <div id="review-success" class="hidden mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
-        <div class="flex items-center gap-2 text-green-600 font-bold">
-          <i data-lucide="check-circle" class="w-5 h-5"></i>
-          <span>Отзыв отправлен</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contacts -->
-<section id="contacts" class="py-20">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
-      <div>
-        <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Контакты</h2>
-        <p class="text-gray-700 mb-4 text-lg">Приходите в наш сервис</p>
-        
-        <!-- Единственное упоминание про Дикси -->
-        <div class="mb-6 p-4 bg-red-50 rounded-xl border border-red-100">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
-              <span class="text-white font-bold">Д</span>
-            </div>
-            <div>
-              <p class="font-bold text-gray-800">Находимся в магазине <span class="text-red-600">Дикси</span></p>
-              <p class="text-sm text-gray-600">Удобное расположение, можно совместить с покупками</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="space-y-3 text-lg">
-          <p class="font-bold">Телефон:</p>
-          <div class="flex flex-col">
-            <a href="tel:+79999295161" class="text-2xl font-bold text-accent">
-              +7 (999) 929-51-61
-            </a>
-            <span class="text-base text-gray-600">ГЕОРГИЙ</span>
-          </div>
-          
-          <p class="font-bold mt-4">График:</p>
-          <p>Пн–Пт: 10:00 – 20:00</p>
-          <p>Сб, Вс: выходной</p>
-          
-          <p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold">photo_ostov@mail.ru</a></p>
-          
-          <p class="text-gray-700 font-bold">Адрес:</p>
-          <p>Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
-          <p class="text-red-600 font-semibold">(в магазине Дикси)</p>
-        </div>
-      </div>
-      <div>
-        <div id="map" class="rounded-xl overflow-hidden shadow-lg"></div>
-        <div class="mt-4 text-sm text-gray-600">
-          <span>Используйте колесико мыши для приближения и перемещения</span>
-        </div>
-      </div>
-    </div>
-    <div class="mt-8">
-      <a href="https://yandex.ru/maps/213/moscow/?ll=37.982520%2C55.608578&z=17&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%94%D0%B8%D0%BA%D1%81%D0%B8" target="_blank" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-xl font-bold">
-        <i data-lucide="map-pin" class="w-5 h-5"></i>
-        <span>Построить маршрут</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-graphite text-white py-6">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-      <div class="flex items-center gap-3 mb-4 md:mb-0">
-        <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-extrabold">ВП</div>
-        <span>© Дом быта "ВСЁ ПОЧИНИМ", 2026</span>
-      </div>
-      <div class="text-center md:text-right">
-        <p>Сервисный центр</p>
-        <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61 (ГЕОРГИЙ)</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Мобильные кнопки -->
-<a href="#contacts" class="fixed bottom-4 right-4 z-30 md:hidden bg-accent2 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2">
-  <i data-lucide="map-pin" class="w-5 h-5"></i>
-  <span>Контакты</span>
-</a>
-
-<a href="tel:+79999295161" class="fixed bottom-4 left-4 z-30 md:hidden bg-green-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2">
-  <i data-lucide="phone" class="w-5 h-5"></i>
-  <span>Позвонить</span>
+<!-- WhatsApp -->
+<a href="https://wa.me/79999295161"
+   target="_blank"
+   class="whatsapp-btn bg-whatsapp text-white px-5 py-4 rounded-full flex items-center gap-2 shadow-lg font-bold">
+  <i data-lucide="message-circle"></i> WhatsApp
 </a>
 
 <script>
-  lucide.createIcons();
+lucide.createIcons();
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const splash = document.getElementById('splash');
-    setTimeout(() => {
-      splash.classList.add('splash-hidden');
-      setTimeout(() => splash.remove(), 500);
-    }, 1000);
-    
-    initMap();
-  });
+/* Reveal */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+}, { threshold: 0.2 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  document.getElementById('review-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('review-name').value.trim();
-    const text = document.getElementById('review-text').value.trim();
-    const successMsg = document.getElementById('review-success');
-    const reviewsList = document.getElementById('reviews-list');
-    
-    if (!name || !text) return;
-    
-    const newReview = document.createElement('div');
-    newReview.className = 'p-6 rounded-2xl bg-gray-50 shadow';
-    newReview.innerHTML = `
-      <p class="text-gray-700 mb-4">${text}</p>
-      <p class="font-bold">${name}</p>
-      <p class="text-sm text-gray-500">Только что</p>
-    `;
-    
-    reviewsList.insertBefore(newReview, reviewsList.firstChild);
-    successMsg.classList.remove('hidden');
-    this.style.display = 'none';
-    
-    setTimeout(() => {
-      successMsg.classList.add('hidden');
-      this.style.display = 'block';
-      this.reset();
-    }, 5000);
-  });
+/* Before / After */
+let baIndex = 0;
+const baTrack = document.getElementById('baTrack');
+const baSlides = baTrack.children.length;
+function updateBA() {
+  baTrack.style.transform = `translateX(-${baIndex * 100}%)`;
+}
+function nextBA() {
+  baIndex = (baIndex + 1) % baSlides;
+  updateBA();
+}
+function prevBA() {
+  baIndex = (baIndex - 1 + baSlides) % baSlides;
+  updateBA();
+}
 
-  function initMap() {
-    const mapContainer = document.getElementById('map');
-    
-    // ТОЧНЫЕ координаты магазина Дикси на ул. Текстильщиков, 7А, Октябрьский
-    // Координаты найдены через прямой поиск в Яндекс.Картах
-    const exactCoords = [55.608685, 37.982515]; // ТОЧНЫЕ координаты
-    
-    // Создаем iframe с правильными координатами
-    const mapIframe = document.createElement('iframe');
-   mapIframe.src = `https://yandex.ru/map-widget/v1/?z=17&mode=search&text=Московская область, Октябрьский, ул. Текстильщиков, 7А, Дикси`;
-    mapIframe.width = '100%';
-    mapIframe.height = '100%';
-    mapIframe.style.border = 'none';
-    mapIframe.allowFullscreen = true;
-    mapIframe.loading = 'lazy';
-    mapIframe.title = 'Магазин Дикси на ул. Текстильщиков, 7А, Октябрьский - место расположения дома быта "ВСЁ ПОЧИНИМ"';
-    
-    // Очищаем контейнер и добавляем iframe
-    mapContainer.innerHTML = '';
-    mapContainer.appendChild(mapIframe);
-    
-    // Fallback если карта не загрузится
-    setTimeout(() => {
-      if (!mapContainer.querySelector('iframe') || mapContainer.offsetHeight === 0) {
-        mapContainer.innerHTML = `
-          <div class="w-full h-full bg-gradient-to-br from-accent/10 to-accent2/10 flex flex-col items-center justify-center p-8 rounded-xl">
-            <div class="text-center">
-              <div class="text-5xl mb-4">📍</div>
-              <p class="font-bold text-xl mb-2">ВСЁ ПОЧИНИМ</p>
-              <div class="flex items-center justify-center gap-2 mb-3">
-                <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
-                  <span class="text-white font-bold text-sm">Д</span>
-                </div>
-                <p class="text-gray-700 font-bold">Магазин Дикси</p>
-              </div>
-              <p class="text-gray-700 mb-2">Точный адрес:</p>
-              <p class="text-gray-700 font-bold mb-2">ул. Текстильщиков, 7А</p>
-              <p class="text-gray-700 mb-4">Октябрьский, Московская область</p>
-              <a href="https://yandex.ru/maps/213/moscow/?ll=37.982520%2C55.608578&z=17&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%94%D0%B8%D0%BA%D1%81%D0%B8" target="_blank" class="inline-block mt-6 bg-accent text-white px-6 py-3 rounded-lg font-bold">
-                Открыть точное местоположение
-              </a>
-            </div>
-          </div>
-        `;
-        lucide.createIcons();
-      }
-    }, 1000);
-  }
+/* Quick form */
+document.getElementById('quickForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = qName.value;
+  const text = qText.value;
+  const msg = `Здравствуйте! Меня зовут ${name}. ${text}`;
+  window.open(`https://wa.me/79999295161?text=${encodeURIComponent(msg)}`);
+});
+
+/* FAQ */
+document.querySelectorAll('.faq').forEach(f => {
+  f.onclick = () => f.querySelector('p').classList.toggle('hidden');
+});
 </script>
+
 </body>
 </html>
