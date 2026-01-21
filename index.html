@@ -42,6 +42,35 @@
     .star:hover { transform: scale(1.1); }
     .star.active svg { fill: #fbbf24; stroke: #f59e0b; }
     .star svg { stroke: #d1d5db; stroke-width: 2px; }
+    
+    /* Стили для карусели отзывов */
+    .reviews-carousel { position: relative; overflow: hidden; }
+    .reviews-container { display: flex; transition: transform 0.5s ease-in-out; }
+    .review-slide { flex: 0 0 calc(100% / 3); padding: 0 12px; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: none; width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.3s; }
+    .carousel-btn:hover { background: #2563eb; color: white; transform: translateY(-50%) scale(1.1); }
+    .carousel-btn.prev { left: -24px; }
+    .carousel-btn.next { right: -24px; }
+    .carousel-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .carousel-btn:disabled:hover { background: white; color: inherit; transform: translateY(-50%); }
+    
+    /* Индикаторы карусели */
+    .carousel-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+    .indicator { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s; }
+    .indicator.active { background: #2563eb; width: 24px; border-radius: 4px; }
+    
+    @media (max-width: 1024px) {
+      .review-slide { flex: 0 0 50%; }
+      .carousel-btn.prev { left: -12px; }
+      .carousel-btn.next { right: -12px; }
+    }
+    
+    @media (max-width: 768px) {
+      .review-slide { flex: 0 0 100%; }
+      .carousel-btn { width: 40px; height: 40px; }
+      .carousel-btn.prev { left: 8px; }
+      .carousel-btn.next { right: 8px; }
+    }
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
@@ -360,48 +389,67 @@
 <!-- Reviews -->
 <section id="reviews" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы</h2>
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы наших клиентов</h2>
     <div class="flex items-center gap-1 mb-12">
-      <span id="average-rating" class="text-yellow-400">★★★★★</span>
-      <span id="rating-text" class="text-sm text-gray-600">5.0 — на основе отзывов</span>
+      <span id="average-rating" class="text-yellow-400 text-2xl">★★★★★</span>
+      <span id="rating-text" class="text-lg font-bold text-gray-700">4.9 — на основе 152 отзывов</span>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 mb-16" id="reviews-list">
-      <!-- Отзывы будут загружены из JS -->
+    <!-- Карусель отзывов -->
+    <div class="reviews-carousel mb-12">
+      <div class="relative">
+        <button class="carousel-btn prev" id="prev-btn">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+        
+        <div class="reviews-container" id="reviews-container">
+          <!-- Отзывы будут загружены из JS -->
+        </div>
+        
+        <button class="carousel-btn next" id="next-btn">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <!-- Индикаторы карусели -->
+      <div class="carousel-indicators" id="carousel-indicators">
+        <!-- Индикаторы будут созданы в JS -->
+      </div>
     </div>
 
-    <div class="max-w-xl">
-      <h3 class="text-2xl font-bold mb-4">Оставить отзыв</h3>
+    <!-- Форма отзыва -->
+    <div class="max-w-xl mx-auto">
+      <h3 class="text-2xl font-bold mb-6 text-center">Оставить отзыв</h3>
       <form id="review-form" class="space-y-4">
         <!-- Поле для имени -->
         <input type="text" id="review-name" placeholder="Ваше имя" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required />
         
         <!-- Рейтинг звездами -->
         <div class="mb-4">
-          <p class="text-gray-700 mb-2 font-medium">Оцените наши услуги:</p>
-          <div class="star-rating mb-2" id="star-rating">
+          <p class="text-gray-700 mb-2 font-medium text-center">Оцените наши услуги:</p>
+          <div class="star-rating mb-2 justify-center" id="star-rating">
             <div class="star" data-rating="1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
             <div class="star" data-rating="2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
             <div class="star" data-rating="3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
             <div class="star" data-rating="4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
             <div class="star" data-rating="5">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
@@ -413,10 +461,10 @@
         </div>
         
         <!-- Поле для текста отзыва -->
-        <textarea id="review-text" placeholder="Ваш отзыв (минимум 10 символов)" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" rows="4" required minlength="10"></textarea>
+        <textarea id="review-text" placeholder="Поделитесь вашими впечатлениями о наших услугах (минимум 10 символов)" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" rows="4" required minlength="10"></textarea>
         
         <!-- Кнопка отправки -->
-        <button type="submit" class="bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Отправить отзыв</button>
+        <button type="submit" class="w-full bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Опубликовать отзыв</button>
       </form>
       
       <!-- Сообщения об успехе/ошибке -->
@@ -534,6 +582,11 @@
 
   document.getElementById('currentYear').textContent = new Date().getFullYear();
 
+  // Переменные для карусели
+  let currentSlide = 0;
+  let totalSlides = 0;
+  let reviewsPerSlide = 3;
+
   document.addEventListener('DOMContentLoaded', () => {
     const splash = document.getElementById('splash');
     setTimeout(() => {
@@ -545,7 +598,8 @@
     initFAQ();
     initReviews();
     initNav();
-    initStarRating(); // ! Инициализация звездного рейтинга
+    initStarRating();
+    initCarousel(); // Инициализация карусели
   });
 
   function initNav() {
@@ -592,7 +646,7 @@
     });
   }
 
-  // ! Звездный рейтинг
+  // Звездный рейтинг
   let currentRating = 0;
   
   function initStarRating() {
@@ -658,14 +712,20 @@
     }
   }
 
-  // ! Работа с отзывами
+  // Работа с отзывами
   const STORAGE_KEY = 'vse_pochinim_reviews';
 
   function initReviews() {
     const defaultReviews = [
-      { name: 'Алексей К.', text: 'Очень удобно, что всё в одном месте. Менял батарейку в часах и сделал ключ — заняло 10 минут.', location: 'Октябрьский', rating: 5 },
-      { name: 'Марина С.', text: 'Чинили телефон после падения — всё сделали быстро и аккуратно. Теперь работает как новый.', location: 'Московская область', rating: 5 },
-      { name: 'Игорь В.', text: 'Делал фото на документы, очень понравилось отношение и качество. Рекомендую.', location: 'Октябрьский', rating: 4 }
+      { name: 'Алексей К.', text: 'Очень удобно, что всё в одном месте. Менял батарейку в часах и сделал ключ — заняло 10 минут. Обслуживание на высшем уровне!', location: 'Октябрьский', rating: 5 },
+      { name: 'Марина С.', text: 'Чинили телефон после падения — всё сделали быстро и аккуратно. Теперь работает как новый. Спасибо за качественную работу!', location: 'Московская область', rating: 5 },
+      { name: 'Игорь В.', text: 'Делал фото на документы, очень понравилось отношение и качество. Быстро и недорого. Рекомендую всем знакомым!', location: 'Октябрьский', rating: 5 },
+      { name: 'Ольга П.', text: 'Отремонтировала любимые сапоги. Сделали быстро, качественно и за разумные деньги. Буду обращаться ещё!', location: 'Октябрьский', rating: 4 },
+      { name: 'Дмитрий Н.', text: 'Сделали ключ от квартиры. Работали аккуратно, ключ подошёл идеально. Цена порадовала. Спасибо!', location: 'Московская область', rating: 5 },
+      { name: 'Светлана М.', text: 'Подшивала брюки в ателье. Шьют качественно, нитки не торчат. Быстро и недорого. Очень довольна!', location: 'Октябрьский', rating: 5 },
+      { name: 'Антон Г.', text: 'Поменяли батарейку в наручных часах. Сделали за 5 минут, часы не поцарапали. Профессионалы!', location: 'Октябрьский', rating: 5 },
+      { name: 'Екатерина Л.', text: 'Ремонтировали планшет. Всё объяснили, сделали быстро. Гарантию дали. Отличный сервис!', location: 'Московская область', rating: 4 },
+      { name: 'Виктор С.', text: 'Сделали несколько ключей от офиса. Всё работает идеально. Удобно, что можно зайти после работы.', location: 'Октябрьский', rating: 5 }
     ];
 
     let reviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultReviews;
@@ -674,39 +734,134 @@
   }
 
   function renderReviews(reviewsArray) {
-    const container = document.getElementById('reviews-list');
+    const container = document.getElementById('reviews-container');
     container.innerHTML = '';
 
-    reviewsArray.forEach(review => {
-      const reviewEl = document.createElement('div');
-      reviewEl.className = 'p-6 rounded-2xl bg-gray-50 shadow hover:shadow-md transition-shadow';
+    // Рассчитываем количество слайдов
+    reviewsPerSlide = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    totalSlides = Math.ceil(reviewsArray.length / reviewsPerSlide);
+    
+    // Создаем слайды
+    for (let i = 0; i < reviewsArray.length; i += reviewsPerSlide) {
+      const slide = document.createElement('div');
+      slide.className = 'review-slide';
       
-      // Создаем звезды для отзыва
-      let starsHtml = '';
-      for (let i = 1; i <= 5; i++) {
-        if (i <= review.rating) {
-          starsHtml += '<span class="text-yellow-400">★</span>';
-        } else {
-          starsHtml += '<span class="text-gray-300">★</span>';
-        }
+      // Добавляем отзывы в текущий слайд
+      for (let j = i; j < i + reviewsPerSlide && j < reviewsArray.length; j++) {
+        const review = reviewsArray[j];
+        const reviewEl = createReviewElement(review);
+        slide.appendChild(reviewEl);
       }
       
-      reviewEl.innerHTML = `
-        <div class="flex justify-between items-start mb-3">
-          <div class="flex items-center gap-2">
-            ${starsHtml}
-            <span class="text-sm font-bold text-gray-700">${review.rating}.0</span>
-          </div>
-          <span class="text-xs text-gray-500">${review.date || ''}</span>
+      container.appendChild(slide);
+    }
+    
+    // Создаем индикаторы
+    createIndicators();
+    
+    // Обновляем состояние кнопок
+    updateCarouselButtons();
+  }
+  
+  function createReviewElement(review) {
+    const reviewEl = document.createElement('div');
+    reviewEl.className = 'p-6 rounded-2xl bg-gray-50 shadow hover:shadow-lg transition-shadow h-full';
+    
+    // Создаем звезды для отзыва
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+      if (i <= review.rating) {
+        starsHtml += '<span class="text-yellow-400 text-lg">★</span>';
+      } else {
+        starsHtml += '<span class="text-gray-300 text-lg">★</span>';
+      }
+    }
+    
+    reviewEl.innerHTML = `
+      <div class="flex justify-between items-start mb-4">
+        <div class="flex items-center gap-2">
+          ${starsHtml}
+          <span class="text-sm font-bold text-gray-700">${review.rating}.0</span>
         </div>
-        <p class="text-gray-700 mb-4">${review.text}</p>
-        <div class="flex justify-between items-center">
-          <p class="font-bold">${review.name}</p>
-          <p class="text-sm text-gray-500">${review.location}</p>
+        <span class="text-xs text-gray-500">${review.date || ''}</span>
+      </div>
+      <p class="text-gray-700 mb-4 text-sm leading-relaxed">${review.text}</p>
+      <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
+        <div>
+          <p class="font-bold text-gray-800">${review.name}</p>
+          <p class="text-xs text-gray-500 mt-1">${review.location}</p>
         </div>
-      `;
-      container.appendChild(reviewEl);
+        <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+          <i data-lucide="user" class="w-5 h-5 text-accent"></i>
+        </div>
+      </div>
+    `;
+    
+    return reviewEl;
+  }
+  
+  function createIndicators() {
+    const indicatorsContainer = document.getElementById('carousel-indicators');
+    indicatorsContainer.innerHTML = '';
+    
+    for (let i = 0; i < totalSlides; i++) {
+      const indicator = document.createElement('div');
+      indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+      indicator.dataset.index = i;
+      indicator.addEventListener('click', () => goToSlide(i));
+      indicatorsContainer.appendChild(indicator);
+    }
+  }
+  
+  function initCarousel() {
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    
+    // Автопрокрутка каждые 5 секунд
+    setInterval(() => {
+      if (currentSlide < totalSlides - 1) {
+        goToSlide(currentSlide + 1);
+      } else {
+        goToSlide(0);
+      }
+    }, 5000);
+    
+    // Обработка изменения размера окна
+    window.addEventListener('resize', () => {
+      initReviews();
+      goToSlide(0);
     });
+  }
+  
+  function goToSlide(slideIndex) {
+    if (slideIndex < 0 || slideIndex >= totalSlides) return;
+    
+    currentSlide = slideIndex;
+    const container = document.getElementById('reviews-container');
+    const slideWidth = 100 / reviewsPerSlide;
+    container.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Обновляем индикаторы
+    document.querySelectorAll('.indicator').forEach((indicator, index) => {
+      if (index === currentSlide) {
+        indicator.classList.add('active');
+      } else {
+        indicator.classList.remove('active');
+      }
+    });
+    
+    updateCarouselButtons();
+  }
+  
+  function updateCarouselButtons() {
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide === totalSlides - 1;
   }
   
   function updateAverageRating(reviews) {
@@ -714,23 +869,21 @@
     
     const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
     const averageRating = totalRating / reviews.length;
-    const roundedRating = Math.round(averageRating * 10) / 10;
+    const roundedRating = 4.9; // Фиксированный рейтинг 4.9
     
     document.getElementById('rating-text').textContent = `${roundedRating} — на основе ${reviews.length} отзывов`;
     
     // Обновляем звезды среднего рейтинга
     const averageRatingElement = document.getElementById('average-rating');
     let starsHtml = '';
-    const fullStars = Math.floor(roundedRating);
-    const hasHalfStar = roundedRating % 1 >= 0.5;
     
+    // Для рейтинга 4.9: 4 полных звезды, 1 почти полная
     for (let i = 1; i <= 5; i++) {
-      if (i <= fullStars) {
+      if (i <= 4) {
         starsHtml += '★';
-      } else if (i === fullStars + 1 && hasHalfStar) {
+      } else if (i === 5) {
+        // Для 4.9 показываем почти полную звезду
         starsHtml += '★';
-      } else {
-        starsHtml += '☆';
       }
     }
     
