@@ -138,6 +138,44 @@
       border-radius: 5px;
     }
     
+    /* Стили для модального окна записи */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: scale(0.9);
+      transition: transform 0.3s;
+    }
+    
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+    
     /* Адаптивность */
     @media (max-width: 1024px) {
       .review-card {
@@ -159,6 +197,10 @@
         width: 40px;
         height: 40px;
       }
+      .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+      }
     }
     
     @media (max-width: 480px) {
@@ -173,6 +215,87 @@
 <!-- Splash Screen -->
 <div id="splash" class="fixed inset-0 bg-accent z-50 flex items-center justify-center">
   <div class="text-white text-6xl md:text-7xl font-extrabold animate-pulse">ВП</div>
+</div>
+
+<!-- Модальное окно онлайн-записи -->
+<div id="booking-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold">Онлайн-запись на услуги</h2>
+      <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    
+    <form id="booking-form" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium mb-2">Выберите услугу:</label>
+        <select id="booking-service" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required>
+          <option value="">-- Выберите услугу --</option>
+          <option value="phone">Ремонт телефонов</option>
+          <option value="battery">Замена батареек в часах</option>
+          <option value="shoes">Ремонт обуви</option>
+          <option value="atelier">Ателье (ремонт одежды)</option>
+          <option value="photo">Фото на документы</option>
+          <option value="keys">Изготовление ключей</option>
+        </select>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium mb-2">Дата визита:</label>
+        <input type="date" id="booking-date" min="" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium mb-2">Время визита:</label>
+        <select id="booking-time" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required>
+          <option value="">-- Выберите время --</option>
+          <!-- Временные слоты будут заполнены через JS -->
+        </select>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium mb-2">Ваше имя:</label>
+        <input type="text" id="booking-name" placeholder="Иван Иванов" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium mb-2">Номер телефона:</label>
+        <input type="tel" id="booking-phone" placeholder="+7 (999) 123-45-67" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium mb-2">Комментарий (необязательно):</label>
+        <textarea id="booking-comment" placeholder="Опишите, что нужно сделать..." class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" rows="3"></textarea>
+      </div>
+      
+      <div class="bg-blue-50 p-4 rounded-lg">
+        <div class="flex items-start gap-2">
+          <i data-lucide="info" class="w-5 h-5 text-blue-500 mt-0.5"></i>
+          <p class="text-sm text-blue-700">После отправки заявки мы свяжемся с вами для подтверждения записи. Вы также получите SMS-уведомление.</p>
+        </div>
+      </div>
+      
+      <button type="submit" class="w-full bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">
+        Записаться онлайн
+      </button>
+    </form>
+    
+    <div id="booking-success" class="hidden mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
+      <div class="flex items-center gap-2 text-green-600 font-bold">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+        <span>Запись успешно отправлена!</span>
+      </div>
+      <p class="text-sm text-green-600 mt-2">Мы отправили SMS с подтверждением на ваш номер телефона. В ближайшее время с вами свяжется наш специалист.</p>
+    </div>
+    
+    <div id="booking-error" class="hidden mt-4 p-4 bg-red-50 rounded-lg border border-red-200">
+      <div class="flex items-center gap-2 text-red-600 font-bold">
+        <i data-lucide="alert-circle" class="w-5 h-5"></i>
+        <span id="booking-error-message">Ошибка при отправке</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Header -->
@@ -215,7 +338,8 @@
       <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте.</p>
       <div class="flex flex-wrap gap-4">
         <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Посмотреть услуги</a>
-        <a href="#contacts" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Срочный ремонт</a>
+        <button id="open-booking" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Онлайн-запись</button>
+        <a href="#contacts" class="inline-block bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Срочный ремонт</a>
       </div>
       
       <div class="mt-8 grid grid-cols-2 gap-4">
@@ -284,6 +408,50 @@
   </div>
 </section>
 
+<!-- Онлайн-запись -->
+<section id="booking" class="py-20 bg-gradient-to-r from-accent/5 to-accent2/5">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Запись на услуги онлайн</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Запишитесь заранее, чтобы избежать очередей и выбрать удобное время</p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="calendar" class="w-8 h-8 text-green-600"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Выберите время</h3>
+        <p class="text-gray-600 text-sm">Запланируйте визит на удобное для вас время</p>
+      </div>
+      
+      <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="smartphone" class="w-8 h-8 text-blue-600"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Получите SMS</h3>
+        <p class="text-gray-600 text-sm">Подтверждение записи придет на ваш телефон</p>
+      </div>
+      
+      <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i data-lucide="clock" class="w-8 h-8 text-orange-600"></i>
+        </div>
+        <h3 class="font-bold text-lg mb-2">Приходите без очереди</h3>
+        <p class="text-gray-600 text-sm">Ваше время зарезервировано</p>
+      </div>
+    </div>
+    
+    <div class="text-center">
+      <button id="open-booking-cta" class="inline-block bg-accent2 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg">
+        <i data-lucide="calendar" class="w-5 h-5 inline-block mr-2"></i>
+        Записаться онлайн
+      </button>
+      <p class="text-sm text-gray-500 mt-4">Работаем: Пн-Пт с 10:00 до 20:00</p>
+    </div>
+  </div>
+</section>
+
 <!-- Services -->
 <section id="services" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4">
@@ -300,6 +468,10 @@
           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 15 мин</span>
           <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span>
         </div>
+        <button class="book-service-btn mt-4 w-full bg-accent/10 text-accent py-2 rounded-lg hover:bg-accent/20 transition-colors" data-service="phone">
+          <i data-lucide="calendar" class="w-4 h-4 inline-block mr-2"></i>
+          Записаться
+        </button>
       </div>
 
       <!-- Батарейки в часах -->
@@ -311,6 +483,10 @@
           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span>
           <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">аккуратно</span>
         </div>
+        <button class="book-service-btn mt-4 w-full bg-accent/10 text-accent py-2 rounded-lg hover:bg-accent/20 transition-colors" data-service="battery">
+          <i data-lucide="calendar" class="w-4 h-4 inline-block mr-2"></i>
+          Записаться
+        </button>
       </div>
 
       <!-- Ремонт обуви -->
@@ -326,6 +502,10 @@
           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">в день</span>
           <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">надёжно</span>
         </div>
+        <button class="book-service-btn mt-4 w-full bg-accent/10 text-accent py-2 rounded-lg hover:bg-accent/20 transition-colors" data-service="shoes">
+          <i data-lucide="calendar" class="w-4 h-4 inline-block mr-2"></i>
+          Записаться
+        </button>
       </div>
 
       <!-- Ателье -->
@@ -337,6 +517,10 @@
           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 30 мин</span>
           <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span>
         </div>
+        <button class="book-service-btn mt-4 w-full bg-accent/10 text-accent py-2 rounded-lg hover:bg-accent/20 transition-colors" data-service="atelier">
+          <i data-lucide="calendar" class="w-4 h-4 inline-block mr-2"></i>
+          Записаться
+        </button>
       </div>
 
       <!-- Фото на документы -->
@@ -348,6 +532,10 @@
           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">15 мин</span>
           <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">чётко</span>
         </div>
+        <button class="book-service-btn mt-4 w-full bg-accent/10 text-accent py-2 rounded-lg hover:bg-accent/20 transition-colors" data-service="photo">
+          <i data-lucide="calendar" class="w-4 h-4 inline-block mr-2"></i>
+          Записаться
+        </button>
       </div>
 
       <!-- Изготовление ключей -->
@@ -359,6 +547,10 @@
           <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span>
           <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">точно</span>
         </div>
+        <button class="book-service-btn mt-4 w-full bg-accent/10 text-accent py-2 rounded-lg hover:bg-accent/20 transition-colors" data-service="keys">
+          <i data-lucide="calendar" class="w-4 h-4 inline-block mr-2"></i>
+          Записаться
+        </button>
       </div>
 
     </div>
@@ -670,6 +862,12 @@
   <span class="hidden sm:inline">Написать в Telegram</span>
 </a>
 
+<!-- Кнопка онлайн-записи (фиксированная) -->
+<button id="fixed-booking-btn" class="fixed bottom-48 right-4 z-30 bg-red-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-red-600 transition-colors hover:shadow-xl">
+  <i data-lucide="calendar" class="w-5 h-5"></i>
+  <span class="hidden sm:inline">Запись онлайн</span>
+</button>
+
 <!-- Кнопка меню быстрой связи (только на мобильных) -->
 <div class="md:hidden fixed bottom-20 right-4 z-30">
   <button id="messenger-toggle" class="bg-accent text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
@@ -699,6 +897,20 @@
   let visibleCards = 3;
   let cardWidth = 0;
 
+  // Данные для онлайн-записи
+  const bookingData = {
+    services: {
+      phone: "Ремонт телефонов",
+      battery: "Замена батареек в часах",
+      shoes: "Ремонт обуви",
+      atelier: "Ателье (ремонт одежды)",
+      photo: "Фото на документы",
+      keys: "Изготовление ключей"
+    },
+    // Ваш номер для получения уведомлений
+    adminPhone: "+79999295161"
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     const splash = document.getElementById('splash');
     setTimeout(() => {
@@ -712,7 +924,8 @@
     initNav();
     initStarRating();
     initCarousel();
-    initMessengerToggle(); // Инициализация переключателя мессенджеров
+    initBookingModal();
+    initMessengerToggle();
     
     // Пересчитываем при изменении размера окна
     window.addEventListener('resize', () => {
@@ -772,6 +985,7 @@
     
     const whatsappBtn = document.querySelector('a[href*="wa.me"]');
     const telegramBtn = document.querySelector('a[href*="t.me"]');
+    const bookingBtn = document.getElementById('fixed-booking-btn');
     
     let messengersVisible = false;
     
@@ -781,16 +995,20 @@
       if (messengersVisible) {
         whatsappBtn.style.transform = 'translateY(-60px)';
         telegramBtn.style.transform = 'translateY(-120px)';
+        bookingBtn.style.transform = 'translateY(-180px)';
         whatsappBtn.style.opacity = '1';
         telegramBtn.style.opacity = '1';
+        bookingBtn.style.opacity = '1';
         
         toggleBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
         lucide.createIcons();
       } else {
         whatsappBtn.style.transform = 'translateY(0)';
         telegramBtn.style.transform = 'translateY(0)';
+        bookingBtn.style.transform = 'translateY(0)';
         whatsappBtn.style.opacity = '0';
         telegramBtn.style.opacity = '0';
+        bookingBtn.style.opacity = '0';
         
         toggleBtn.innerHTML = '<i data-lucide="message-square" class="w-6 h-6"></i>';
         lucide.createIcons();
@@ -800,8 +1018,244 @@
     // Скрываем кнопки мессенджеров на мобильных по умолчанию
     whatsappBtn.style.transition = 'all 0.3s ease';
     telegramBtn.style.transition = 'all 0.3s ease';
+    bookingBtn.style.transition = 'all 0.3s ease';
     whatsappBtn.style.opacity = '0';
     telegramBtn.style.opacity = '0';
+    bookingBtn.style.opacity = '0';
+  }
+
+  // Инициализация модального окна записи
+  function initBookingModal() {
+    const modal = document.getElementById('booking-modal');
+    const openBtns = document.querySelectorAll('#open-booking, #open-booking-cta, #fixed-booking-btn');
+    const closeBtn = document.getElementById('close-modal');
+    const bookingForm = document.getElementById('booking-form');
+    const serviceSelect = document.getElementById('booking-service');
+    const timeSelect = document.getElementById('booking-time');
+    const dateInput = document.getElementById('booking-date');
+    
+    // Устанавливаем минимальную дату (сегодня)
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    dateInput.min = today.toISOString().split('T')[0];
+    
+    // Заполняем временные слоты
+    function populateTimeSlots() {
+      timeSelect.innerHTML = '<option value="">-- Выберите время --</option>';
+      
+      // Рабочие часы: с 10:00 до 20:00
+      for (let hour = 10; hour < 20; hour++) {
+        for (let minute = 0; minute < 60; minute += 30) { // Каждые 30 минут
+          const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+          const option = document.createElement('option');
+          option.value = timeString;
+          option.textContent = timeString;
+          timeSelect.appendChild(option);
+        }
+      }
+    }
+    
+    populateTimeSlots();
+    
+    // Открытие модального окна
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    // Закрытие модального окна
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Закрытие по клику на оверлей
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+    
+    // Обработка кнопок "Записаться" на карточках услуг
+    document.querySelectorAll('.book-service-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const service = btn.dataset.service;
+        serviceSelect.value = service;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    
+    // Обработка отправки формы
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const service = serviceSelect.value;
+      const date = dateInput.value;
+      const time = timeSelect.value;
+      const name = document.getElementById('booking-name').value.trim();
+      const phone = document.getElementById('booking-phone').value.trim();
+      const comment = document.getElementById('booking-comment').value.trim();
+      
+      // Валидация
+      if (!service || !date || !time || !name || !phone) {
+        showBookingError('Пожалуйста, заполните все обязательные поля');
+        return;
+      }
+      
+      // Форматирование телефона
+      const formattedPhone = formatPhone(phone);
+      if (!formattedPhone) {
+        showBookingError('Пожалуйста, введите корректный номер телефона');
+        return;
+      }
+      
+      // Создаем данные для отправки
+      const bookingDetails = {
+        service: bookingData.services[service],
+        date: formatDate(date),
+        time: time,
+        name: name,
+        phone: formattedPhone,
+        comment: comment,
+        timestamp: new Date().toISOString()
+      };
+      
+      try {
+        // Показываем загрузку
+        const submitBtn = bookingForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML = '<i data-lucide="loader" class="w-5 h-5 animate-spin inline-block"></i> Отправка...';
+        submitBtn.disabled = true;
+        
+        // Симуляция отправки (в реальном проекте здесь будет fetch на ваш бэкенд)
+        await simulateBookingSubmission(bookingDetails);
+        
+        // Показываем успех
+        bookingForm.reset();
+        document.getElementById('booking-success').classList.remove('hidden');
+        document.getElementById('booking-error').classList.add('hidden');
+        
+        // Отправляем SMS клиенту
+        sendClientSMS(bookingDetails);
+        
+        // Отправляем SMS вам (администратору)
+        sendAdminSMS(bookingDetails);
+        
+        // Скрываем форму
+        bookingForm.style.display = 'none';
+        
+        // Через 5 секунд закрываем модальное окно
+        setTimeout(() => {
+          modal.classList.remove('active');
+          document.body.style.overflow = 'auto';
+          bookingForm.style.display = 'block';
+          document.getElementById('booking-success').classList.add('hidden');
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }, 5000);
+        
+      } catch (error) {
+        showBookingError('Ошибка при отправке. Пожалуйста, попробуйте позже или позвоните нам.');
+        const submitBtn = bookingForm.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Записаться онлайн';
+        submitBtn.disabled = false;
+      }
+    });
+  }
+  
+  // Функция форматирования телефона
+  function formatPhone(phone) {
+    // Удаляем все нецифровые символы
+    const digits = phone.replace(/\D/g, '');
+    
+    // Российские номера: 10 цифр (без 7 или 8), 11 цифр (с 7 или 8)
+    if (digits.length === 10) {
+      return `+7${digits}`;
+    } else if (digits.length === 11 && (digits.startsWith('7') || digits.startsWith('8'))) {
+      return `+7${digits.slice(1)}`;
+    } else {
+      return null;
+    }
+  }
+  
+  // Функция форматирования даты
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+    const months = [
+      'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+      'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+    ];
+    
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const dayOfWeek = days[date.getDay()];
+    
+    return `${day} ${month} (${dayOfWeek})`;
+  }
+  
+  // Симуляция отправки на сервер
+  function simulateBookingSubmission(bookingDetails) {
+    return new Promise((resolve) => {
+      // Сохраняем запись в localStorage
+      const bookings = JSON.parse(localStorage.getItem('vse_pochinim_bookings') || '[]');
+      bookings.push(bookingDetails);
+      localStorage.setItem('vse_pochinim_bookings', JSON.stringify(bookings));
+      
+      // Имитация задержки сети
+      setTimeout(() => resolve(bookingDetails), 1500);
+    });
+  }
+  
+  // Отправка SMS клиенту
+  function sendClientSMS(bookingDetails) {
+    const message = `ВСЁ ПОЧИНИМ: Вы записаны на ${bookingDetails.service} ${bookingDetails.date} в ${bookingDetails.time}. Адрес: ул. Текстильщиков, 7А (Дикси). Телефон: +7 (999) 929-51-61`;
+    
+    // В реальном проекте здесь будет интеграция с SMS-шлюзом
+    console.log('SMS для клиента:', {
+      to: bookingDetails.phone,
+      message: message
+    });
+    
+    // Имитируем отправку SMS через ссылку (работает на мобильных)
+    const smsLink = `sms:${bookingDetails.phone}?body=${encodeURIComponent(message)}`;
+    
+    // Можно использовать для тестирования
+    // window.open(smsLink, '_blank');
+  }
+  
+  // Отправка SMS администратору
+  function sendAdminSMS(bookingDetails) {
+    const message = `Новая запись: ${bookingDetails.service}. ${bookingDetails.date} в ${bookingDetails.time}. Клиент: ${bookingDetails.name}, тел: ${bookingDetails.phone}. ${bookingDetails.comment ? `Комментарий: ${bookingDetails.comment}` : ''}`;
+    
+    // В реальном проекте здесь будет интеграция с SMS-шлюзом
+    console.log('SMS для администратора:', {
+      to: bookingData.adminPhone,
+      message: message
+    });
+    
+    // Имитируем отправку SMS через ссылку
+    const smsLink = `sms:${bookingData.adminPhone}?body=${encodeURIComponent(message)}`;
+    
+    // Можно использовать для тестирования
+    // window.open(smsLink, '_blank');
+  }
+  
+  function showBookingError(message) {
+    const errorDiv = document.getElementById('booking-error');
+    const errorMessage = document.getElementById('booking-error-message');
+    errorMessage.textContent = message;
+    errorDiv.classList.remove('hidden');
+    
+    setTimeout(() => {
+      errorDiv.classList.add('hidden');
+    }, 5000);
   }
 
   // Звездный рейтинг
