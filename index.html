@@ -661,6 +661,22 @@
   <span class="hidden sm:inline">Написать в WhatsApp</span>
 </a>
 
+<!-- Telegram кнопка -->
+<a href="https://t.me/+79999295161" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="fixed bottom-36 right-4 z-30 bg-blue-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-blue-600 transition-colors hover:shadow-xl">
+  <i data-lucide="send" class="w-5 h-5"></i>
+  <span class="hidden sm:inline">Написать в Telegram</span>
+</a>
+
+<!-- Кнопка меню быстрой связи (только на мобильных) -->
+<div class="md:hidden fixed bottom-20 right-4 z-30">
+  <button id="messenger-toggle" class="bg-accent text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+    <i data-lucide="message-square" class="w-6 h-6"></i>
+  </button>
+</div>
+
 <!-- Мобильные кнопки -->
 <a href="#contacts" class="fixed bottom-4 right-4 z-30 md:hidden bg-accent2 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2">
   <i data-lucide="map-pin" class="w-5 h-5"></i>
@@ -696,6 +712,7 @@
     initNav();
     initStarRating();
     initCarousel();
+    initMessengerToggle(); // Инициализация переключателя мессенджеров
     
     // Пересчитываем при изменении размера окна
     window.addEventListener('resize', () => {
@@ -746,6 +763,45 @@
         icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
       });
     });
+  }
+
+  // Инициализация переключателя мессенджеров для мобильных
+  function initMessengerToggle() {
+    const toggleBtn = document.getElementById('messenger-toggle');
+    if (!toggleBtn) return;
+    
+    const whatsappBtn = document.querySelector('a[href*="wa.me"]');
+    const telegramBtn = document.querySelector('a[href*="t.me"]');
+    
+    let messengersVisible = false;
+    
+    toggleBtn.addEventListener('click', () => {
+      messengersVisible = !messengersVisible;
+      
+      if (messengersVisible) {
+        whatsappBtn.style.transform = 'translateY(-60px)';
+        telegramBtn.style.transform = 'translateY(-120px)';
+        whatsappBtn.style.opacity = '1';
+        telegramBtn.style.opacity = '1';
+        
+        toggleBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+        lucide.createIcons();
+      } else {
+        whatsappBtn.style.transform = 'translateY(0)';
+        telegramBtn.style.transform = 'translateY(0)';
+        whatsappBtn.style.opacity = '0';
+        telegramBtn.style.opacity = '0';
+        
+        toggleBtn.innerHTML = '<i data-lucide="message-square" class="w-6 h-6"></i>';
+        lucide.createIcons();
+      }
+    });
+    
+    // Скрываем кнопки мессенджеров на мобильных по умолчанию
+    whatsappBtn.style.transition = 'all 0.3s ease';
+    telegramBtn.style.transition = 'all 0.3s ease';
+    whatsappBtn.style.opacity = '0';
+    telegramBtn.style.opacity = '0';
   }
 
   // Звездный рейтинг
@@ -928,6 +984,15 @@
     
     prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
     nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    
+    // Автопрокрутка каждые 8 секунд
+    setInterval(() => {
+      if (currentSlide < totalSlides) {
+        goToSlide(currentSlide + 1);
+      } else {
+        goToSlide(0);
+      }
+    }, 8000);
   }
   
   function goToSlide(slideIndex) {
