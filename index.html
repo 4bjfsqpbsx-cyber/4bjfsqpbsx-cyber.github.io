@@ -44,32 +44,127 @@
     .star svg { stroke: #d1d5db; stroke-width: 2px; }
     
     /* Стили для карусели отзывов */
-    .reviews-carousel { position: relative; overflow: hidden; }
-    .reviews-container { display: flex; transition: transform 0.5s ease-in-out; }
-    .review-slide { flex: 0 0 calc(100% / 3); padding: 0 12px; }
-    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: none; width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.3s; }
-    .carousel-btn:hover { background: #2563eb; color: white; transform: translateY(-50%) scale(1.1); }
-    .carousel-btn.prev { left: -24px; }
-    .carousel-btn.next { right: -24px; }
-    .carousel-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-    .carousel-btn:disabled:hover { background: white; color: inherit; transform: translateY(-50%); }
+    .reviews-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      padding: 0 60px; /* Отступы для стрелок */
+    }
+    
+    .reviews-carousel {
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .reviews-container {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.5s ease-in-out;
+      padding: 10px 0;
+    }
+    
+    .review-card {
+      flex: 0 0 calc(33.333% - 16px); /* 3 карточки в ряд с учетом gap */
+      min-width: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Кнопки карусели - всегда видны */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: 2px solid #2563eb;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-btn:hover {
+      background: #2563eb;
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+    }
+    
+    .carousel-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      border-color: #d1d5db;
+    }
+    
+    .carousel-btn:disabled:hover {
+      background: white;
+      color: inherit;
+      transform: translateY(-50%);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .carousel-btn.prev {
+      left: 0;
+    }
+    
+    .carousel-btn.next {
+      right: 0;
+    }
     
     /* Индикаторы карусели */
-    .carousel-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
-    .indicator { width: 8px; height: 8px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s; }
-    .indicator.active { background: #2563eb; width: 24px; border-radius: 4px; }
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
     
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d1d5db;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .indicator.active {
+      background: #2563eb;
+      width: 30px;
+      border-radius: 5px;
+    }
+    
+    /* Адаптивность */
     @media (max-width: 1024px) {
-      .review-slide { flex: 0 0 50%; }
-      .carousel-btn.prev { left: -12px; }
-      .carousel-btn.next { right: -12px; }
+      .review-card {
+        flex: 0 0 calc(50% - 12px); /* 2 карточки на планшетах */
+      }
+      .reviews-carousel-wrapper {
+        padding: 0 50px;
+      }
     }
     
     @media (max-width: 768px) {
-      .review-slide { flex: 0 0 100%; }
-      .carousel-btn { width: 40px; height: 40px; }
-      .carousel-btn.prev { left: 8px; }
-      .carousel-btn.next { right: 8px; }
+      .review-card {
+        flex: 0 0 100%; /* 1 карточка на мобильных */
+      }
+      .reviews-carousel-wrapper {
+        padding: 0 40px;
+      }
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .reviews-carousel-wrapper {
+        padding: 0 30px;
+      }
     }
   </style>
 </head>
@@ -389,36 +484,36 @@
 <!-- Reviews -->
 <section id="reviews" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Отзывы наших клиентов</h2>
-    <div class="flex items-center gap-1 mb-12">
+    <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-center">Отзывы наших клиентов</h2>
+    <div class="flex items-center justify-center gap-1 mb-12">
       <span id="average-rating" class="text-yellow-400 text-2xl">★★★★★</span>
       <span id="rating-text" class="text-lg font-bold text-gray-700">4.9 — на основе 152 отзывов</span>
     </div>
 
-    <!-- Карусель отзывов -->
-    <div class="reviews-carousel mb-12">
-      <div class="relative">
-        <button class="carousel-btn prev" id="prev-btn">
-          <i data-lucide="chevron-left" class="w-5 h-5"></i>
-        </button>
-        
+    <!-- Карусель отзывов с видимыми стрелками -->
+    <div class="reviews-carousel-wrapper">
+      <button class="carousel-btn prev" id="prev-btn">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+      
+      <div class="reviews-carousel">
         <div class="reviews-container" id="reviews-container">
           <!-- Отзывы будут загружены из JS -->
         </div>
-        
-        <button class="carousel-btn next" id="next-btn">
-          <i data-lucide="chevron-right" class="w-5 h-5"></i>
-        </button>
       </div>
       
-      <!-- Индикаторы карусели -->
-      <div class="carousel-indicators" id="carousel-indicators">
-        <!-- Индикаторы будут созданы в JS -->
-      </div>
+      <button class="carousel-btn next" id="next-btn">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+    </div>
+    
+    <!-- Индикаторы карусели -->
+    <div class="carousel-indicators" id="carousel-indicators">
+      <!-- Индикаторы будут созданы в JS -->
     </div>
 
     <!-- Форма отзыва -->
-    <div class="max-w-xl mx-auto">
+    <div class="max-w-xl mx-auto mt-16">
       <h3 class="text-2xl font-bold mb-6 text-center">Оставить отзыв</h3>
       <form id="review-form" class="space-y-4">
         <!-- Поле для имени -->
@@ -585,7 +680,8 @@
   // Переменные для карусели
   let currentSlide = 0;
   let totalSlides = 0;
-  let reviewsPerSlide = 3;
+  let visibleCards = 3;
+  let cardWidth = 0;
 
   document.addEventListener('DOMContentLoaded', () => {
     const splash = document.getElementById('splash');
@@ -599,7 +695,13 @@
     initReviews();
     initNav();
     initStarRating();
-    initCarousel(); // Инициализация карусели
+    initCarousel();
+    
+    // Пересчитываем при изменении размера окна
+    window.addEventListener('resize', () => {
+      calculateCardWidth();
+      goToSlide(currentSlide);
+    });
   });
 
   function initNav() {
@@ -737,24 +839,18 @@
     const container = document.getElementById('reviews-container');
     container.innerHTML = '';
 
-    // Рассчитываем количество слайдов
-    reviewsPerSlide = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-    totalSlides = Math.ceil(reviewsArray.length / reviewsPerSlide);
+    // Рассчитываем количество видимых карточек в зависимости от ширины экрана
+    calculateCardWidth();
     
-    // Создаем слайды
-    for (let i = 0; i < reviewsArray.length; i += reviewsPerSlide) {
-      const slide = document.createElement('div');
-      slide.className = 'review-slide';
-      
-      // Добавляем отзывы в текущий слайд
-      for (let j = i; j < i + reviewsPerSlide && j < reviewsArray.length; j++) {
-        const review = reviewsArray[j];
-        const reviewEl = createReviewElement(review);
-        slide.appendChild(reviewEl);
-      }
-      
-      container.appendChild(slide);
-    }
+    // Создаем карточки отзывов
+    reviewsArray.forEach(review => {
+      const reviewEl = createReviewElement(review);
+      reviewEl.classList.add('review-card');
+      container.appendChild(reviewEl);
+    });
+    
+    // Рассчитываем количество слайдов
+    totalSlides = Math.max(0, Math.ceil(reviewsArray.length / visibleCards) - 1);
     
     // Создаем индикаторы
     createIndicators();
@@ -763,9 +859,20 @@
     updateCarouselButtons();
   }
   
+  function calculateCardWidth() {
+    const width = window.innerWidth;
+    if (width < 768) {
+      visibleCards = 1;
+    } else if (width < 1024) {
+      visibleCards = 2;
+    } else {
+      visibleCards = 3;
+    }
+  }
+  
   function createReviewElement(review) {
     const reviewEl = document.createElement('div');
-    reviewEl.className = 'p-6 rounded-2xl bg-gray-50 shadow hover:shadow-lg transition-shadow h-full';
+    reviewEl.className = 'p-6 rounded-2xl bg-gray-50 shadow-lg hover:shadow-xl transition-shadow h-full border border-gray-100';
     
     // Создаем звезды для отзыва
     let starsHtml = '';
@@ -804,7 +911,9 @@
     const indicatorsContainer = document.getElementById('carousel-indicators');
     indicatorsContainer.innerHTML = '';
     
-    for (let i = 0; i < totalSlides; i++) {
+    if (totalSlides <= 0) return;
+    
+    for (let i = 0; i <= totalSlides; i++) {
       const indicator = document.createElement('div');
       indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
       indicator.dataset.index = i;
@@ -819,30 +928,21 @@
     
     prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
     nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-    
-    // Автопрокрутка каждые 5 секунд
-    setInterval(() => {
-      if (currentSlide < totalSlides - 1) {
-        goToSlide(currentSlide + 1);
-      } else {
-        goToSlide(0);
-      }
-    }, 5000);
-    
-    // Обработка изменения размера окна
-    window.addEventListener('resize', () => {
-      initReviews();
-      goToSlide(0);
-    });
   }
   
   function goToSlide(slideIndex) {
-    if (slideIndex < 0 || slideIndex >= totalSlides) return;
+    if (slideIndex < 0 || slideIndex > totalSlides) return;
     
     currentSlide = slideIndex;
     const container = document.getElementById('reviews-container');
-    const slideWidth = 100 / reviewsPerSlide;
-    container.style.transform = `translateX(-${currentSlide * 100}%)`;
+    const cards = container.querySelectorAll('.review-card');
+    
+    if (cards.length === 0) return;
+    
+    // Рассчитываем смещение
+    const cardWidth = cards[0].offsetWidth + 24; // ширина карточки + gap
+    const offset = -currentSlide * visibleCards * cardWidth;
+    container.style.transform = `translateX(${offset}px)`;
     
     // Обновляем индикаторы
     document.querySelectorAll('.indicator').forEach((indicator, index) => {
@@ -861,7 +961,7 @@
     const nextBtn = document.getElementById('next-btn');
     
     prevBtn.disabled = currentSlide === 0;
-    nextBtn.disabled = currentSlide === totalSlides - 1;
+    nextBtn.disabled = currentSlide === totalSlides;
   }
   
   function updateAverageRating(reviews) {
