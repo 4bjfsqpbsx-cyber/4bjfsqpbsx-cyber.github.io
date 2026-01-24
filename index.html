@@ -7,37 +7,14 @@
   <meta name="description" content="Дом быта в Октябрьском: ремонт телефонов, обуви, одежды, изготовление ключей, фото на документы. Ул. Текстильщиков, 7А (Дикси). Работаем 25 лет.">
   <meta name="keywords" content="дом быта октябрьский, ремонт телефонов октябрьский, ремонт обуви октябрьский, ателье Октябрьский, ключи октябрьский, фото на документы октябрьский">
   
-  <!-- Favicon для всех устройств -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%232563eb%22/><text x=%2250%22 y=%2265%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-weight=%22700%22>ВП</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%232563eb%22/><text x=%2250%22 y=%2265%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Arial%22 font-weight=%22700%22>ВП</text></svg>">
-
-  <!-- Структурированные данные для SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "ВСЁ ПОЧИНИМ — Дом быта",
-    "description": "Сервисный центр по ремонту бытовой техники, обуви и одежды в Октябрьском",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ул. Текстильщиков, 7А",
-      "addressLocality": "Октябрьский",
-      "addressRegion": "Московская область",
-      "addressCountry": "RU"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "55.606883",
-      "longitude": "37.969838"
-    },
-    "openingHours": "Mo-Sa 10:00-20:00",
-    "telephone": "+79999295161",
-    "image": "https://via.placeholder.com/1200x630/2563eb/ffffff?text=ВСЁ+ПОЧИНИМ",
-    "priceRange": "₽₽",
-    "url": "https://vse-pochinim-oktyabrsky.ru"
-  }
-  </script>
-
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -53,6 +30,7 @@
     }
   </script>
 
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <style>
@@ -540,7 +518,7 @@
     <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-center">Отзывы наших клиентов</h2>
     <div class="flex items-center justify-center gap-1 mb-12">
       <span id="average-rating" class="text-yellow-400 text-2xl">★★★★★</span>
-      <span id="rating-text" class="text-lg font-bold text-gray-700">4.9 — на основе 152 отзывов</span>
+      <span id="rating-text" class="text-lg font-bold text-gray-700">4.9 — на основе 27 отзывов</span>
     </div>
 
     <!-- Карусель отзывов с видимыми стрелками -->
@@ -918,7 +896,7 @@
     }
   }
 
-  // Работа с отзывами (версия как в первоначальном коде)
+  // Работа с отзывами - ИСПРАВЛЕНО
   const STORAGE_KEY = 'vse_pochinim_reviews';
 
   function initReviews() {
@@ -931,12 +909,37 @@
       { name: 'Светлана М.', text: 'Подшивала брюки в ателье. Шьют качественно, нитки не торчат. Быстро и недорого. Очень довольна!', location: 'Октябрьский', rating: 5 },
       { name: 'Антон Г.', text: 'Поменяли батарейку в наручных часах. Сделали за 5 минут, часы не поцарапали. Профессионалы!', location: 'Октябрьский', rating: 5 },
       { name: 'Екатерина Л.', text: 'Ремонтировали планшет. Всё объяснили, сделали быстро. Гарантию дали. Отличный сервис!', location: 'Московская область', rating: 4 },
-      { name: 'Виктор С.', text: 'Сделали несколько ключей от офиса. Всё работает идеально. Удобно, что можно зайти после работы.', location: 'Октябрьский', rating: 5 }
+      { name: 'Виктор С.', text: 'Сделали несколько ключей от офиса. Всё работает идеально. Удобно, что можно зайти после работы.', location: 'Октябрьский', rating: 5 },
+      { name: 'Наталья В.', text: 'Отличный сервис! Ремонтировала сумку, сделали очень аккуратно и быстро. Цена приятно удивила.', location: 'Октябрьский', rating: 5 },
+      { name: 'Сергей М.', text: 'Поменял батарейку в часах Rolex. Сделали очень бережно, часы не поцарапали. Спасибо за профессионализм!', location: 'Московская область', rating: 5 },
+      { name: 'Ирина К.', text: 'Перешивала пальто. Сделали идеально, все швы ровные. Буду рекомендовать всем знакомым.', location: 'Октябрьский', rating: 5 }
     ];
 
-    let reviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultReviews;
-    renderReviews(reviews);
-    updateAverageRating(reviews);
+    // Загружаем отзывы из localStorage и объединяем с дефолтными
+    let savedReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    
+    // Создаем новый массив, где сначала идут сохраненные отзывы, потом дефолтные
+    // Но фильтруем, чтобы не было дубликатов
+    let allReviews = [...savedReviews];
+    
+    // Добавляем дефолтные отзывы, которых еще нет в сохраненных
+    defaultReviews.forEach(defaultReview => {
+      const exists = allReviews.some(savedReview => 
+        savedReview.name === defaultReview.name && 
+        savedReview.text === defaultReview.text
+      );
+      if (!exists) {
+        allReviews.push(defaultReview);
+      }
+    });
+    
+    // Ограничиваем общее количество отзывов (например, 50)
+    if (allReviews.length > 50) {
+      allReviews = allReviews.slice(0, 50);
+    }
+    
+    renderReviews(allReviews);
+    updateAverageRating(allReviews);
   }
 
   function renderReviews(reviewsArray) {
@@ -955,6 +958,9 @@
     
     createIndicators();
     updateCarouselButtons();
+    
+    // Обновляем количество отзывов в заголовке
+    document.getElementById('rating-text').textContent = `4.9 — на основе ${reviewsArray.length} отзывов`;
   }
   
   function calculateCardWidth() {
@@ -981,13 +987,13 @@
       }
     }
     
+    // УБРАНА ДАТА из отзыва
     reviewEl.innerHTML = `
       <div class="flex justify-between items-start mb-4">
         <div class="flex items-center gap-2">
           ${starsHtml}
           <span class="text-sm font-bold text-gray-700">${review.rating}.0</span>
         </div>
-        <span class="text-xs text-gray-500">${review.date || ''}</span>
       </div>
       <p class="text-gray-700 mb-4 text-sm leading-relaxed">${review.text}</p>
       <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
@@ -1091,17 +1097,27 @@
   }
 
   function saveReview(name, text, rating) {
-    const reviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    const savedReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    
+    // Создаем новый отзыв БЕЗ ДАТЫ
     const newReview = {
       name: name,
       text: text,
       rating: rating,
-      location: 'Октябрьский',
-      date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
+      location: 'Октябрьский'
+      // НЕТ ДАТЫ - специально убрали
     };
-    reviews.unshift(newReview);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
-    return reviews;
+    
+    // Добавляем новый отзыв в начало
+    savedReviews.unshift(newReview);
+    
+    // Сохраняем обратно в localStorage
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedReviews));
+    
+    // Перезагружаем все отзывы (объединяем сохраненные с дефолтными)
+    initReviews();
+    
+    return savedReviews;
   }
 
   document.getElementById('review-form').addEventListener('submit', function(e) {
@@ -1137,9 +1153,7 @@
       return;
     }
     
-    const updatedReviews = saveReview(name, text, currentRating);
-    renderReviews(updatedReviews);
-    updateAverageRating(updatedReviews);
+    saveReview(name, text, currentRating);
     
     successMsg.classList.remove('hidden');
     this.reset();
