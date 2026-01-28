@@ -23,6 +23,42 @@
     <!-- Для старых браузеров -->
     <link rel="shortcut icon" href="https://img.icons8.com/color/48/000000/maintenance.png" type="image/x-icon">
     
+    <!-- Schema.org микроразметка для LocalBusiness -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "ВСЁ ПОЧИНИМ — Дом быта",
+        "image": "",
+        "description": "Дом быта в Октябрьском: ремонт телефонов, обуви, одежды, изготовление ключей, фото на документы. Работаем 25 лет.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "улица Текстильщиков, 7А",
+            "addressLocality": "Октябрьский",
+            "addressRegion": "Московская область",
+            "addressCountry": "RU"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 55.606883,
+            "longitude": 37.969838
+        },
+        "url": "",
+        "telephone": "+79999295161",
+        "priceRange": "₽₽",
+        "openingHours": "Mo-Sa 10:00-20:00",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "10:00",
+                "closes": "20:00"
+            }
+        ],
+        "sameAs": []
+    }
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -542,8 +578,17 @@
             <div class="carousel-indicators" id="carousel-indicators">
             </div>
             
-            <div class="max-w-xl mx-auto mt-16">
-                <h3 class="text-2xl font-bold mb-6 text-center">Оставить отзыв</h3>
+            <!-- Предупреждение для пользователей -->
+            <div class="max-w-xl mx-auto mt-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+                <p class="text-yellow-700 text-sm">
+                    <i data-lucide="info" class="w-4 h-4 inline-block mr-1"></i>
+                    Отзывы сохраняются только в вашем браузере и будут видны только вам. 
+                    Для публичных отзывов напишите нам в WhatsApp или Telegram.
+                </p>
+            </div>
+            
+            <div class="max-w-xl mx-auto mt-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Оставить отзыв (только для вас)</h3>
                 <form id="review-form" class="space-y-4">
                     <input type="text" id="review-name" placeholder="Ваше имя" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required />
                     
@@ -584,13 +629,16 @@
                     
                     <textarea id="review-text" placeholder="Поделитесь вашими впечатлениями о наших услугах (минимум 10 символов)" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" rows="4" required minlength="10"></textarea>
                     
-                    <button type="submit" class="w-full bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Опубликовать отзыв</button>
+                    <button type="submit" class="w-full bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Сохранить отзыв (для себя)</button>
+                    <p class="text-sm text-gray-500 text-center mt-2">
+                        Этот отзыв будет сохранён только в вашем браузере
+                    </p>
                 </form>
                 
                 <div id="review-success" class="hidden mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
                     <div class="flex items-center gap-2 text-green-600 font-bold">
                         <i data-lucide="check-circle" class="w-5 h-5"></i>
-                        <span>Спасибо! Ваш отзыв опубликован.</span>
+                        <span>Спасибо! Ваш отзыв сохранён в вашем браузере.</span>
                     </div>
                 </div>
                 <div id="review-error" class="hidden mt-4 p-4 bg-red-50 rounded-lg border border-red-200">
@@ -907,7 +955,38 @@
             createIndicators();
             updateCarouselButtons();
             
-            document.getElementById('rating-text').textContent = `4.9 — на основе ${reviewsArray.length} отзывов`;
+            // Честный подсчёт отзывов
+            updateRatingDisplay(reviewsArray);
+        }
+        
+        function updateRatingDisplay(reviewsArray) {
+            if (reviewsArray.length === 0) {
+                document.getElementById('rating-text').textContent = 'Пока нет отзывов';
+                return;
+            }
+            
+            const totalRating = reviewsArray.reduce((sum, review) => sum + review.rating, 0);
+            const averageRating = totalRating / reviewsArray.length;
+            const roundedRating = Math.round(averageRating * 10) / 10; // Округление до десятых
+            
+            document.getElementById('rating-text').textContent = `${roundedRating} — на основе ${reviewsArray.length} отзывов`;
+            
+            // Обновляем звёздочки
+            const averageRatingElement = document.getElementById('average-rating');
+            let starsHTML = '';
+            const fullStars = Math.floor(roundedRating);
+            const hasHalfStar = roundedRating % 1 >= 0.5;
+            
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    starsHTML += '★';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    starsHTML += '☆';
+                } else {
+                    starsHTML += '☆';
+                }
+            }
+            averageRatingElement.innerHTML = starsHTML;
         }
         
         function calculateCardWidth() {
@@ -1025,12 +1104,9 @@
             
             const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
             const averageRating = totalRating / reviews.length;
-            const roundedRating = 4.9;
+            const roundedRating = Math.round(averageRating * 10) / 10;
             
             document.getElementById('rating-text').textContent = `${roundedRating} — на основе ${reviews.length} отзывов`;
-            
-            const averageRatingElement = document.getElementById('average-rating');
-            averageRatingElement.innerHTML = '★★★★★';
         }
         
         function saveReview(name, text, rating) {
@@ -1040,7 +1116,8 @@
                 name: name,
                 text: text,
                 rating: rating,
-                location: 'Октябрьский'
+                location: 'Октябрьский',
+                date: new Date().toISOString()
             };
             
             userReviews.unshift(newReview);
