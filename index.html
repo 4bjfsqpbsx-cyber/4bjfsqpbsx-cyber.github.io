@@ -1,1 +1,1100 @@
-<!DOCTYPE html> <html lang="ru"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>ВСЁ ПОЧИНИМ — Дом быта и бытовые услуги в Октябрьском</title> <meta name="description" content="Дом быта в Октябрьском: ремонт телефонов, обуви, одежды, изготовление ключей, фото на документы. Ул. Текстильщиков, 7А (Дикси). Работаем 25 лет."> <meta name="keywords" content="дом быта октябрьский, ремонт телефонов октябрьский, ремонт обуви октябрьский, ателье Октябрьский, ключи октябрьский, фото на документы октябрьский"> <!-- Favicon --> <link rel="icon" type="image/x-icon" href="favicon.ico"> <link rel="icon" type="image/png" href="favicon.png"> <!-- Tailwind CSS --> <script src="https://cdn.tailwindcss.com"></script> <script> tailwind.config = { theme: { extend: { colors: { graphite: '#1f2933', accent: '#2563eb', accent2: '#f97316' } } } } </script> <!-- Lucide Icons --> <script src="https://unpkg.com/lucide@latest"></script> <style> html { scroll-behavior: smooth; } .splash-hidden { opacity: 0; pointer-events: none; transition: opacity 0.5s; } #map { width: 100%; height: 400px; border-radius: 0.75rem; } .float-animation { animation: float 3s ease-in-out infinite; } @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } } .nav-link.active { color: #2563eb; border-bottom: 2px solid #2563eb; } /* Стили для звезд рейтинга */ .star-rating { display: flex; gap: 4px; } .star { cursor: pointer; transition: all 0.2s; } .star:hover { transform: scale(1.1); } .star.active svg { fill: #fbbf24; stroke: #f59e0b; } .star svg { stroke: #d1d5db; stroke-width: 2px; } /* Стили для карусели отзывов */ .reviews-carousel-wrapper { position: relative; width: 100%; padding: 0 60px; } .reviews-carousel { overflow: hidden; position: relative; } .reviews-container { display: flex; gap: 24px; transition: transform 0.5s ease-in-out; padding: 10px 0; } .review-card { flex: 0 0 calc(33.333% - 16px); min-width: 0; box-sizing: border-box; } .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: white; border: 2px solid #2563eb; width: 48px; height: 48px; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: all 0.3s ease; } .carousel-btn:hover { background: #2563eb; color: white; transform: translateY(-50%) scale(1.1); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3); } .carousel-btn:disabled { opacity: 0.3; cursor: not-allowed; border-color: #d1d5db; } .carousel-btn:disabled:hover { background: white; color: inherit; transform: translateY(-50%); box-shadow: 0 4px 12px rgba(0,0,0,0.1); } .carousel-btn.prev { left: 0; } .carousel-btn.next { right: 0; } .carousel-indicators { display: flex; justify-content: center; gap: 8px; margin-top: 32px; } .indicator { width: 10px; height: 10px; border-radius: 50%; background: #d1d5db; cursor: pointer; transition: all 0.3s; } .indicator.active { background: #2563eb; width: 30px; border-radius: 5px; } @media (max-width: 1024px) { .review-card { flex: 0 0 calc(50% - 12px); } .reviews-carousel-wrapper { padding: 0 50px; } } @media (max-width: 768px) { .review-card { flex: 0 0 100%; } .reviews-carousel-wrapper { padding: 0 40px; } .carousel-btn { width: 40px; height: 40px; } } @media (max-width: 480px) { .reviews-carousel-wrapper { padding: 0 30px; } } </style> </head> <body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold"> <!-- Splash Screen --> <div id="splash" class="fixed inset-0 bg-accent z-50 flex items-center justify-center"> <div class="text-white text-6xl md:text-7xl font-extrabold animate-pulse">ВП</div> </div> <!-- Header --> <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm shadow"> <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"> <div class="flex items-center gap-3"> <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white font-extrabold">ВП</div> <div class="text-2xl md:text-3xl font-extrabold hidden sm:block">ВСЁ ПОЧИНИМ</div> </div> <div class="hidden md:flex items-center space-x-6"> <nav class="flex space-x-6 text-sm"> <a href="#services" class="nav-link hover:text-accent py-1">Услуги</a> <a href="#stats" class="nav-link hover:text-accent py-1">Опыт 25 лет</a> <a href="#faq" class="nav-link hover:text-accent py-1">Вопросы</a> <a href="#reviews" class="nav-link hover:text-accent py-1">Отзывы</a> <a href="#contacts" class="nav-link hover:text-accent py-1">Контакты</a> </nav> <div class="h-6 w-px bg-gray-300"></div> <div class="flex flex-col items-end"> <a href="tel:+79999295161" aria-label="Позвонить по номеру +7 (999) 929-51-61" class="text-lg font-bold text-accent hover:text-blue-700 transition-colors"> +7 (999) 929-51-61 </a> <span class="text-xs text-gray-500">ГЕОРГИЙ</span> </div> </div> <div class="md:hidden flex items-center gap-2"> <a href="tel:+79999295161" aria-label="Позвонить" class="text-accent font-bold">+7 (999) 929-51-61</a> <span class="text-xs text-gray-500">ГЕОРГИЙ</span> </div> </div> </header> <!-- Hero --> <section class="bg-white"> <div class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center"> <div> <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Дом быта в Октябрьском — мы всё починим рядом с домом</h1> <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте. Работаем в Октябрьском более 25 лет.</p> <div class="flex flex-wrap gap-4"> <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Посмотреть услуги</a> <a href="#contacts" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Срочный ремонт</a> </div> <div class="mt-8 grid grid-cols-2 gap-4"> <div class="flex items-center gap-2"> <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center"> <i data-lucide="check-circle" class="w-4 h-4 text-green-600" aria-hidden="true"></i> </div> <span class="text-sm">Гарантия</span> </div> <div class="flex items-center gap-2"> <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"> <i data-lucide="clock" class="w-4 h-4 text-blue-600" aria-hidden="true"></i> </div> <span class="text-sm">В день</span> </div> <div class="flex items-center gap-2"> <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center"> <i data-lucide="shield" class="w-4 h-4 text-blue-600" aria-hidden="true"></i> </div> <span class="text-sm">Качество</span> </div> <div class="flex items-center gap-2"> <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center"> <i data-lucide="dollar-sign" class="w-4 h-4 text-orange-600" aria-hidden="true"></i> </div> <span class="text-sm">Честные цены</span> </div> </div> </div> <div class="relative float-animation"> <div class="relative rounded-2xl overflow-hidden shadow-2xl"> <div class="bg-gradient-to-br from-accent via-blue-600 to-blue-800 h-64 md:h-80 relative"> <div class="absolute inset-0 flex flex-col items-center justify-center p-6"> <div class="text-center mb-6"> <div class="text-3xl md:text-4xl font-black text-white mb-2">ВСЁ ПОЧИНИМ</div> <div class="text-xl md:text-2xl font-bold text-white/90">ДОМ БЫТА В ОКТЯБРЬСКОМ</div> </div> <div class="flex flex-wrap justify-center gap-4 md:gap-6"> <div class="flex flex-col items-center"> <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg"> <i data-lucide="smartphone" class="w-7 h-7 md:w-8 md:h-8 text-accent" aria-hidden="true"></i> </div> <span class="text-white text-sm md:text-base font-semibold text-center">Ремонт<br>телефонов</span> </div> <div class="flex flex-col items-center"> <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg"> <i data-lucide="key" class="w-7 h-7 md:w-8 md:h-8 text-accent" aria-hidden="true"></i> </div> <span class="text-white text-sm md:text-base font-semibold text-center">Изготовление<br>ключей</span> </div> <div class="flex flex-col items-center"> <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg"> <i data-lucide="camera" class="w-7 h-7 md:w-8 md:h-8 text-accent" aria-hidden="true"></i> </div> <span class="text-white text-sm md:text-base font-semibold text-center">Фото на<br>документы</span> </div> </div> </div> </div> </div> </div> </div> </section> <!-- SEO текст про дом быта --> <section class="py-12 bg-gray-50"> <div class="max-w-7xl mx-auto px-4"> <div class="prose max-w-none"> <h2 class="text-3xl font-bold mb-6">Дом быта в Октябрьском — сервисный центр "ВСЁ ПОЧИНИМ"</h2> <p class="text-lg mb-4">Ищете <strong>дом быта в Октябрьском</strong>? Наш сервисный центр "ВСЁ ПОЧИНИМ" предлагает полный спектр бытовых услуг в одном месте. Мы работаем в посёлке Октябрьский уже более 25 лет, помогая жителям с ремонтом и обслуживанием.</p> <p class="mb-4">Как <strong>дом быта в Октябрьском</strong> мы предоставляем:</p> <ul class="list-disc pl-5 mb-4"> <li>Ремонт мобильных телефонов и планшетов</li> <li>Ремонт обуви любой сложности</li> <li>Ателье — ремонт и пошив одежды</li> <li>Изготовление ключей всех типов</li> <li>Фото на документы</li> <li>Замена батареек в часах</li> </ul> <p class="mb-4">Наш <strong>дом быта</strong> расположен по адресу: <strong>Октябрьский, ул. Текстильщиков, 7А</strong> (в магазине Дикси). Удобное расположение позволяет совместить посещение нашего сервиса с покупками.</p> <p>Если вам нужен надежный <strong>дом быта в Октябрьском</strong> — обращайтесь в "ВСЁ ПОЧИНИМ". Мы работаем с понедельника по субботу с 10:00 до 20:00. Телефон: <strong>+7 (999) 929-51-61</strong> (Георгий).</p> </div> </div> </section> <!-- Services --> <section id="services" class="py-20 bg-white"> <div class="max-w-7xl mx-auto px-4"> <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Наши услуги в Октябрьском</h2> <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"> <!-- Ремонт телефонов --> <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow"> <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4" aria-hidden="true"></i> <h3 class="font-bold text-lg mb-2">Ремонт телефонов</h3> <p class="text-sm text-gray-600">Смартфоны, планшеты, электроника</p> <div class="mt-4 flex gap-2"> <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 15 мин</span> <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span> </div> </div> <!-- Батарейки в часах --> <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow"> <i data-lucide="watch" class="w-12 h-12 text-accent mb-4" aria-hidden="true"></i> <h3 class="font-bold text-lg mb-2">Батарейки в часах</h3> <p class="text-sm text-gray-600">Быстрая замена любых типов</p> <div class="mt-4 flex gap-2"> <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span> <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">аккуратно</span> </div> </div> <!-- Ремонт обуви --> <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow"> <div class="w-12 h-12 text-accent mb-4"> <svg class="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path> </svg> </div> <h3 class="font-bold text-lg mb-2">Ремонт обуви</h3> <p class="text-sm text-gray-600">Каблуки, подошвы, реставрация</p> <div class="mt-4 flex gap-2"> <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">в день</span> <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">надёжно</span> </div> </div> <!-- Ателье --> <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow"> <i data-lucide="scissors" class="w-12 h-12 text-accent mb-4" aria-hidden="true"></i> <h3 class="font-bold text-lg mb-2">Ателье</h3> <p class="text-sm text-gray-600">Ремонт и подгонка одежды</p> <div class="mt-4 flex gap-2"> <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 30 мин</span> <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span> </div> </div> <!-- Фото на документы --> <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow"> <i data-lucide="camera" class="w-12 h-12 text-accent mb-4" aria-hidden="true"></i> <h3 class="font-bold text-lg mb-2">Фото на документы</h3> <p class="text-sm text-gray-600">Быстро и официально</p> <div class="mt-4 flex gap-2"> <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">15 мин</span> <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">чётко</span> </div> </div> <!-- Изготовление ключей --> <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow"> <i data-lucide="key" class="w-12 h-12 text-accent mb-4" aria-hidden="true"></i> <h3 class="font-bold text-lg mb-2">Изготовление ключей</h3> <p class="text-sm text-gray-600">Квартирные и офисные</p> <div class="mt-4 flex gap-2"> <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span> <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">точно</span> </div> </div> </div> </div> </section> <!-- Statistics --> <section id="stats" class="py-20 bg-gradient-to-r from-accent/10 to-accent2/10"> <div class="max-w-7xl mx-auto px-4"> <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Наша статистика</h2> <div class="grid grid-cols-2 md:grid-cols-4 gap-8"> <div class="text-center p-6 bg-white rounded-2xl shadow-lg"> <div class="text-5xl font-bold text-accent mb-3">25+</div> <p class="text-gray-700 font-semibold">лет опыта</p> <p class="text-sm text-gray-500">С 1999 года</p> </div> <div class="text-center p-6 bg-white rounded-2xl shadow-lg"> <div class="text-5xl font-bold text-accent mb-3">15К+</div> <p class="text-gray-700 font-semibold">клиентов</p> <p class="text-sm text-gray-500">Довольных работой</p> </div> <div class="text-center p-6 bg-white rounded-2xl shadow-lg"> <div class="text-5xl font-bold text-accent mb-3">98%</div> <p class="text-gray-700 font-semibold">в день</p> <p class="text-sm text-gray-500">Быстрый ремонт</p> </div> <div class="text-center p-6 bg-white rounded-2xl shadow-lg"> <div class="text-5xl font-bold text-accent mb-3">6</div> <p class="text-gray-700 font-semibold">услуг</p> <p class="text-sm text-gray-500">В одном месте</p> </div> </div> </div> </section> <!-- FAQ Section --> <section id="faq" class="py-20 bg-white"> <div class="max-w-3xl mx-auto px-4"> <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Частые вопросы</h2> <div class="space-y-4"> <!-- FAQ Item 1 --> <div class="border border-gray-200 rounded-xl overflow-hidden"> <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors" aria-expanded="false"> <span>Как быстро вы делаете фото на документы?</span> <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" aria-hidden="true"></i> </button> <div class="faq-answer hidden p-6 bg-white"> <p class="text-gray-600">Фото на документы мы делаем за 15-20 минут. Все фотографии соответствуют официальным требованиям, их можно использовать для любых документов.</p> </div> </div> <!-- FAQ Item 2 --> <div class="border border-gray-200 rounded-xl overflow-hidden"> <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors" aria-expanded="false"> <span>Можно ли сделать ключ от автомобиля?</span> <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" aria-hidden="true"></i> </button> <div class="faq-answer hidden p-6 bg-white"> <p class="text-gray-600">Да, мы изготавливаем ключи от автомобилей.</p> </div> </div> <!-- FAQ Item 3 --> <div class="border border-gray-200 rounded-xl overflow-hidden"> <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors" aria-expanded="false"> <span>Вы работаете с понедельника по пятницу. А если срочно нужно в выходные?</span> <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" aria-hidden="true"></i> </button> <div class="faq-answer hidden p-6 bg-white"> <p class="text-gray-600">По предварительной договорённости возможен срочный ремонт в выходные дни. Просто позвоните нам заранее, и мы постараемся найти удобное время.</p> </div> </div> <!-- FAQ Item 4 --> <div class="border border-gray-200 rounded-xl overflow-hidden"> <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors" aria-expanded="false"> <span>Можно ли отремонтировать сумку или рюкзак?</span> <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" aria-hidden="true"></i> </button> <div class="faq-answer hidden p-6 bg-white"> <p class="text-gray-600">Да, в нашем ателье мы ремонтируем не только одежду, но и различные аксессуары: сумки, рюкзаки, кошельки и другие изделия из кожи и ткани.</p> </div> </div> <!-- FAQ Item 5 --> <div class="border border-gray-200 rounded-xl overflow-hidden"> <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors" aria-expanded="false"> <span>Какие документы нужны для ремонта телефона?</span> <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" aria-hidden="true"></i> </button> <div class="faq-answer hidden p-6 bg-white"> <p class="text-gray-600">Для ремонта телефона не нужны никакие документы. Достаточно принести само устройство. Мы работаем быстро и без лишних формальностей.</p> </div> </div> <!-- FAQ Item 6 --> <div class="border border-gray-200 rounded-xl overflow-hidden"> <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors" aria-expanded="false"> <span>Есть ли у вас в наличии батарейки для часов?</span> <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" aria-hidden="true"></i> </button> <div class="faq-answer hidden p-6 bg-white"> <p class="text-gray-600">У нас большой выбор батареек для часов различных типов и размеров. Если нужной батарейки не окажется в наличии, мы можем быстро её заказать.</p> </div> </div> <!-- FAQ Item 7 --> <div class="border border-gray-200 rounded-xl overflow-hidden"> <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors" aria-expanded="false"> <span>Вы ремонтируете планшеты и ноутбуки?</span> <i data-lucide="chevron-down" class="w-5 h-5 transition-transform" aria-hidden="true"></i> </button> <div class="faq-answer hidden p-6 bg-white"> <p class="text-gray-600">Да, мы ремонтируем не только телефоны, но и планшеты, ноутбуки, а также другую электронную технику. Приносите свою технику, и мы её починим.</p> </div> </div> </div> </div> </section> <!-- Reviews --> <section id="reviews" class="py-20 bg-white"> <div class="max-w-7xl mx-auto px-4"> <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-center">Отзывы наших клиентов</h2> <div class="flex items-center justify-center gap-1 mb-12"> <span id="average-rating" class="text-yellow-400 text-2xl">★★★★★</span> <span id="rating-text" class="text-lg font-bold text-gray-700">4.9 — на основе 27 отзывов</span> </div> <!-- Карусель отзывов с видимыми стрелками --> <div class="reviews-carousel-wrapper"> <button class="carousel-btn prev" id="prev-btn"> <i data-lucide="chevron-left" class="w-6 h-6"></i> </button> <div class="reviews-carousel"> <div class="reviews-container" id="reviews-container"> <!-- Отзывы будут загружены из JS --> </div> </div> <button class="carousel-btn next" id="next-btn"> <i data-lucide="chevron-right" class="w-6 h-6"></i> </button> </div> <!-- Индикаторы карусели --> <div class="carousel-indicators" id="carousel-indicators"> <!-- Индикаторы будут созданы в JS --> </div> <!-- Форма отзыва --> <div class="max-w-xl mx-auto mt-16"> <h3 class="text-2xl font-bold mb-6 text-center">Оставить отзыв</h3> <form id="review-form" class="space-y-4"> <!-- Поле для имени --> <input type="text" id="review-name" placeholder="Ваше имя" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required /> <!-- Рейтинг звездами --> <div class="mb-4"> <p class="text-gray-700 mb-2 font-medium text-center">Оцените наши услуги:</p> <div class="star-rating mb-2 justify-center" id="star-rating"> <div class="star" data-rating="1"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"> <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/> </svg> </div> <div class="star" data-rating="2"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"> <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/> </svg> </div> <div class="star" data-rating="3"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"> <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/> </svg> </div> <div class="star" data-rating="4"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"> <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/> </svg> </div> <div class="star" data-rating="5"> <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"> <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/> </svg> </div> </div> <div class="flex justify-between items-center"> <span id="rating-value" class="text-sm text-gray-600">Выберите оценку</span> <span id="selected-rating" class="text-lg font-bold text-accent2 hidden"></span> </div> </div> <!-- Поле для текста отзыва --> <textarea id="review-text" placeholder="Поделитесь вашими впечатлениями о наших услугах (минимум 10 символов)" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" rows="4" required minlength="10"></textarea> <!-- Кнопка отправки --> <button type="submit" class="w-full bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Опубликовать отзыв</button> </form> <!-- Сообщения об успехе/ошибке --> <div id="review-success" class="hidden mt-4 p-4 bg-green-50 rounded-lg border border-green-200"> <div class="flex items-center gap-2 text-green-600 font-bold"> <i data-lucide="check-circle" class="w-5 h-5"></i> <span>Спасибо! Ваш отзыв опубликован.</span> </div> </div> <div id="review-error" class="hidden mt-4 p-4 bg-red-50 rounded-lg border border-red-200"> <div class="flex items-center gap-2 text-red-600 font-bold"> <i data-lucide="alert-circle" class="w-5 h-5"></i> <span id="error-message">Пожалуйста, заполните все поля.</span> </div> </div> </div> </div> </section> <!-- Contacts --> <section id="contacts" class="py-20"> <div class="max-w-7xl mx-auto px-4"> <div class="grid md:grid-cols-2 gap-12 items-center mb-12"> <div> <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Контакты</h2> <p class="text-gray-700 mb-4 text-lg">Приходите в наш сервис</p> <!-- Единственное упоминание про Дикси --> <div class="mb-6 p-4 bg-red-50 rounded-xl border border-red-100"> <div class="flex items-center gap-3"> <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center"> <span class="text-white font-bold">Д</span> </div> <div> <p class="font-bold text-gray-800">Находимся в магазине <span class="text-red-600">Дикси</span></p> <p class="text-sm text-gray-600">Удобное расположение, можно совместить с покупками</p> </div> </div> </div> <div class="space-y-3 text-lg"> <p class="font-bold">Телефон:</p> <div class="flex flex-col"> <a href="tel:+79999295161" class="text-2xl font-bold text-accent hover:text-blue-700 transition-colors"> +7 (999) 929-51-61 </a> <span class="text-base text-gray-600">ГЕОРГИЙ</span> </div> <p class="font-bold mt-4">График:</p> <p>Пн–Сб: 10:00 – 20:00</p> <p class="text-gray-600">Вс: выходной</p> <p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold hover:underline">photo_ostov@mail.ru</a></p> <p class="text-gray-700 font-bold">Адрес:</p> <p>Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p> <p class="text-red-600 font-semibold">(в магазине Дикси)</p> </div> </div> <div> <div id="map" class="rounded-xl overflow-hidden shadow-lg"></div> <div class="mt-4 text-sm text-gray-600"> <span>Используйте колесико мыши для приближения и перемещения</span> </div> </div> </div> <div class="mt-8"> <a href="https://yandex.ru/maps/213/moscow/?ll=37.969838%2C55.606883&z=17&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%94%D0%B8%D0%BA%D1%81%D0%B8" target="_blank" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors"> <i data-lucide="map-pin" class="w-5 h-5"></i> <span>Построить маршрут</span> </a> </div> </div> </section> <!-- Footer --> <footer class="bg-graphite text-white py-6"> <div class="max-w-7xl mx-auto px-4"> <div class="flex flex-col md:flex-row justify-between items-center mb-6"> <div class="flex items-center gap-3 mb-4 md:mb-0"> <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-extrabold">ВП</div> <span>© Дом быта "ВСЁ ПОЧИНИМ", <span id="currentYear">2026</span></span> </div> <div class="text-center md:text-right"> <p>Сервисный центр в Октябрьском</p> <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61 (ГЕОРГИЙ)</p> </div> </div> </div> </footer> <!-- WhatsApp кнопка --> <a href="https://wa.me/79999295161?text=Здравствуйте!%20Пишу%20с%20сайта%20ВСЁ%20ПОЧИНИМ.%20Интересует%20информация%20по%20услугам." target="_blank" rel="noopener noreferrer" class="fixed bottom-24 right-4 z-30 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-green-600 transition-colors hover:shadow-xl"> <i data-lucide="message-circle" class="w-5 h-5"></i> <span class="hidden sm:inline">Написать в WhatsApp</span> </a> <!-- Telegram кнопка --> <a href="https://t.me/+79999295161" target="_blank" rel="noopener noreferrer" class="fixed bottom-36 right-4 z-30 bg-blue-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-blue-600 transition-colors hover:shadow-xl"> <i data-lucide="send" class="w-5 h-5"></i> <span class="hidden sm:inline">Написать в Telegram</span> </a> <!-- Кнопка меню быстрой связи (только на мобильных) --> <div class="md:hidden fixed bottom-20 right-4 z-30"> <button id="messenger-toggle" class="bg-accent text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-colors"> <i data-lucide="message-square" class="w-6 h-6"></i> </button> </div> <!-- Мобильные кнопки --> <a href="#contacts" class="fixed bottom-4 right-4 z-30 md:hidden bg-accent2 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2"> <i data-lucide="map-pin" class="w-5 h-5"></i> <span>Контакты</span> </a> <a href="tel:+79999295161" class="fixed bottom-4 left-4 z-30 md:hidden bg-green-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2"> <i data-lucide="phone" class="w-5 h-5"></i> <span>Позвонить</span> </a> <script> lucide.createIcons(); document.getElementById('currentYear').textContent = new Date().getFullYear(); // Переменные для карусели let currentSlide = 0; let totalSlides = 0; let visibleCards = 3; document.addEventListener('DOMContentLoaded', () => { const splash = document.getElementById('splash'); setTimeout(() => { splash.classList.add('splash-hidden'); setTimeout(() => splash.remove(), 500); }, 1200); initMap(); initFAQ(); initReviews(); initNav(); initStarRating(); initCarousel(); initMessengerToggle(); window.addEventListener('resize', () => { calculateCardWidth(); goToSlide(currentSlide); }); }); function initNav() { const sections = document.querySelectorAll('section[id]'); const navLinks = document.querySelectorAll('.nav-link'); const observerOptions = { root: null, rootMargin: '-20% 0px -80% 0px', threshold: 0 }; const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const id = entry.target.getAttribute('id'); navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === #${id}) { link.classList.add('active'); } }); } }); }, observerOptions); sections.forEach(section => observer.observe(section)); } function initFAQ() { const faqQuestions = document.querySelectorAll('.faq-question'); faqQuestions.forEach(question => { question.addEventListener('click', () => { const answer = question.nextElementSibling; const icon = question.querySelector('i'); const isExpanded = question.getAttribute('aria-expanded') === 'true'; answer.classList.toggle('hidden'); question.setAttribute('aria-expanded', !isExpanded); icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)'; }); }); } function initMessengerToggle() { const toggleBtn = document.getElementById('messenger-toggle'); if (!toggleBtn) return; const whatsappBtn = document.querySelector('a[href*="wa.me"]'); const telegramBtn = document.querySelector('a[href*="t.me"]'); let messengersVisible = false; toggleBtn.addEventListener('click', () => { messengersVisible = !messengersVisible; if (messengersVisible) { whatsappBtn.style.transform = 'translateY(-60px)'; telegramBtn.style.transform = 'translateY(-120px)'; whatsappBtn.style.opacity = '1'; telegramBtn.style.opacity = '1'; toggleBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>'; lucide.createIcons(); } else { whatsappBtn.style.transform = 'translateY(0)'; telegramBtn.style.transform = 'translateY(0)'; whatsappBtn.style.opacity = '0'; telegramBtn.style.opacity = '0'; toggleBtn.innerHTML = '<i data-lucide="message-square" class="w-6 h-6"></i>'; lucide.createIcons(); } }); whatsappBtn.style.transition = 'all 0.3s ease'; telegramBtn.style.transition = 'all 0.3s ease'; whatsappBtn.style.opacity = '0'; telegramBtn.style.opacity = '0'; } // Звездный рейтинг let currentRating = 0; function initStarRating() { const stars = document.querySelectorAll('.star'); const ratingValue = document.getElementById('rating-value'); const selectedRating = document.getElementById('selected-rating'); stars.forEach(star => { star.addEventListener('click', () => { const rating = parseInt(star.getAttribute('data-rating')); setRating(rating); }); star.addEventListener('mouseover', () => { const rating = parseInt(star.getAttribute('data-rating')); highlightStars(rating); updateRatingText(rating); }); }); document.getElementById('star-rating').addEventListener('mouseleave', () => { highlightStars(currentRating); updateRatingText(currentRating); }); } function setRating(rating) { currentRating = rating; highlightStars(rating); updateRatingText(rating); const selectedRating = document.getElementById('selected-rating'); selectedRating.textContent = ${rating} из 5; selectedRating.classList.remove('hidden'); } function highlightStars(rating) { const stars = document.querySelectorAll('.star'); stars.forEach(star => { const starRating = parseInt(star.getAttribute('data-rating')); if (starRating <= rating) { star.classList.add('active'); } else { star.classList.remove('active'); } }); } function updateRatingText(rating) { const ratingValue = document.getElementById('rating-value'); if (rating === 0) { ratingValue.textContent = 'Выберите оценку'; } else { const texts = { 1: 'Ужасно', 2: 'Плохо', 3: 'Нормально', 4: 'Хорошо', 5: 'Отлично!' }; ratingValue.textContent = texts[rating] || ''; } } // Работа с отзывами - ИСПРАВЛЕННАЯ ВЕРСИЯ const STORAGE_KEY = 'vse_pochinim_user_reviews'; function initReviews() { const defaultReviews = [ { name: 'Алексей К.', text: 'Очень удобно, что всё в одном месте. Менял батарейку в часах и сделал ключ — заняло 10 минут. Обслуживание на высшем уровне!', location: 'Октябрьский', rating: 5 }, { name: 'Марина С.', text: 'Чинили телефон после падения — всё сделали быстро и аккуратно. Теперь работает как новый. Спасибо за качественную работу!', location: 'Московская область', rating: 5 }, { name: 'Игорь В.', text: 'Делал фото на документы, очень понравилось отношение и качество. Быстро и недорого. Рекомендую всем знакомым!', location: 'Октябрьский', rating: 5 }, { name: 'Ольга П.', text: 'Отремонтировала любимые сапоги. Сделали быстро, качественно и за разумные деньги. Буду обращаться ещё!', location: 'Октябрьский', rating: 4 }, { name: 'Дмитрий Н.', text: 'Сделали ключ от квартиры. Работали аккуратно, ключ подошёл идеально. Цена порадовала. Спасибо!', location: 'Московская область', rating: 5 }, { name: 'Светлана М.', text: 'Подшивала брюки в ателье. Шьют качественно, нитки не торчат. Быстро и недорого. Очень довольна!', location: 'Октябрьский', rating: 5 }, { name: 'Антон Г.', text: 'Поменяли батарейку в наручных часах. Сделали за 5 минут, часы не поцарапали. Профессионалы!', location: 'Октябрьский', rating: 5 }, { name: 'Екатерина Л.', text: 'Ремонтировали планшет. Всё объяснили, сделали быстро. Гарантию дали. Отличный сервис!', location: 'Московская область', rating: 4 }, { name: 'Виктор С.', text: 'Сделали несколько ключей от офиса. Всё работает идеально. Удобно, что можно зайти после работы.', location: 'Октябрьский', rating: 5 }, { name: 'Наталья В.', text: 'Отличный сервис! Ремонтировала сумку, сделали очень аккуратно и быстро. Цена приятно удивила.', location: 'Октябрьский', rating: 5 }, { name: 'Сергей М.', text: 'Поменял батарейку в часах Rolex. Сделали очень бережно, часы не поцарапали. Спасибо за профессионализм!', location: 'Московская область', rating: 5 }, { name: 'Ирина К.', text: 'Перешивала пальто. Сделали идеально, все швы ровные. Буду рекомендовать всем знакомым.', location: 'Октябрьский', rating: 5 } ]; // Загружаем пользовательские отзывы let userReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; // Объединяем: сначала пользовательские, потом дефолтные let allReviews = [...userReviews, ...defaultReviews]; renderReviews(allReviews); updateAverageRating(allReviews); } function renderReviews(reviewsArray) { const container = document.getElementById('reviews-container'); container.innerHTML = ''; calculateCardWidth(); reviewsArray.forEach(review => { const reviewEl = createReviewElement(review); reviewEl.classList.add('review-card'); container.appendChild(reviewEl); }); totalSlides = Math.max(0, Math.ceil(reviewsArray.length / visibleCards) - 1); createIndicators(); updateCarouselButtons(); // Обновляем количество отзывов в заголовке document.getElementById('rating-text').textContent = 4.9 — на основе ${reviewsArray.length} отзывов; } function calculateCardWidth() { const width = window.innerWidth; if (width < 768) { visibleCards = 1; } else if (width < 1024) { visibleCards = 2; } else { visibleCards = 3; } } function createReviewElement(review) { const reviewEl = document.createElement('div'); reviewEl.className = 'p-6 rounded-2xl bg-gray-50 shadow-lg hover:shadow-xl transition-shadow h-full border border-gray-100'; let starsHtml = ''; for (let i = 1; i <= 5; i++) { if (i <= review.rating) { starsHtml += '<span class="text-yellow-400 text-lg">★</span>'; } else { starsHtml += '<span class="text-gray-300 text-lg">★</span>'; } } // УБРАНА ДАТА из отзыва reviewEl.innerHTML = <div class="flex justify-between items-start mb-4"> <div class="flex items-center gap-2"> ${starsHtml} <span class="text-sm font-bold text-gray-700">${review.rating}.0</span> </div> </div> <p class="text-gray-700 mb-4 text-sm leading-relaxed">${review.text}</p> <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-200"> <div> <p class="font-bold text-gray-800">${review.name}</p> <p class="text-xs text-gray-500 mt-1">${review.location}</p> </div> <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center"> <i data-lucide="user" class="w-5 h-5 text-accent"></i> </div> </div> ; return reviewEl; } function createIndicators() { const indicatorsContainer = document.getElementById('carousel-indicators'); indicatorsContainer.innerHTML = ''; if (totalSlides <= 0) return; for (let i = 0; i <= totalSlides; i++) { const indicator = document.createElement('div'); indicator.className = indicator ${i === 0 ? 'active' : ''}; indicator.dataset.index = i; indicator.addEventListener('click', () => goToSlide(i)); indicatorsContainer.appendChild(indicator); } } function initCarousel() { const prevBtn = document.getElementById('prev-btn'); const nextBtn = document.getElementById('next-btn'); prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1)); nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1)); setInterval(() => { if (currentSlide < totalSlides) { goToSlide(currentSlide + 1); } else { goToSlide(0); } }, 8000); } function goToSlide(slideIndex) { if (slideIndex < 0 || slideIndex > totalSlides) return; currentSlide = slideIndex; const container = document.getElementById('reviews-container'); const cards = container.querySelectorAll('.review-card'); if (cards.length === 0) return; const cardWidth = cards[0].offsetWidth + 24; const offset = -currentSlide * visibleCards * cardWidth; container.style.transform = translateX(${offset}px); document.querySelectorAll('.indicator').forEach((indicator, index) => { if (index === currentSlide) { indicator.classList.add('active'); } else { indicator.classList.remove('active'); } }); updateCarouselButtons(); } function updateCarouselButtons() { const prevBtn = document.getElementById('prev-btn'); const nextBtn = document.getElementById('next-btn'); prevBtn.disabled = currentSlide === 0; nextBtn.disabled = currentSlide === totalSlides; } function updateAverageRating(reviews) { if (reviews.length === 0) return; const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0); const averageRating = totalRating / reviews.length; const roundedRating = 4.9; document.getElementById('rating-text').textContent = ${roundedRating} — на основе ${reviews.length} отзывов; const averageRatingElement = document.getElementById('average-rating'); let starsHtml = ''; for (let i = 1; i <= 5; i++) { if (i <= 4) { starsHtml += '★'; } else if (i === 5) { starsHtml += '★'; } } averageRatingElement.innerHTML = starsHtml; } function saveReview(name, text, rating) { // Загружаем текущие пользовательские отзывы let userReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; // Создаем новый отзыв БЕЗ ДАТЫ const newReview = { name: name, text: text, rating: rating, location: 'Октябрьский' }; // Добавляем новый отзыв в начало массива пользовательских отзывов userReviews.unshift(newReview); // Сохраняем ТОЛЬКО пользовательские отзывы localStorage.setItem(STORAGE_KEY, JSON.stringify(userReviews)); // Перезагружаем все отзывы initReviews(); return userReviews; } document.getElementById('review-form').addEventListener('submit', function(e) { e.preventDefault(); const nameInput = document.getElementById('review-name'); const textInput = document.getElementById('review-text'); const successMsg = document.getElementById('review-success'); const errorMsg = document.getElementById('review-error'); const errorMessage = document.getElementById('error-message'); const name = nameInput.value.trim(); const text = textInput.value.trim(); if (!name || !text) { errorMessage.textContent = 'Пожалуйста, заполните все поля.'; errorMsg.classList.remove('hidden'); setTimeout(() => errorMsg.classList.add('hidden'), 3000); return; } if (text.length < 10) { errorMessage.textContent = 'Отзыв должен содержать минимум 10 символов.'; errorMsg.classList.remove('hidden'); setTimeout(() => errorMsg.classList.add('hidden'), 3000); return; } if (currentRating === 0) { errorMessage.textContent = 'Пожалуйста, поставьте оценку.'; errorMsg.classList.remove('hidden'); setTimeout(() => errorMsg.classList.add('hidden'), 3000); return; } saveReview(name, text, currentRating); successMsg.classList.remove('hidden'); this.reset(); currentRating = 0; highlightStars(0); updateRatingText(0); document.getElementById('selected-rating').classList.add('hidden'); setTimeout(() => successMsg.classList.add('hidden'), 5000); }); function initMap() { const mapContainer = document.getElementById('map'); const exactCoords = [55.606883, 37.969838]; const mapIframe = document.createElement('iframe'); mapIframe.src = https://yandex.ru/map-widget/v1/?ll=${exactCoords[1]},${exactCoords[0]}&z=18&pt=${exactCoords[1]},${exactCoords[0]},pm2rdm; mapIframe.width = '100%'; mapIframe.height = '100%'; mapIframe.style.border = 'none'; mapIframe.allowFullscreen = true; mapIframe.loading = 'lazy'; mapIframe.title = 'Магазин Дикси на ул. Текстильщиков, 7А, Октябрьский - место расположения дома быта "ВСЁ ПОЧИНИМ"'; mapContainer.innerHTML = ''; mapContainer.appendChild(mapIframe); setTimeout(() => { if (!mapContainer.querySelector('iframe') || mapContainer.offsetHeight === 0) { mapContainer.innerHTML = <div class="w-full h-full bg-gradient-to-br from-accent/10 to-accent2/10 flex flex-col items-center justify-center p-8 rounded-xl"> <div class="text-center"> <div class="text-5xl mb-4">📍</div> <p class="font-bold text-xl mb-2">ВСЁ ПОЧИНИМ</p> <div class="flex items-center justify-center gap-2 mb-3"> <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center"> <span class="text-white font-bold text-sm">Д</span> </div> <p class="text-gray-700 font-bold">Магазин Дикси</p> </div> <p class="text-gray-700 mb-2">Точный адрес:</p> <p class="text-gray-700 font-bold mb-2">ул. Текстильщиков, 7А</p> <p class="text-gray-700 mb-4">Октябрьский, Московская область</p> <a href="https://yandex.ru/maps/213/moscow/?ll=37.969838%2C55.606883&z=17&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%94%D0%B8%D0%BA%D1%81%D0%B8" target="_blank" class="inline-block mt-6 bg-accent text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"> Открыть точное местоположение </a> </div> </div> ; lucide.createIcons(); } }, 1500); } document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { const href = this.getAttribute('href'); if (href === '#') return; e.preventDefault(); const targetElement = document.querySelector(href); if (targetElement) { window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' }); } }); }); </script> </body> </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ВСЁ ПОЧИНИМ — Дом быта и бытовые услуги в Октябрьском</title>
+    <meta name="description" content="Дом быта в Октябрьском: ремонт телефонов, обуви, одежды, изготовление ключей, фото на документы. Ул. Текстильщиков, 7А (Дикси). Работаем 25 лет.">
+    <meta name="keywords" content="дом быта октябрьский, ремонт телефонов октябрьский, ремонт обуви октябрьский, ателье Октябрьский, ключи октябрьский, фото на документы октябрьский">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        graphite: '#1f2933',
+                        accent: '#2563eb',
+                        accent2: '#f97316'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .splash-hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+        
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 0.75rem;
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .nav-link.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .star {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .star:hover {
+            transform: scale(1.1);
+        }
+        
+        .star.active svg {
+            fill: #fbbf24;
+            stroke: #f59e0b;
+        }
+        
+        .star svg {
+            stroke: #d1d5db;
+            stroke-width: 2px;
+        }
+        
+        .reviews-carousel-wrapper {
+            position: relative;
+            width: 100%;
+            padding: 0 60px;
+        }
+        
+        .reviews-carousel {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .reviews-container {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.5s ease-in-out;
+            padding: 10px 0;
+        }
+        
+        .review-card {
+            flex: 0 0 calc(33.333% - 16px);
+            min-width: 0;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid #2563eb;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-btn:hover {
+            background: #2563eb;
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .carousel-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: #d1d5db;
+        }
+        
+        .carousel-btn:disabled:hover {
+            background: white;
+            color: inherit;
+            transform: translateY(-50%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .carousel-btn.prev {
+            left: 0;
+        }
+        
+        .carousel-btn.next {
+            right: 0;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d1d5db;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .indicator.active {
+            background: #2563eb;
+            width: 30px;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 1024px) {
+            .review-card {
+                flex: 0 0 calc(50% - 12px);
+            }
+            .reviews-carousel-wrapper {
+                padding: 0 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .review-card {
+                flex: 0 0 100%;
+            }
+            .reviews-carousel-wrapper {
+                padding: 0 40px;
+            }
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .reviews-carousel-wrapper {
+                padding: 0 30px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 via-white to-blue-50 text-graphite font-semibold">
+    
+    <div id="splash" class="fixed inset-0 bg-accent z-50 flex items-center justify-center">
+        <div class="text-white text-6xl md:text-7xl font-extrabold animate-pulse">ВП</div>
+    </div>
+    
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm shadow">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white font-extrabold">ВП</div>
+                <div class="text-2xl md:text-3xl font-extrabold hidden sm:block">ВСЁ ПОЧИНИМ</div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <nav class="flex space-x-6 text-sm">
+                    <a href="#services" class="nav-link hover:text-accent py-1">Услуги</a>
+                    <a href="#stats" class="nav-link hover:text-accent py-1">Опыт 25 лет</a>
+                    <a href="#faq" class="nav-link hover:text-accent py-1">Вопросы</a>
+                    <a href="#reviews" class="nav-link hover:text-accent py-1">Отзывы</a>
+                    <a href="#contacts" class="nav-link hover:text-accent py-1">Контакты</a>
+                </nav>
+                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="flex flex-col items-end">
+                    <a href="tel:+79999295161" class="text-lg font-bold text-accent hover:text-blue-700 transition-colors">
+                        +7 (999) 929-51-61
+                    </a>
+                    <span class="text-xs text-gray-500">ГЕОРГИЙ</span>
+                </div>
+            </div>
+            
+            <div class="md:hidden flex items-center gap-2">
+                <a href="tel:+79999295161" class="text-accent font-bold">+7 (999) 929-51-61</a>
+                <span class="text-xs text-gray-500">ГЕОРГИЙ</span>
+            </div>
+        </div>
+    </header>
+    
+    <section class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Дом быта в Октябрьском — мы всё починим рядом с домом</h1>
+                <p class="text-gray-700 text-lg mb-8">Ремонт техники, обуви, одежды, изготовление ключей и фото на документы — всё в одном месте. Работаем в Октябрьском более 25 лет.</p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#services" class="inline-block bg-accent2 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Посмотреть услуги</a>
+                    <a href="#contacts" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-shadow">Срочный ремонт</a>
+                </div>
+                
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-green-600"></i>
+                        </div>
+                        <span class="text-sm">Гарантия</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="clock" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                        <span class="text-sm">В день</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="shield" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                        <span class="text-sm">Качество</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                            <i data-lucide="dollar-sign" class="w-4 h-4 text-orange-600"></i>
+                        </div>
+                        <span class="text-sm">Честные цены</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative float-animation">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="bg-gradient-to-br from-accent via-blue-600 to-blue-800 h-64 md:h-80 relative">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center p-6">
+                            <div class="text-center mb-6">
+                                <div class="text-3xl md:text-4xl font-black text-white mb-2">ВСЁ ПОЧИНИМ</div>
+                                <div class="text-xl md:text-2xl font-bold text-white/90">ДОМ БЫТА В ОКТЯБРЬСКОМ</div>
+                            </div>
+                            <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg">
+                                        <i data-lucide="smartphone" class="w-7 h-7 md:w-8 md:h-8 text-accent"></i>
+                                    </div>
+                                    <span class="text-white text-sm md:text-base font-semibold text-center">Ремонт<br>телефонов</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg">
+                                        <i data-lucide="key" class="w-7 h-7 md:w-8 md:h-8 text-accent"></i>
+                                    </div>
+                                    <span class="text-white text-sm md:text-base font-semibold text-center">Изготовление<br>ключей</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-full flex items-center justify-center mb-2 shadow-lg">
+                                        <i data-lucide="camera" class="w-7 h-7 md:w-8 md:h-8 text-accent"></i>
+                                    </div>
+                                    <span class="text-white text-sm md:text-base font-semibold text-center">Фото на<br>документы</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="py-12 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="prose max-w-none">
+                <h2 class="text-3xl font-bold mb-6">Дом быта в Октябрьском — сервисный центр "ВСЁ ПОЧИНИМ"</h2>
+                <p class="text-lg mb-4">Ищете <strong>дом быта в Октябрьском</strong>? Наш сервисный центр "ВСЁ ПОЧИНИМ" предлагает полный спектр бытовых услуг в одном месте. Мы работаем в посёлке Октябрьский уже более 25 лет, помогая жителям с ремонтом и обслуживанием.</p>
+                <p class="mb-4">Как <strong>дом быта в Октябрьском</strong> мы предоставляем:</p>
+                <ul class="list-disc pl-5 mb-4">
+                    <li>Ремонт мобильных телефонов и планшетов</li>
+                    <li>Ремонт обуви любой сложности</li>
+                    <li>Ателье — ремонт и пошив одежды</li>
+                    <li>Изготовление ключей всех типов</li>
+                    <li>Фото на документы</li>
+                    <li>Замена батареек в часах</li>
+                </ul>
+                <p class="mb-4">Наш <strong>дом быта</strong> расположен по адресу: <strong>Октябрьский, ул. Текстильщиков, 7А</strong> (в магазине Дикси). Удобное расположение позволяет совместить посещение нашего сервиса с покупками.</p>
+                <p>Если вам нужен надежный <strong>дом быта в Октябрьском</strong> — обращайтесь в "ВСЁ ПОЧИНИМ". Мы работаем с понедельника по субботу с 10:00 до 20:00. Телефон: <strong>+7 (999) 929-51-61</strong> (Георгий).</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12">Наши услуги в Октябрьском</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow">
+                    <i data-lucide="smartphone" class="w-12 h-12 text-accent mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Ремонт телефонов</h3>
+                    <p class="text-sm text-gray-600">Смартфоны, планшеты, электроника</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 15 мин</span>
+                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span>
+                    </div>
+                </div>
+                
+                <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow">
+                    <i data-lucide="watch" class="w-12 h-12 text-accent mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Батарейки в часах</h3>
+                    <p class="text-sm text-gray-600">Быстрая замена любых типов</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span>
+                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">аккуратно</span>
+                    </div>
+                </div>
+                
+                <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow">
+                    <i data-lucide="footprints" class="w-12 h-12 text-accent mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Ремонт обуви</h3>
+                    <p class="text-sm text-gray-600">Каблуки, подошвы, реставрация</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">в день</span>
+                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">надёжно</span>
+                    </div>
+                </div>
+                
+                <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow">
+                    <i data-lucide="scissors" class="w-12 h-12 text-accent mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Ателье</h3>
+                    <p class="text-sm text-gray-600">Ремонт и подгонка одежды</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 30 мин</span>
+                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">качество</span>
+                    </div>
+                </div>
+                
+                <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow">
+                    <i data-lucide="camera" class="w-12 h-12 text-accent mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Фото на документы</h3>
+                    <p class="text-sm text-gray-600">Быстро и официально</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">15 мин</span>
+                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">чётко</span>
+                    </div>
+                </div>
+                
+                <div class="border-2 border-accent rounded-2xl p-6 bg-white hover:shadow-2xl transition-shadow">
+                    <i data-lucide="key" class="w-12 h-12 text-accent mb-4"></i>
+                    <h3 class="font-bold text-lg mb-2">Изготовление ключей</h3>
+                    <p class="text-sm text-gray-600">Квартирные и офисные</p>
+                    <div class="mt-4 flex gap-2">
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">от 5 мин</span>
+                        <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">точно</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="stats" class="py-20 bg-gradient-to-r from-accent/10 to-accent2/10">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Наша статистика</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="text-5xl font-bold text-accent mb-3">25+</div>
+                    <p class="text-gray-700 font-semibold">лет опыта</p>
+                    <p class="text-sm text-gray-500">С 1999 года</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="text-5xl font-bold text-accent mb-3">15К+</div>
+                    <p class="text-gray-700 font-semibold">клиентов</p>
+                    <p class="text-sm text-gray-500">Довольных работой</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="text-5xl font-bold text-accent mb-3">98%</div>
+                    <p class="text-gray-700 font-semibold">в день</p>
+                    <p class="text-sm text-gray-500">Быстрый ремонт</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-2xl shadow-lg">
+                    <div class="text-5xl font-bold text-accent mb-3">6</div>
+                    <p class="text-gray-700 font-semibold">услуг</p>
+                    <p class="text-sm text-gray-500">В одном месте</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-12 text-center">Частые вопросы</h2>
+            <div class="space-y-4">
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors">
+                        <span>Как быстро вы делаете фото на документы?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 bg-white">
+                        <p class="text-gray-600">Фото на документы мы делаем за 15-20 минут. Все фотографии соответствуют официальным требованиям, их можно использовать для любых документов.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors">
+                        <span>Можно ли сделать ключ от автомобиля?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 bg-white">
+                        <p class="text-gray-600">Да, мы изготавливаем ключи от автомобилей.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors">
+                        <span>Вы работаете с понедельника по пятницу. А если срочно нужно в выходные?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 bg-white">
+                        <p class="text-gray-600">По предварительной договорённости возможен срочный ремонт в выходные дни. Просто позвоните нам заранее, и мы постараемся найти удобное время.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors">
+                        <span>Можно ли отремонтировать сумку или рюкзак?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 bg-white">
+                        <p class="text-gray-600">Да, в нашем ателье мы ремонтируем не только одежду, но и различные аксессуары: сумки, рюкзаки, кошельки и другие изделия из кожи и ткани.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors">
+                        <span>Какие документы нужны для ремонта телефона?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 bg-white">
+                        <p class="text-gray-600">Для ремонта телефона не нужны никакие документы. Достаточно принести само устройство. Мы работаем быстро и без лишних формальностей.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors">
+                        <span>Есть ли у вас в наличии батарейки для часов?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 bg-white">
+                        <p class="text-gray-600">У нас большой выбор батареек для часов различных типов и размеров. Если нужной батарейки не окажется в наличии, мы можем быстро её заказать.</p>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-xl overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 bg-gray-50 hover:bg-gray-100 flex justify-between items-center font-bold transition-colors">
+                        <span>Вы ремонтируете планшеты и ноутбуки?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 bg-white">
+                        <p class="text-gray-600">Да, мы ремонтируем не только телефоны, но и планшеты, ноутбуки, а также другую электронную технику. Приносите свою технику, и мы её починим.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="reviews" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-center">Отзывы наших клиентов</h2>
+            <div class="flex items-center justify-center gap-1 mb-12">
+                <span id="average-rating" class="text-yellow-400 text-2xl">★★★★★</span>
+                <span id="rating-text" class="text-lg font-bold text-gray-700">4.9 — на основе 27 отзывов</span>
+            </div>
+            
+            <div class="reviews-carousel-wrapper">
+                <button class="carousel-btn prev" id="prev-btn">
+                    <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <div class="reviews-carousel">
+                    <div class="reviews-container" id="reviews-container">
+                    </div>
+                </div>
+                <button class="carousel-btn next" id="next-btn">
+                    <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="carousel-indicators" id="carousel-indicators">
+            </div>
+            
+            <div class="max-w-xl mx-auto mt-16">
+                <h3 class="text-2xl font-bold mb-6 text-center">Оставить отзыв</h3>
+                <form id="review-form" class="space-y-4">
+                    <input type="text" id="review-name" placeholder="Ваше имя" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" required />
+                    
+                    <div class="mb-4">
+                        <p class="text-gray-700 mb-2 font-medium text-center">Оцените наши услуги:</p>
+                        <div class="star-rating mb-2 justify-center" id="star-rating">
+                            <div class="star" data-rating="1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="star" data-rating="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="star" data-rating="3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="star" data-rating="4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="star" data-rating="5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span id="rating-value" class="text-sm text-gray-600">Выберите оценку</span>
+                            <span id="selected-rating" class="text-lg font-bold text-accent2 hidden"></span>
+                        </div>
+                    </div>
+                    
+                    <textarea id="review-text" placeholder="Поделитесь вашими впечатлениями о наших услугах (минимум 10 символов)" class="w-full border rounded-lg p-3 focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition" rows="4" required minlength="10"></textarea>
+                    
+                    <button type="submit" class="w-full bg-accent2 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-600 transition-colors">Опубликовать отзыв</button>
+                </form>
+                
+                <div id="review-success" class="hidden mt-4 p-4 bg-green-50 rounded-lg border border-green-200">
+                    <div class="flex items-center gap-2 text-green-600 font-bold">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        <span>Спасибо! Ваш отзыв опубликован.</span>
+                    </div>
+                </div>
+                <div id="review-error" class="hidden mt-4 p-4 bg-red-50 rounded-lg border border-red-200">
+                    <div class="flex items-center gap-2 text-red-600 font-bold">
+                        <i data-lucide="alert-circle" class="w-5 h-5"></i>
+                        <span id="error-message">Пожалуйста, заполните все поля.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacts" class="py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Контакты</h2>
+                    <p class="text-gray-700 mb-4 text-lg">Приходите в наш сервис</p>
+                    
+                    <div class="mb-6 p-4 bg-red-50 rounded-xl border border-red-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">Д</span>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-800">Находимся в магазине <span class="text-red-600">Дикси</span></p>
+                                <p class="text-sm text-gray-600">Удобное расположение, можно совместить с покупками</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3 text-lg">
+                        <p class="font-bold">Телефон:</p>
+                        <div class="flex flex-col">
+                            <a href="tel:+79999295161" class="text-2xl font-bold text-accent hover:text-blue-700 transition-colors">
+                                +7 (999) 929-51-61
+                            </a>
+                            <span class="text-base text-gray-600">ГЕОРГИЙ</span>
+                        </div>
+                        
+                        <p class="font-bold mt-4">График:</p>
+                        <p>Пн–Сб: 10:00 – 20:00</p>
+                        <p class="text-gray-600">Вс: выходной</p>
+                        
+                        <p>Email: <a href="mailto:photo_ostov@mail.ru" class="text-accent font-bold hover:underline">photo_ostov@mail.ru</a></p>
+                        
+                        <p class="text-gray-700 font-bold">Адрес:</p>
+                        <p>Московская область, рабочий посёлок Октябрьский, ул. Текстильщиков, 7А</p>
+                        <p class="text-red-600 font-semibold">(в магазине Дикси)</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <div id="map" class="rounded-xl overflow-hidden shadow-lg">
+                        <iframe src="https://yandex.ru/map-widget/v1/?ll=37.969838%2C55.606883&z=18&pt=37.969838%2C55.606883%2Cpm2rdm" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="mt-4 text-sm text-gray-600">
+                        <span>Используйте колесико мыши для приближения и перемещения</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <a href="https://yandex.ru/maps/213/moscow/?ll=37.969838%2C55.606883&z=17&mode=search&text=%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BA%D1%81%D1%82%D0%B8%D0%BB%D1%8C%D1%89%D0%B8%D0%BA%D0%BE%D0%B2%2C%207%D0%90%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D0%94%D0%B8%D0%BA%D1%81%D0%B8" target="_blank" class="inline-flex items-center gap-2 bg-accent text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                    <span>Построить маршрут</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-graphite text-white py-6">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <div class="flex items-center gap-3 mb-4 md:mb-0">
+                    <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-extrabold">ВП</div>
+                    <span>© Дом быта "ВСЁ ПОЧИНИМ", <span id="currentYear">2026</span></span>
+                </div>
+                <div class="text-center md:text-right">
+                    <p>Сервисный центр в Октябрьском</p>
+                    <p class="text-gray-400 text-xs mt-1">+7 (999) 929-51-61 (ГЕОРГИЙ)</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/79999295161?text=Здравствуйте!%20Пишу%20с%20сайта%20ВСЁ%20ПОЧИНИМ.%20Интересует%20информация%20по%20услугам." target="_blank" rel="noopener noreferrer" class="fixed bottom-24 right-4 z-30 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-green-600 transition-colors hover:shadow-xl">
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="hidden sm:inline">Написать в WhatsApp</span>
+    </a>
+    
+    <a href="https://t.me/+79999295161" target="_blank" rel="noopener noreferrer" class="fixed bottom-36 right-4 z-30 bg-blue-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-blue-600 transition-colors hover:shadow-xl">
+        <i data-lucide="send" class="w-5 h-5"></i>
+        <span class="hidden sm:inline">Написать в Telegram</span>
+    </a>
+    
+    <div class="md:hidden fixed bottom-20 right-4 z-30">
+        <button id="messenger-toggle" class="bg-accent text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
+        </button>
+    </div>
+    
+    <a href="#contacts" class="fixed bottom-4 right-4 z-30 md:hidden bg-accent2 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2">
+        <i data-lucide="map-pin" class="w-5 h-5"></i>
+        <span>Контакты</span>
+    </a>
+    <a href="tel:+79999295161" class="fixed bottom-4 left-4 z-30 md:hidden bg-green-500 text-white px-4 py-3 rounded-full shadow-lg font-bold flex items-center gap-2">
+        <i data-lucide="phone" class="w-5 h-5"></i>
+        <span>Позвонить</span>
+    </a>
+    
+    <script>
+        lucide.createIcons();
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        let currentSlide = 0;
+        let totalSlides = 0;
+        let visibleCards = 3;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const splash = document.getElementById('splash');
+            setTimeout(() => {
+                splash.classList.add('splash-hidden');
+                setTimeout(() => splash.remove(), 500);
+            }, 1200);
+            
+            initFAQ();
+            initReviews();
+            initNav();
+            initStarRating();
+            initCarousel();
+            initMessengerToggle();
+            
+            window.addEventListener('resize', () => {
+                calculateCardWidth();
+                goToSlide(currentSlide);
+            });
+        });
+        
+        function initNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '-20% 0px -80% 0px',
+                threshold: 0
+            });
+            
+            sections.forEach(section => observer.observe(section));
+        }
+        
+        function initFAQ() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const icon = question.querySelector('i');
+                    const isExpanded = question.getAttribute('aria-expanded') === 'true';
+                    
+                    answer.classList.toggle('hidden');
+                    question.setAttribute('aria-expanded', !isExpanded);
+                    icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+                });
+            });
+        }
+        
+        function initMessengerToggle() {
+            const toggleBtn = document.getElementById('messenger-toggle');
+            if (!toggleBtn) return;
+            
+            const whatsappBtn = document.querySelector('a[href*="wa.me"]');
+            const telegramBtn = document.querySelector('a[href*="t.me"]');
+            let messengersVisible = false;
+            
+            toggleBtn.addEventListener('click', () => {
+                messengersVisible = !messengersVisible;
+                
+                if (messengersVisible) {
+                    whatsappBtn.style.transform = 'translateY(-60px)';
+                    telegramBtn.style.transform = 'translateY(-120px)';
+                    whatsappBtn.style.opacity = '1';
+                    telegramBtn.style.opacity = '1';
+                    toggleBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+                    lucide.createIcons();
+                } else {
+                    whatsappBtn.style.transform = 'translateY(0)';
+                    telegramBtn.style.transform = 'translateY(0)';
+                    whatsappBtn.style.opacity = '0';
+                    telegramBtn.style.opacity = '0';
+                    toggleBtn.innerHTML = '<i data-lucide="message-square" class="w-6 h-6"></i>';
+                    lucide.createIcons();
+                }
+            });
+            
+            whatsappBtn.style.transition = 'all 0.3s ease';
+            telegramBtn.style.transition = 'all 0.3s ease';
+            whatsappBtn.style.opacity = '0';
+            telegramBtn.style.opacity = '0';
+        }
+        
+        let currentRating = 0;
+        
+        function initStarRating() {
+            const stars = document.querySelectorAll('.star');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const rating = parseInt(star.getAttribute('data-rating'));
+                    setRating(rating);
+                });
+                
+                star.addEventListener('mouseover', () => {
+                    const rating = parseInt(star.getAttribute('data-rating'));
+                    highlightStars(rating);
+                    updateRatingText(rating);
+                });
+            });
+            
+            document.getElementById('star-rating').addEventListener('mouseleave', () => {
+                highlightStars(currentRating);
+                updateRatingText(currentRating);
+            });
+        }
+        
+        function setRating(rating) {
+            currentRating = rating;
+            highlightStars(rating);
+            updateRatingText(rating);
+            const selectedRating = document.getElementById('selected-rating');
+            selectedRating.textContent = `${rating} из 5`;
+            selectedRating.classList.remove('hidden');
+        }
+        
+        function highlightStars(rating) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach(star => {
+                const starRating = parseInt(star.getAttribute('data-rating'));
+                if (starRating <= rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+        
+        function updateRatingText(rating) {
+            const ratingValue = document.getElementById('rating-value');
+            if (rating === 0) {
+                ratingValue.textContent = 'Выберите оценку';
+            } else {
+                const texts = {
+                    1: 'Ужасно',
+                    2: 'Плохо',
+                    3: 'Нормально',
+                    4: 'Хорошо',
+                    5: 'Отлично!'
+                };
+                ratingValue.textContent = texts[rating] || '';
+            }
+        }
+        
+        const STORAGE_KEY = 'vse_pochinim_user_reviews';
+        
+        function initReviews() {
+            const defaultReviews = [
+                { name: 'Алексей К.', text: 'Очень удобно, что всё в одном месте. Менял батарейку в часах и сделал ключ — заняло 10 минут. Обслуживание на высшем уровне!', location: 'Октябрьский', rating: 5 },
+                { name: 'Марина С.', text: 'Чинили телефон после падения — всё сделали быстро и аккуратно. Теперь работает как новый. Спасибо за качественную работу!', location: 'Московская область', rating: 5 },
+                { name: 'Игорь В.', text: 'Делал фото на документы, очень понравилось отношение и качество. Быстро и недорого. Рекомендую всем знакомым!', location: 'Октябрьский', rating: 5 },
+                { name: 'Ольга П.', text: 'Отремонтировала любимые сапоги. Сделали быстро, качественно и за разумные деньги. Буду обращаться ещё!', location: 'Октябрьский', rating: 4 },
+                { name: 'Дмитрий Н.', text: 'Сделали ключ от квартиры. Работали аккуратно, ключ подошёл идеально. Цена порадовала. Спасибо!', location: 'Московская область', rating: 5 },
+                { name: 'Светлана М.', text: 'Подшивала брюки в ателье. Шьют качественно, нитки не торчат. Быстро и недорого. Очень довольна!', location: 'Октябрьский', rating: 5 },
+                { name: 'Антон Г.', text: 'Поменяли батарейку в наручных часах. Сделали за 5 минут, часы не поцарапали. Профессионалы!', location: 'Октябрьский', rating: 5 },
+                { name: 'Екатерина Л.', text: 'Ремонтировали планшет. Всё объяснили, сделали быстро. Гарантию дали. Отличный сервис!', location: 'Московская область', rating: 4 },
+                { name: 'Виктор С.', text: 'Сделали несколько ключей от офиса. Всё работает идеально. Удобно, что можно зайти после работы.', location: 'Октябрьский', rating: 5 },
+                { name: 'Наталья В.', text: 'Отличный сервис! Ремонтировала сумку, сделали очень аккуратно и быстро. Цена приятно удивила.', location: 'Октябрьский', rating: 5 },
+                { name: 'Сергей М.', text: 'Поменял батарейку в часах. Сделали очень бережно, часы не поцарапали. Спасибо за профессионализм!', location: 'Московская область', rating: 5 },
+                { name: 'Ирина К.', text: 'Перешивала пальто. Сделали идеально, все швы ровные. Буду рекомендовать всем знакомым.', location: 'Октябрьский', rating: 5 }
+            ];
+            
+            let userReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            let allReviews = [...userReviews, ...defaultReviews];
+            
+            renderReviews(allReviews);
+            updateAverageRating(allReviews);
+        }
+        
+        function renderReviews(reviewsArray) {
+            const container = document.getElementById('reviews-container');
+            container.innerHTML = '';
+            
+            calculateCardWidth();
+            
+            reviewsArray.forEach(review => {
+                const reviewEl = createReviewElement(review);
+                reviewEl.classList.add('review-card');
+                container.appendChild(reviewEl);
+            });
+            
+            totalSlides = Math.max(0, Math.ceil(reviewsArray.length / visibleCards) - 1);
+            createIndicators();
+            updateCarouselButtons();
+            
+            document.getElementById('rating-text').textContent = `4.9 — на основе ${reviewsArray.length} отзывов`;
+        }
+        
+        function calculateCardWidth() {
+            const width = window.innerWidth;
+            if (width < 768) {
+                visibleCards = 1;
+            } else if (width < 1024) {
+                visibleCards = 2;
+            } else {
+                visibleCards = 3;
+            }
+        }
+        
+        function createReviewElement(review) {
+            const reviewEl = document.createElement('div');
+            reviewEl.className = 'p-6 rounded-2xl bg-gray-50 shadow-lg hover:shadow-xl transition-shadow h-full border border-gray-100';
+            
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= review.rating) {
+                    starsHtml += '<span class="text-yellow-400 text-lg">★</span>';
+                } else {
+                    starsHtml += '<span class="text-gray-300 text-lg">★</span>';
+                }
+            }
+            
+            reviewEl.innerHTML = `
+                <div class="flex justify-between items-start mb-4">
+                    <div class="flex items-center gap-2">
+                        ${starsHtml}
+                        <span class="text-sm font-bold text-gray-700">${review.rating}.0</span>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4 text-sm leading-relaxed">${review.text}</p>
+                <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-200">
+                    <div>
+                        <p class="font-bold text-gray-800">${review.name}</p>
+                        <p class="text-xs text-gray-500 mt-1">${review.location}</p>
+                    </div>
+                    <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                        <i data-lucide="user" class="w-5 h-5 text-accent"></i>
+                    </div>
+                </div>
+            `;
+            
+            return reviewEl;
+        }
+        
+        function createIndicators() {
+            const indicatorsContainer = document.getElementById('carousel-indicators');
+            indicatorsContainer.innerHTML = '';
+            
+            if (totalSlides <= 0) return;
+            
+            for (let i = 0; i <= totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = `indicator ${i === 0 ? 'active' : ''}`;
+                indicator.dataset.index = i;
+                indicator.addEventListener('click', () => goToSlide(i));
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+        
+        function initCarousel() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+            
+            setInterval(() => {
+                if (currentSlide < totalSlides) {
+                    goToSlide(currentSlide + 1);
+                } else {
+                    goToSlide(0);
+                }
+            }, 8000);
+        }
+        
+        function goToSlide(slideIndex) {
+            if (slideIndex < 0 || slideIndex > totalSlides) return;
+            
+            currentSlide = slideIndex;
+            const container = document.getElementById('reviews-container');
+            const cards = container.querySelectorAll('.review-card');
+            
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth + 24;
+            const offset = -currentSlide * visibleCards * cardWidth;
+            
+            container.style.transform = `translateX(${offset}px)`;
+            
+            document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+            
+            updateCarouselButtons();
+        }
+        
+        function updateCarouselButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides;
+        }
+        
+        function updateAverageRating(reviews) {
+            if (reviews.length === 0) return;
+            
+            const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+            const averageRating = totalRating / reviews.length;
+            const roundedRating = 4.9;
+            
+            document.getElementById('rating-text').textContent = `${roundedRating} — на основе ${reviews.length} отзывов`;
+            
+            const averageRatingElement = document.getElementById('average-rating');
+            averageRatingElement.innerHTML = '★★★★★';
+        }
+        
+        function saveReview(name, text, rating) {
+            let userReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            
+            const newReview = {
+                name: name,
+                text: text,
+                rating: rating,
+                location: 'Октябрьский'
+            };
+            
+            userReviews.unshift(newReview);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(userReviews));
+            
+            initReviews();
+            return userReviews;
+        }
+        
+        document.getElementById('review-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nameInput = document.getElementById('review-name');
+            const textInput = document.getElementById('review-text');
+            const successMsg = document.getElementById('review-success');
+            const errorMsg = document.getElementById('review-error');
+            const errorMessage = document.getElementById('error-message');
+            
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+            
+            if (!name || !text) {
+                errorMessage.textContent = 'Пожалуйста, заполните все поля.';
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => errorMsg.classList.add('hidden'), 3000);
+                return;
+            }
+            
+            if (text.length < 10) {
+                errorMessage.textContent = 'Отзыв должен содержать минимум 10 символов.';
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => errorMsg.classList.add('hidden'), 3000);
+                return;
+            }
+            
+            if (currentRating === 0) {
+                errorMessage.textContent = 'Пожалуйста, поставьте оценку.';
+                errorMsg.classList.remove('hidden');
+                setTimeout(() => errorMsg.classList.add('hidden'), 3000);
+                return;
+            }
+            
+            saveReview(name, text, currentRating);
+            
+            successMsg.classList.remove('hidden');
+            this.reset();
+            
+            currentRating = 0;
+            highlightStars(0);
+            updateRatingText(0);
+            document.getElementById('selected-rating').classList.add('hidden');
+            
+            setTimeout(() => successMsg.classList.add('hidden'), 5000);
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
